@@ -20,4 +20,6 @@ $resource('/api/birds/:id', { id: '@id' }, {
 ```
 
 ## Team Members
+Alex
+Bradley
 Paul
