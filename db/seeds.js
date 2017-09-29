@@ -4,8 +4,11 @@ const { dbURI } = require('../config/environment');
 mongoose.connect(dbURI, { useMongoClient: true });
 
 const User = require('../models/user');
+const Route = require('../models/route');
 
 User.collection.drop();
+Route.collection.drop();
+
 
 User
   .create([{
@@ -17,6 +20,91 @@ User
     riding: 'sometimes', //decide the type later?
     bikeType: 'none'
   }])
-  .then((users) => console.log(`${users.length} users created.`))
-  .catch((err) => console.log(err))
+  .then((users) => {
+    console.log(`${users.length} users created.`);
+    console.log('trying to create Routes');
+  })
+  .catch((err) => console.log(err));
+
+
+Route
+  .create([
+    {
+      startPoint: {
+        lat: 51.517240,
+        lng: -0.097280
+      },
+      endPoint: {
+        lat: 51.517240,
+        lng: -0.097280
+      },
+      wayPoints: [
+        {
+          lat: 51.517240,
+          lng: -0.097280
+        },
+        {
+          lat: 51.517240,
+          lng: -0.097280
+        },
+        {
+          lat: 51.517240,
+          lng: -0.097280
+        }
+      ],
+      memberArray: [],
+      comments: [
+        {
+          text: 'Hello hello'
+        },
+        {
+          text: 'Hello hello'
+        },
+        {
+          text: 'Hello hello'
+        }
+      ]
+    },
+    {
+      startPoint: {
+        lat: 51.7,
+        lng: -0.1
+      },
+      endPoint: {
+        lat: 51.7,
+        lng: -0.1
+      },
+      wayPoints: [
+        {
+          lat: 51.7,
+          lng: -0.1
+        },
+        {
+          lat: 51.7,
+          lng: -0.1
+        },
+        {
+          lat: 51.7,
+          lng: -0.1
+        }
+      ],
+      memberArray: [],
+      comments: [
+        {
+          text: 'Oi Oi'
+        },
+        {
+          text: 'Comment blabla'
+        },
+        {
+          text: 'jsvwnc'
+        }
+      ]
+    }
+  ])
+  .then(routes => {
+    console.log('got here');
+    console.log(`${routes.length} routes created!`);
+  })
+  .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
