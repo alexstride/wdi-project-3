@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
+mongoose.connect(dbURI, { useMongoClient: true });
+
 const User = require('../models/user');
 
 User.collection.drop();
 
 User
-  .create[{
+  .create([{
     name: 'Brad',
     email: 'inopea@pea.com',
     age: 16,
@@ -14,10 +16,7 @@ User
     bio: 'FYI: I like a joke', //add max characters
     riding: 'sometimes', //decide the type later?
     bikeType: 'none'
-
-  }];
-
-mongoose.connect(dbURI, { useMongoClient: true })
-  .then(users => console.log(`${users.length} users created.`))
-  .catch(err => console.log(err))
-  .finaly(() => mongoose.connection.close());
+  }])
+  .then((users) => console.log(`${users.length} users created.`))
+  .catch((err) => console.log(err))
+  .finally(() => mongoose.connection.close());
