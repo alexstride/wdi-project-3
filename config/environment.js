@@ -1,4 +1,4 @@
 const port = process.env.PORT || 4000;
 const env = process.env.NODE_ENV || 'development';
-
-module.exports = { port, env };
+const dbURI = process.env.MONGODB_URI || `mongodb://localhost/tandem-${env}`;
+module.exports = { port, env, dbURI };
