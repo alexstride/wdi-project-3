@@ -19,10 +19,14 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
+router.route('/users')
+  .post(users.create);
+
 router.route('/users/:id')
-  .get(users.show);
+  .get(users.show)
+  .put(users.update)
+  .delete(users.delete);
 
 router.all('/*', (req, res) => res.status(400).send('NOT FOUND'));
-
 
 module.exports = router;
