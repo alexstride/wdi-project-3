@@ -29,5 +29,4 @@ router.route('/users/:id')
 
 router.all('/*', (req, res) => res.status(400).send('NOT FOUND'));
 
-
 module.exports = router;
