@@ -5,7 +5,7 @@ const coordinateSchema = new mongoose.Schema({
   lng: Number
 });
 
-const routeMemberSchema = new mongoose.Schema({
+const rideMemberSchema = new mongoose.Schema({
   memberId: { type: mongoose.Schema.ObjectId, ref: 'User'},
   pending: Boolean,
   message: String
@@ -17,13 +17,13 @@ const commentSchema = new mongoose.Schema({
   likesArray: [ { type: mongoose.Schema.ObjectId, ref: 'User'} ]
 });
 
-const routeSchema = new mongoose.Schema({
+const rideSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
   startPoint: coordinateSchema,
   endPoint: coordinateSchema,
   wayPoints: [ coordinateSchema ],
-  memberArray: [ routeMemberSchema ],
+  memberArray: [ rideMemberSchema ],
   comments: [ commentSchema ]
 });
 
-module.exports = mongoose.model('Route', routeSchema);
+module.exports = mongoose.model('Ride', rideSchema);

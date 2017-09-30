@@ -4,10 +4,10 @@ const { dbURI } = require('../config/environment');
 mongoose.connect(dbURI, { useMongoClient: true });
 
 const User = require('../models/user');
-const Route = require('../models/route');
+const Ride = require('../models/ride');
 
 User.collection.drop();
-Route.collection.drop();
+Ride.collection.drop();
 
 
 User
@@ -22,12 +22,12 @@ User
   }])
   .then((users) => {
     console.log(`${users.length} users created.`);
-    console.log('trying to create Routes');
+    console.log('trying to create Rides');
   })
   .catch((err) => console.log(err));
 
 
-Route
+Ride
   .create([
     {
       startPoint: {
@@ -102,9 +102,9 @@ Route
       ]
     }
   ])
-  .then(routes => {
+  .then(rides => {
     console.log('got here');
-    console.log(`${routes.length} routes created!`);
+    console.log(`${rides.length} rides created!`);
   })
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
