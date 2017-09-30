@@ -1,6 +1,6 @@
 const Ride = require('../models/ride');
 
-function indexRoute(req, res, next) {
+function indexRide(req, res, next) {
   Ride
     .find()
     .exec()
@@ -8,12 +8,11 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
-function createRoute(req, res, next) {
+function createRide(req, res, next) {
   Ride
     .create(req.body)
     .then((ride) => res.status(201).json(ride))
     .catch(next);
-
 }
 
 function showRide(req, res, next) {
@@ -34,7 +33,6 @@ function updateRide(req, res, next) {
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();
-
       Object.assign(ride, req.body);
       return ride.save();
     })
@@ -48,7 +46,6 @@ function deleteRide(req, res, next) {
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();
-
       return ride.remove();
     })
     .then(() => res.status(204).end())
@@ -56,8 +53,8 @@ function deleteRide(req, res, next) {
 }
 
 module.exports = {
-  index: indexRoute,
-  create: createRoute,
+  index: indexRide,
+  create: createRide,
   show: showRide,
   update: updateRide,
   delete: deleteRide

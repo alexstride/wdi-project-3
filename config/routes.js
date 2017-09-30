@@ -8,8 +8,6 @@ router.route('/rides')
   .get(rides.index)
   .post(rides.create);
 
-
-
 router.route('rides/:id')
   .get(rides.show)
   .put(rides.update)
@@ -21,8 +19,16 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
+router.route('/users')
+  .post(users.create);
+
 router.route('/users/:id')
-  .get(users.show);
+  .get(users.show)
+  .put(users.update)
+  .delete(users.delete);
+
+router.route('/users/:id/edit')
+  .get(users.edit);
 
 router.all('/*', (req, res) => res.status(400).send('NOT FOUND'));
 
