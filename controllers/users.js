@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-function userCreate(req, res, next) {
+function usersCreate(req, res, next) {
   User
     .create(req.body)
     .then((user) => res.status(201).json(user))
@@ -10,7 +10,6 @@ function userCreate(req, res, next) {
 function usersShow(req, res, next) {
   User
     .findById(req.params.id)
-    .populate('posts')
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
@@ -45,7 +44,7 @@ function usersDelete(req, res, next) {
 }
 
 module.exports = {
-  create: userCreate,
+  create: usersCreate,
   show: usersShow,
   update: usersUpdate,
   delete: usersDelete
