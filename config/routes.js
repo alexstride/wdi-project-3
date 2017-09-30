@@ -27,12 +27,6 @@ router.route('/users/:id')
   .put(users.update)
   .delete(users.delete);
 
-router.route('/users/:id/edit')
-  .get(users.edit);
-
 router.all('/*', (req, res) => res.status(400).send('NOT FOUND'));
-
-
-
 
 module.exports = router;
