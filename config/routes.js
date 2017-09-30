@@ -8,32 +8,10 @@ router.route('/rides')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+router.route('rides/:id')
+  .get(rides.show)
+  .put(rides.update)
+  .delete(rides.delete);
 
 
 module.exports = router;
