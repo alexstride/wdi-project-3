@@ -8,8 +8,6 @@ router.route('/rides')
   .get(rides.index)
   .post(rides.create);
 
-
-
 router.route('rides/:id')
   .get(rides.show)
   .put(rides.update)
