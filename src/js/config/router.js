@@ -11,7 +11,14 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       templateUrl: 'js/views/index.html',
       controller: 'HomeCtrl as home'
+    })
+    .state('ridesIndex', {
+      url: '/rides',
+      templateUrl: 'js/views/rides/index.html',
+      controller: 'RidesIndexCtrl as ridesIndex'
     });
+  
+
   //add new states when needed
 
   $urlRouterProvider.otherwise('/');
