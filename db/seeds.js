@@ -18,7 +18,9 @@ User
     image: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/3/005/04b/07c/1606dd7.jpg',
     bio: 'FYI: I like a joke', //add max characters
     riding: 'sometimes', //decide the type later?
-    bikeType: 'none'
+    bikeType: 'none',
+    password: 'password',
+    passwordConfirmation: 'password'
   }])
   .then((users) => {
     console.log(`${users.length} users created.`);

@@ -3,6 +3,7 @@ const app         = express();
 
 const morgan =  require('morgan');
 const bodyParser = require('body-parser');
+const routes = require('./config/routes-temp');
 
 const mongoose = require('mongoose');
 // mongoose.plugin(require('./lib/globalToJSON'));
@@ -23,6 +24,8 @@ app.use(bodyParser.json());
 
 // app.use(customResponses);
 // app.use('/api', routes);
+
+app.use('/api', routes);
 
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
