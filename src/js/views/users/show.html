@@ -1,19 +1,23 @@
 <h2>user profile</h2>
 <main class="container">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-md-6">
       <div class="row">
-        <div class="col-lg-6">
-          <img ng-src="main.currentUserId.user.image" alt="">
-User: {{userShow.user}}
+        <div class="col-sm-6">
+          <img ng-src="{{usersShow.user.image}}" alt="{{usersShow.user.name}}">
         </div>
-        <div class="col-lg-6">
-          <h4></h4>
+        <div class="col-sm-6">
+          <p>User: {{usersShow.user.name}}</p>
+          <p>email: {{usersShow.user.email}}</p>
+          <p>age: {{usersShow.user.age}}</p>
+          <p>bio: {{usersShow.user.bio}}</p>
+          <p>riding: {{usersShow.user.riding}}</p>
+          <p>bike type: {{usersShow.user.bikeType}}</p>
         </div>
       </div>
     </div>
-    <div class="col-lg-6">
-
+    <div class="col-md-6">
+      <h2>History</h2>
     </div>
 
   </div>
