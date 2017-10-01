@@ -40,5 +40,4 @@ function MainCtrl($rootScope, $state, $transitions, $auth) {
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
   });
 
-
 }
