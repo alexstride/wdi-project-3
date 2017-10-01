@@ -15,8 +15,9 @@ function MainCtrl($rootScope, $state, $transitions, $auth) {
     $auth.login(vm.credentials)
       .then(response => {
         vm.currentUserId = response.data.id;
-        console.log(vm.currentUserId);
         $state.go('ridesIndex');
+        console.log(vm.currentUserId);
+
       });
   }
 
