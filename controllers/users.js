@@ -8,12 +8,15 @@ function usersCreate(req, res, next) {
 }
 
 function usersShow(req, res, next) {
+  console.log('inside userShow');
+  console.log('Params sent to server: ', req.params);
   User
     .findById(req.params.id)
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
-      return res.json(user);
+      console.log('show');
+      res.json(user);
     })
     .catch(next);
 }

@@ -1,7 +1,6 @@
 const Ride = require('../models/ride');
 
 function indexRide(req, res, next) {
-  console.log('Inside API index!');
   Ride
     .find()
     .exec()
@@ -17,8 +16,7 @@ function createRide(req, res, next) {
 }
 
 function showRide(req, res, next) {
-  console.log('Inside API show!');
-  console.log('Params sent to server: ', req.params);
+  console.log('here');
   Ride
     .findById(req.params.id)
     .exec()
