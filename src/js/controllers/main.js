@@ -17,9 +17,15 @@ function MainCtrl($rootScope, $state, $transitions, $auth) {
         vm.currentUserId = response.data.id;
         $state.go('ridesIndex');
         console.log(vm.currentUserId);
-
+        console.log(response);
       });
   }
+  
+  function getCurrentUserId() {
+    return vm.currentUserId;
+  }
+
+  vm.getCurrentUserId = getCurrentUserId;
 
   function logout() {
     console.log('attempting to logout');
