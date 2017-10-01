@@ -8,8 +8,7 @@ router.route('/rides')
   .get(rides.index)
   .post(secureRoute, rides.create);
 
-router.route('rides/:id')
-  .all(secureRoute)
+router.route('/rides/:id')
   .get(rides.show)
   .put(rides.update)
   .delete(rides.delete);
