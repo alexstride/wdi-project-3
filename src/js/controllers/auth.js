@@ -18,12 +18,5 @@ LoginCtrl.$inject = ['$auth', '$state'];
 
 function LoginCtrl($auth, $state) {
   const vm = this;
-  vm.credentials = {};
-
-  function submit() {
-    console.log('submit');
-    $auth.login(vm.credentials)
-      .then(() => $state.go('ridesIndex'));
-  }
-  vm.submit = submit;
+  console.log('Running a Login controller which currently has nothing in it!!');
 }

@@ -8,11 +8,21 @@ function MainCtrl($rootScope, $state, $transitions, $auth) {
 
   vm.isAuthenticated = $auth.isAuthenticated;
 
+  vm.credentials = {};
+
+  function login() {
+    console.log('submit');
+    $auth.login(vm.credentials)
+      .then(() => $state.go('ridesIndex'));
+  }
+
   function logout() {
+    console.log('attempting to logout');
     $auth.logout();
     $state.go('home');
-    console.log('here');
   }
+
+  vm.login = login;
   vm.logout = logout;
 
   $rootScope.$on('error', (e, err) => {
