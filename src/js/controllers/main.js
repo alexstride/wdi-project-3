@@ -2,41 +2,43 @@ angular
   .module('tandem')
   .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$auth', '$state', '$transitions', '$rootScope'];
-
-function MainCtrl($auth, $state, $transitions, $rootScope) {
+MainCtrl.$inject = ['$rootScope', '$state', '$transitions', '$auth'];
+function MainCtrl($rootScope, $state, $transitions, $auth) {
   const vm = this;
-  vm.credentials = {};
-  vm.isAuthenticated = $auth.isAuthenticated;
-  vm.login = login;
-  vm.logout = logout;
 
+  vm.isAuthenticated = $auth.isAuthenticated;
+
+  vm.credentials = {};
 
   function login() {
-    if (vm.loginForm.$valid) {
-      $auth.login(vm.credentials)
-        .then(() => console.log('Logged in!'))
-        .catch(() => $state.go('login'));
-    }
+    console.log('submit');
+    $auth.login(vm.credentials)
+      .then(() => $state.go('ridesIndex'));
   }
 
   function logout() {
+    console.log('attempting to logout');
     $auth.logout();
-    $state.go('login');
+    $state.go('home');
   }
 
-
-  $transitions.onSuccess({}, (transition) => {
-    vm.pageName = transition.$to().name;
-    vm.menuIsOpen = false;
-  });
+  vm.login = login;
+  vm.logout = logout;
 
   $rootScope.$on('error', (e, err) => {
     vm.stateHasChanged = false;
-    vm.message = err.data.message;
-    if(err.status === 401 && vm.pageName !== 'login'){
+
+    if(err.status === 401 && vm.pageName !== 'login') {
+      vm.message = err.data.message;
       $state.go('login');
     }
   });
+
+  $transitions.onSuccess({}, (transition) => {
+    vm.pageName = transition.$to().name;
+    if(vm.stateHasChanged) vm.message = null;
+    if(!vm.stateHasChanged) vm.stateHasChanged = true;
+  });
+
 
 }

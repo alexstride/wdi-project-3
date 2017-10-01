@@ -1,0 +1,26 @@
+<section class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <form ng-submit="login.submit()">
+        <div>
+          <label for="email">Email</label>
+          <p>
+            <input type="text" name="email" id="email" ng-model="login.credentials.email">
+          </p>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <p>
+            <input type="password" name="password" id="password" ng-model="login.credentials.password">
+          </p>
+        </div>
+
+        <div>
+          <p>
+            <input type="submit" class="btn btn-primary" value="Login">
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

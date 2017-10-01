@@ -1,39 +1,43 @@
-<nav class="navbar navbar-default">
+<nav class="navbar">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" ng-click="isCollapsed = !isCollapsed">
 
-      <!-- <button class="btn btn-navbar" ng-click="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> -->
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Tandem</a>
+      <ul class="nav navbar-nav">
+        <li>
+          <a class="navbar-brand" ui-sref="home">Tandem</a>
+        </li>
+      </ul>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" uib-collapse="isCollapsed" >
       <ul class="nav navbar-nav">
+        <li><a ng-if="!main.isAuthenticated()" ui-sref="register">Register</a></li>
 
-
-        <form class="navbar-form navbar-right" name-"main.loginForm" ng-submit="main.login()">
+        <form  class="navbar-form navbar-right" ng-submit="main.login()">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="User Name" ng-model="main.credentials.email">
+            <input ng-if="!main.isAuthenticated()" type="text" class="form-control" name="email" placeholder="Email" ng-model="main.credentials.email">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control password" placeholder="Password" ng-model="main.credentials.password">
+            <input ng-if="!main.isAuthenticated()" type="password" class="form-control password" name="password" placeholder="Password" ng-model="main.credentials.password">
           </div>
-          <button type="submit" class="btn btn-default">Login</button>
+          <button ng-if="!main.isAuthenticated()" type="submit" class="btn btn-default login" value="Login">Login</button>
         </form>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Register</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Add Route</a></li>
-        <li><a ng-submit="main.logout()">Logout</a></li>
+        <li><a  ui-sref="login" ng-if="!main.isAuthenticated()">Login</a></li>
+        <li><a ui-sref="ridesIndex">Map</a></li>
+        <li><a ui-sref="ridesNew" ng-if="main.isAuthenticated()">Add Route</a></li>
+        <li><a ng-if="main.isAuthenticated()" ui-sref="#">Profile</a></li>
+        <li><a href="#" ng-if="main.isAuthenticated()" ng-click="main.logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

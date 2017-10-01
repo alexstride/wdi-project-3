@@ -1,1 +1,39 @@
 <h2>register</h2>
+<section class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <form ng-submit="register.submit()">
+        <div>
+          <label for="email">Username</label>
+          <p>
+            <input class="input" type="text" name="name" id="username" ng-model="register.user.name" required>
+          </p>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <p>
+            <input class="input" type="text" name="email" id="email" ng-model="register.user.email" required>
+          </p>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <p>
+            <input class="input" type="password" name="password" id="password" ng-model="register.user.password" required>
+          </p>
+        </div>
+        <div>
+          <label for="passwordConfirmation">Password Confirmation</label>
+          <p>
+            <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="register.user.passwordConfirmation" required>
+          </p>
+        </div>
+
+        <div>
+          <p>
+            <input type="submit" class="button is-primary is-fullwidth" value="Register">
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

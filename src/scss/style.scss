@@ -1,4 +1,18 @@
 // Import all of your scss files here
-.form-control.password {
-  width: 79px;
+@import "reset";
+@import "variables";
+@import "navbar";
+@import "home";
+
+.google-map {
+  height: 300px;
+  width: 300px;
+  display: block;
+}
+
+  #indexmap  {
+  height: 500px;
+  width: 800px;
+  display: block;
+  margin: 0 auto;
 }

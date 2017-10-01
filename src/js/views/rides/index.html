@@ -1,4 +1,9 @@
 <h1>this is the page where most of the compliacted shit happens</h1>
+<h2> Start Point latitude: {{ridesIndex.all[0].startPoint.lat}} </h2>
 
-<h2>{{ ridesIndex.all[0].startPoint.lat}} </h2>
-<h2>{{ ridesIndex.all}} </h2>
+
+<form>
+      <input name="place" id="place" />
+    </form>
+
+<google-map id="indexmap">  {{ ridesIndex.all[0].startPoint.lat}}   </google-map>
