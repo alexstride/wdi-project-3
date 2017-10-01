@@ -2,7 +2,7 @@ angular
   .module('tandem')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = [ 'User', '$state' ];
+UsersShowCtrl.$inject = [ 'User', '$stateParams' ];
 function UsersShowCtrl(User, $stateParams) {
   const vm = this;
 
