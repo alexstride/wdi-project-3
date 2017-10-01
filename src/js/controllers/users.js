@@ -9,5 +9,6 @@ function UsersShowCtrl(User, $stateParams) {
 
   vm.user = User.get($stateParams);
 
+  console.log('Single user: ', vm.user);
 
 }

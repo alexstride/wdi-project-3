@@ -36,7 +36,7 @@
         <li><a  ui-sref="login" ng-if="!main.isAuthenticated()">Login</a></li>
         <li><a ui-sref="ridesIndex">Map</a></li>
         <li><a ui-sref="ridesNew" ng-if="main.isAuthenticated()">Add Route</a></li>
-        <li><a ng-if="main.isAuthenticated()" ui-sref="usersShow.main.currentUserId">Profile</a></li>
+        <li><a ng-if="main.isAuthenticated()" ui-sref="usersShow">Profile</a></li>
         <li><a href="#" ng-if="main.isAuthenticated()" ng-click="main.logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
