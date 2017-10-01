@@ -20,5 +20,4 @@ function RidesShowCtrl(Ride, $stateParams) {
   vm.ride = Ride.get($stateParams);
   console.log('Single ride: ', vm.ride);
 
-
 }
