@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true},
   password: { type: String, required: true },
-  age: { type: Number, required: true },
+  age: { type: Number },
   image: { type: String },
   bio: { type: String }, //add max characters
   riding: { type: String}, //decide the type later?

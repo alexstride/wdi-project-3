@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "postinstall": "bower install && gulp deploy"
+    "postinstall": "bower install && gulp deploy",
+    "seed": "node db/seeds"
   },
   "author": "Alex Chin <alex@alexchin.co.uk>",
   "contributors": [

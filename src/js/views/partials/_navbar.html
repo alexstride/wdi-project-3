@@ -19,20 +19,21 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" uib-collapse="isCollapsed" >
       <ul class="nav navbar-nav">
-        <li><a ui-sref="register" ng-if="!main.isAuthenticated()">Register</a></li>
+        <li><a ng-if="!main.isAuthenticated()" ui-sref="register">Register</a></li>
 
-        <form class="navbar-form navbar-right" name="main.loginForm" ng-submit="main.login()">
+        <form class="navbar-form navbar-right" name="main.loginForm" ng-submit="login.login()">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="User Name" ng-model="main.credentials.email">
+            <input type="text" class="form-control" name="name" placeholder="User Name" ng-model="login.credentials.email">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control password" placeholder="Password" ng-model="main.credentials.password">
+            <input type="password" class="form-control password" name="password" placeholder="Password" ng-model="login.credentials.password">
           </div>
-          <button type="submit" class="btn btn-default login">Login</button>
+          <button type="submit" class="btn btn-default login" value="Login">Login</button>
         </form>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="login">Login</a></li>
         <li><a ui-sref="ridesIndex">Map</a></li>
         <li><a ui-sref="ridesNew" ng-if="main.isAuthenticated()">Add Route</a></li>
         <li><a ui-sref="#">Profile</a></li>

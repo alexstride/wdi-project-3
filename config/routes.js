@@ -1,14 +1,15 @@
 const router = require('express').Router();
 const rides = require('../controllers/rides');
-
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
+const secureRoute = require('../lib/secureRoute');
 
 router.route('/rides')
   .get(rides.index)
-  .post(rides.create);
+  .post(secureRoute, rides.create);
 
 router.route('rides/:id')
+  .all(secureRoute)
   .get(rides.show)
   .put(rides.update)
   .delete(rides.delete);
@@ -20,9 +21,10 @@ router.route('/login')
   .post(auth.login);
 
 router.route('/users')
-  .post(users.create);
+  .post(secureRoute, users.create);
 
 router.route('/users/:id')
+  .all(secureRoute)
   .get(users.show)
   .put(users.update)
   .delete(users.delete);

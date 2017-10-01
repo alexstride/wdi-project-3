@@ -16,8 +16,18 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/rides',
       templateUrl: 'js/views/rides/index.html',
       controller: 'RidesIndexCtrl as ridesIndex'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'js/views/login/login.html',
+      controller: 'LoginCtrl as login'
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: '/js/views/registration/register.html',
+      controller: 'RegisterCtrl as register'
     });
-  
+
 
   //add new states when needed
 
