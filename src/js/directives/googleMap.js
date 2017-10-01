@@ -13,9 +13,14 @@ function googleMap($window) {
     },
     link(scope, element) {
       console.log(scope);
-      new $window.google.maps.Map(element[0], {
+      const map = new $window.google.maps.Map(element[0], {
         zoom: 14,
-        center: scope.center
+        center: {lat: 0, lng: 0}
+      });
+
+      scope.$watch('center', () => {
+        if(!scope.center) return false;
+        map.setCenter({lat: scope.center.lat, lng: scope.center.lng});
       });
     }
   };
