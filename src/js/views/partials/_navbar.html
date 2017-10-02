@@ -33,12 +33,7 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-        <li><a>{{main.currentUserId}}</a></li>
-        <li><a  ui-sref="login" ng-if="!main.isAuthenticated()">Login</a></li>
-=======
-        <li ng-if="!main.isAuthenticated()"><a  ui-sref="login">Login</a></li>
->>>>>>> development
+        <!-- <li ng-if="!main.isAuthenticated()"><a  ui-sref="login">Login</a></li> -->
         <li><a ui-sref="ridesIndex">Map</a></li>
         <li ng-if="main.isAuthenticated()"><a ui-sref="ridesNew">Add Route</a></li>
         <li ng-if="main.isAuthenticated()"><a  ui-sref="usersShow({ id: main.getCurrentUserId() })">Profile</a></li>

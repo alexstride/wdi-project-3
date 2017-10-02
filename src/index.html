@@ -11,6 +11,8 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
+  <div ng-include="'./js/views/partials/_scripts.html'"></div>
+  
   <div ng-include="'./js/views/partials/_navbar.html'"></div>
   <div class="notification" ng-if="main.message">{{ main.message }}</div>
   <main ui-view></main>

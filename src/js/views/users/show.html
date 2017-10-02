@@ -1,13 +1,17 @@
-<h2>user profile</h2>
+<div class="users-show">
+
+
 <main class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="row">
+  <div class="row user-profile">
+    <div class="col-md-6 user" >
+      <div class="row ">
         <div class="col-sm-6">
-          <img ng-src="{{usersShow.user.image}}" alt="{{usersShow.user.name}}">
+          <img class="page-curl shadow-bottom" ng-src="{{usersShow.user.image}}" alt="{{usersShow.user.name}}">
         </div>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
         <div class="col-sm-6">
-          <p>User: {{usersShow.user.name}}</p>
+          <h2 class="user-heading">{{usersShow.user.name}}</h2>
+
           <p>email: {{usersShow.user.email}}</p>
           <p>age: {{usersShow.user.age}}</p>
           <p>bio: {{usersShow.user.bio}}</p>
@@ -16,9 +20,10 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 user">
       <h2>History</h2>
     </div>
 
   </div>
 </main>
+</div>
