@@ -11,6 +11,19 @@
   display: block;
 }
 
+.editable-map {
+  height: 600px;
+  display: block;
+  border: 5px solid blue;
+}
+
+.map-holder {
+  height: 600px;
+  max-width: 600px;
+  display: block;
+  border: 5px solid red;
+}
+
 #indexmap  {
   height: 500px;
   width: 800px;

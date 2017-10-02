@@ -1,5 +1,9 @@
 <div class="container">
+
   <h1 class="title">Ride by {{ ridesShow.ride.createdBy.name }}</h1>
+  <div class="row">
+    <editable-route-map map-var="ridesShow.map" ride-info="ridesShow.ride"></editable-route-map>
+  </div>
   <div class="row">
     <div class="col-md-8">
       <google-map map-var="ridesShow.map" ride-info="ridesShow.ride"></google-map>
