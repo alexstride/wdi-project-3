@@ -4,11 +4,11 @@
 
 
 
-  <!-- <p> Start Point latitude: {{ridesIndex.all[0].startPoint.lat}} </p>
-  <p> Start Point latitude: {{ridesIndex.all[0].startPoint.lng}} </p>
+  <!-- <p> Start Point latitude: {{index.all[0].startPoint.lat}} </p>
+  <p> Start Point latitude: {{index.all[0].startPoint.lng}} </p>
 
-  <p> End Point latitude: {{ridesIndex.all[0].endPoint.lat}} </p>
-  <p> End Point latitude: {{ridesIndex.all[0].endPoint.lng}} </p> -->
+  <p> End Point latitude: {{index.all[0].endPoint.lat}} </p>
+  <p> End Point latitude: {{index.all[0].endPoint.lng}} </p> -->
 
 
   <form class="row">
@@ -74,9 +74,11 @@
     </div>
     <div class="row">
 
-      <google-map id="indexmap" center="ridesIndex.ride.startPoint" map-var="ridesIndex.map">  {{ ridesIndex.all[0].startPoint.lat}}   </google-map>
+      <google-map-index id="indexmap" map-var="index.map" ride-array="index.all"></google-map-index>
 
     </div>
+
+
 
   </div>
 
