@@ -24,13 +24,6 @@ function editableRouteMap($window) {
         center: {lat: 0, lng: 0}
       });
 
-      function placeWayPoints() {
-        console.log('placeWayPoints is currently empty!');
-      }
-
-      function clearWayPoints() {
-        console.log('clearWayPoints is currently empty');
-      }
 
       $scope.$watch('rideInfo', () => {
         if(!$scope.rideInfo || $scope.loaded) return false;
@@ -60,6 +53,13 @@ function editableRouteMap($window) {
           $scope.wayPointMarkers[point.id] = marker;
         });
 
+        //putting a watch on each of the wayPoints
+        $scope.rideInfo.wayPoints.forEach((element, index) => {
+          $scope.$watchCollection(`rideInfo.wayPoints[${index}]`, (newCollection) => {
+            //grabbing the relevant marker out of the wayPointMarkers object;
+            $scope.wayPointMarkers[newCollection.id].setPosition({lat: newCollection.lat, lng: newCollection.lng});
+          });
+        });
 
         $scope.loaded = true;
       }, true);
@@ -71,13 +71,13 @@ function editableRouteMap($window) {
 
       //watching for changes in the end point
       $scope.$watch('rideInfo.endPoint', () => {
+        console.log('moving endPoint marker');
         $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});
       }, true);
 
       //watching for changes in any of the waypoints
-      $scope.rideInfo.wayPoints.forEach(point => {
-        $scope.watch('rideInfo.startPoint', () => console.log('point changed: ', point));
-      });
+
+
     }
   };
 }
