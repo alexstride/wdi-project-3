@@ -1,11 +1,35 @@
-#indexmap  {
-height: 500px;
-width: 800px;
-display: block;
-margin: 0 auto;
+.container-fluid{
+  padding: 0;
+  margin: 0;
 }
-
 #icon {
   height: 40px;
   width: 40px;
+}
+
+form.row {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2vh;
+}
+
+.container-fluid.index {
+  display: flex;
+  flex-wrap: wrap;
+justify-content: space-between;
+  .weather {
+    width: 20vw;
+    height: 30vh;
+    border-bottom: 2px solid grey;
+  }
+  #indexmap  {
+  height: 500px;
+  width: 80vw;
+
+
+  }
+  .aside{
+    overflow: scroll;
+    height: 70vh;
+  }
 }
