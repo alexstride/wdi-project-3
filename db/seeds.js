@@ -37,8 +37,8 @@ Ride
         lng: -0.097280
       },
       endPoint: {
-        lat: 51.517240,
-        lng: -0.097280
+        lat: 51.517300,
+        lng: -0.057300
       },
       wayPoints: [
         {
@@ -69,7 +69,7 @@ Ride
     },
     {
       startPoint: {
-        lat: 51.7,
+        lat: 51.4,
         lng: -0.1
       },
       endPoint: {

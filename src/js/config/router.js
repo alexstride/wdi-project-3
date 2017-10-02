@@ -14,7 +14,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('ridesIndex', {
       url: '/rides',
       templateUrl: 'js/views/rides/index.html',
-      controller: 'RidesIndexCtrl as ridesIndex'
+      controller: 'RidesIndexCtrl as index'
     })
     .state('ridesShow', {
       url: '/rides/:id',
@@ -25,6 +25,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/users/:id',
       templateUrl: 'js/views/users/show.html',
       controller: 'UsersShowCtrl as usersShow'
+    })
+    .state('usersEdit', {
+      url: '/users/:id/edit',
+      templateUrl: 'js/views/users/edit.html',
+      controller: 'UsersEditCtrl as usersEdit'
     })
     .state('login', {
       url: '/login',
@@ -40,7 +45,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
 
   //add new states when needed
 
-  
+
 
   $urlRouterProvider.otherwise('/');
 }
