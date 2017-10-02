@@ -16,8 +16,16 @@ function RidesIndexCtrl(Ride) {
 RidesShowCtrl.$inject = [ 'Ride', '$stateParams' ];
 function RidesShowCtrl(Ride, $stateParams) {
   const vm = this;
+  vm.map = null;
 
-  vm.ride = Ride.get($stateParams);
-  console.log('Single ride: ', vm.ride);
+  Ride
+    .get($stateParams)
+    .$promise
+    .then(response => {
+      if (!response.createdBy) response.createdBy = { name: 'Unknown User' };
+      vm.ride = response;
+    });
+
+
 
 }
