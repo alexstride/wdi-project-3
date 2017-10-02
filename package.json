@@ -55,12 +55,15 @@
     }
   },
   "dependencies": {
+    "aws-cli": "^0.0.1",
+    "aws-sdk": "^2.125.0",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.0",
     "jsonwebtoken": "^8.0.1",
     "mongoose": "^4.11.13",
+    "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.9.0",
     "request-promise": "^4.2.2"
   },
