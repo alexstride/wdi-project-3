@@ -1,6 +1,9 @@
-//Allow the user to add and remove wayPoints
+//Change the reliance on id, so that the newly added wayPoints can be properly added
+// Allow user to remove wayPoints
+
 //make the map center based on the location of all of the markers
-//Make the markers draggable
+//Plot a direction through the points
+
 
 angular
   .module('tandem')
@@ -24,9 +27,28 @@ function editableRouteMap($window) {
         center: {lat: 0, lng: 0}
       });
 
+      //declaring a function to add a new wayPoints
+      $scope.newWayPoint = {};
+      $scope.displayNewWayPoint = false;
+      $scope.addWayPoint = addWayPoint;
+      $scope.removeAllMarkers = removeAllMarkers;
+
+      function addWayPoint() {
+        $scope.loaded = false;
+        $scope.rideInfo.wayPoints.push($scope.newWayPoint);
+        $scope.displayNewWayPoint = false;
+        $scope.newWayPoint = {};
+      }
+
+      function removeAllMarkers() {
+        for (const key in $scope.wayPointMarkers) {
+          $scope.wayPointMarkers[key].setMap(null);
+        }
+      }
 
       $scope.$watch('rideInfo', () => {
         if(!$scope.rideInfo || $scope.loaded) return false;
+        if ($scope.wayPointMarkers) $scope.removeAllMarkers();
         console.log('runnning initial centering function');
         $scope.mapVar.setCenter({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
 
@@ -50,6 +72,14 @@ function editableRouteMap($window) {
             label: 'W',
             position: {lat: point.lat, lng: point.lng},
             draggable: true
+          });
+          $window.google.maps.event.addListener(marker, 'dragend', e => {
+            const pointToChange = $scope.rideInfo.wayPoints.find(element => element === point);
+            console.log(pointToChange);
+            pointToChange.lat = e.latLng.lat();
+            pointToChange.lng = e.latLng.lng();
+            console.log($scope.rideInfo.wayPoints);
+            $scope.$apply();
           });
           $scope.wayPointMarkers[point.id] = marker;
         });

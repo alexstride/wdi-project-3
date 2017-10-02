@@ -13,6 +13,12 @@ function coordinate() {
       lng: '='
     },
     link($scope) {
+      $scope.$watchGroup(['lat', 'lng'], () => {
+        if (!$scope.lat || !$scope.lng) return false;
+        $scope.lat = parseFloat($scope.lat.toFixed(4));
+        $scope.lng = parseFloat($scope.lng.toFixed(4));
+      });
+
       $scope.isEditing = false;
       $scope.edit = edit;
       $scope.update = update;
