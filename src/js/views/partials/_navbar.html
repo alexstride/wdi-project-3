@@ -19,26 +19,30 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" uib-collapse="isCollapsed" >
       <ul class="nav navbar-nav">
-        <li><a ng-if="!main.isAuthenticated()" ui-sref="register">Register</a></li>
+        <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
 
-        <form  class="navbar-form navbar-right" ng-submit="main.login()">
+        <form ng-if="!main.isAuthenticated()" class="navbar-form navbar-right" ng-submit="main.login()">
           <div class="form-group">
-            <input ng-if="!main.isAuthenticated()" type="text" class="form-control" name="email" placeholder="Email" ng-model="main.credentials.email">
+            <input type="text" class="form-control" name="email" placeholder="Email" ng-model="main.credentials.email">
           </div>
           <div class="form-group">
-            <input ng-if="!main.isAuthenticated()" type="password" class="form-control password" name="password" placeholder="Password" ng-model="main.credentials.password">
+            <input type="password" class="form-control password" name="password" placeholder="Password" ng-model="main.credentials.password">
           </div>
-          <button ng-if="!main.isAuthenticated()" type="submit" class="btn btn-default login" value="Login">Login</button>
+          <button type="submit" class="btn btn-default login" value="Login">Login</button>
         </form>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
+<<<<<<< HEAD
         <li><a>{{main.currentUserId}}</a></li>
         <li><a  ui-sref="login" ng-if="!main.isAuthenticated()">Login</a></li>
+=======
+        <li ng-if="!main.isAuthenticated()"><a  ui-sref="login">Login</a></li>
+>>>>>>> development
         <li><a ui-sref="ridesIndex">Map</a></li>
-        <li><a ui-sref="ridesNew" ng-if="main.isAuthenticated()">Add Route</a></li>
-        <li><a ng-if="main.isAuthenticated()" ui-sref="#">Profile</a></li>
-        <li><a href="#" ng-if="main.isAuthenticated()" ng-click="main.logout()">Logout</a></li>
+        <li ng-if="main.isAuthenticated()"><a ui-sref="ridesNew">Add Route</a></li>
+        <li ng-if="main.isAuthenticated()"><a  ui-sref="usersShow({ id: main.getCurrentUserId() })">Profile</a></li>
+        <li ng-if="main.isAuthenticated()"><a href="#" ng-click="main.logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -17,9 +17,10 @@ ul.nav a:focus, ul.nav a:active {
 }
 .navbar-toggle {
   border: 3px solid $navFont;
-  background-image: url('../images/menu-icon.svg');
+  box-shadow: 1px 1px 2px black;
   span.icon-bar{
     border:1px solid $navFont;
+    box-shadow: 1px 1px 2px black;
   }
 }
 

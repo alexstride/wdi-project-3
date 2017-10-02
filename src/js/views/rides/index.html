@@ -1,4 +1,15 @@
 <h1>this is the page where most of the compliacted shit happens</h1>
 <h2> Start Point latitude: {{ridesIndex.all[0].startPoint.lat}} </h2>
+<h2> Start Point latitude: {{ridesIndex.all[0].startPoint.lng}} </h2>
 
-<p> {{ridesIndex.all}} </p>
+<h2> End Point latitude: {{ridesIndex.all[0].endPoint.lat}} </h2>
+<h2> End Point latitude: {{ridesIndex.all[0].endPoint.lng}} </h2>
+
+
+<form>
+      <input autocomplete location="index.location" ng-change="rides.autocomplete()" ng-model="place" name="place" id="place" />
+      <input type="date" name="date">
+  <input type="submit">
+    </form>
+
+<google-map id="indexmap">  {{ ridesIndex.all[0].startPoint.lat}}   </google-map>
