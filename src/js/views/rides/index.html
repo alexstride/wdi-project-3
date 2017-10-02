@@ -13,3 +13,15 @@
     </form>
 
 <google-map id="indexmap">  {{ ridesIndex.all[0].startPoint.lat}}   </google-map>
+
+<div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex">
+
+
+    <h1>{{ DarkSkyIndex.weather.timezone }}</h1>
+    <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
+    <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
+    <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
+    <p>time{{ DarkSkyIndex.weather.currently.time }}</p>
+    <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
+
+  </div>

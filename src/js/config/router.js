@@ -40,5 +40,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
 
   //add new states when needed
 
+  
+
   $urlRouterProvider.otherwise('/');
 }
