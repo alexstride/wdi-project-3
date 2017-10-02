@@ -4,10 +4,23 @@
 @import "navbar";
 @import "home";
 @import "usersShow";
+@import "index";
 
 .google-map {
   height: 600px;
   width: 600px;
+  display: block;
+}
+
+.editable-map {
+  display: block;
+  border: 1px solid black;
+  clear: both;
+}
+
+.map-holder {
+  height: 600px;
+  max-width: 600px;
   display: block;
 }
 
@@ -17,6 +30,7 @@
   display: block;
   margin: 0 auto;
 }
+
 img{
   width: 100%;
   border-radius: 4px;

@@ -1,27 +1,84 @@
+
 <h1>this is the page where most of the compliacted shit happens</h1>
-<h2> Start Point latitude: {{ridesIndex.all[0].startPoint.lat}} </h2>
-<h2> Start Point latitude: {{ridesIndex.all[0].startPoint.lng}} </h2>
-
-<h2> End Point latitude: {{ridesIndex.all[0].endPoint.lat}} </h2>
-<h2> End Point latitude: {{ridesIndex.all[0].endPoint.lng}} </h2>
+<div class="container-fluid">
 
 
-<form>
-      <input autocomplete location="index.location" ng-change="rides.autocomplete()" ng-model="place" name="place" id="place" />
-      <input type="date" name="date">
-  <input type="submit">
-    </form>
 
-<google-map id="indexmap">  {{ ridesIndex.all[0].startPoint.lat}}   </google-map>
+  <!-- <p> Start Point latitude: {{ridesIndex.all[0].startPoint.lat}} </p>
+  <p> Start Point latitude: {{ridesIndex.all[0].startPoint.lng}} </p>
 
-<div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex">
+  <p> End Point latitude: {{ridesIndex.all[0].endPoint.lat}} </p>
+  <p> End Point latitude: {{ridesIndex.all[0].endPoint.lng}} </p> -->
 
 
-    <h1>{{ DarkSkyIndex.weather.timezone }}</h1>
-    <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
-    <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
-    <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
-    <p>time{{ DarkSkyIndex.weather.currently.time }}</p>
-    <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
+  <form class="row">
+
+    <input autocomplete location="index.location" ng-change="rides.autocomplete()" ng-model="place" name="place" id="place" />
+    <input type="date" name="date">
+    <input class="btn btn-primary" type="submit">
+  </form>
+  <div class="container-fluid index">
+    <div class="aside">
+
+
+      <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex" class="weather">
+
+        <h1>{{ DarkSkyIndex.weather.timezone }}</h1>
+        <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
+        <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
+        <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
+        <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
+        <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
+
+      </div>
+      <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex" class="weather">
+
+        <h1>{{ DarkSkyIndex.weather.timezone }}</h1>
+        <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
+        <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
+        <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
+        <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
+        <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
+
+      </div>
+      <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex" class="weather">
+
+        <h1>{{ DarkSkyIndex.weather.timezone }}</h1>
+        <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
+        <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
+        <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
+        <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
+        <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
+
+      </div>
+      <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex" class="weather">
+
+        <h1>{{ DarkSkyIndex.weather.timezone }}</h1>
+        <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
+        <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
+        <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
+        <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
+        <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
+
+      </div>
+      <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex" class="weather">
+
+        <h1>{{ DarkSkyIndex.weather.timezone }}</h1>
+        <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
+        <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
+        <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
+        <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
+        <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
+
+      </div>
+    </div>
+    <div class="row">
+
+      <google-map id="indexmap" center="ridesIndex.ride.startPoint" map-var="ridesIndex.map">  {{ ridesIndex.all[0].startPoint.lat}}   </google-map>
+
+    </div>
 
   </div>
+
+
+</div>
