@@ -2,7 +2,7 @@
   <h1 class="title">Ride by {{ ridesShow.ride.createdBy.name }}</h1>
   <div class="row">
     <div class="col-md-8">
-      <google-map center="ridesShow.ride.startPoint" map-var="ridesShow.map" ride-info="ridesShow.ride"></google-map>
+      <google-map map-var="ridesShow.map" ride-info="ridesShow.ride"></google-map>
     </div>
     <div class="col-md-4">
       <p>Start point: {{ridesShow.ride.startPoint.lat}}, {{ridesShow.ride.startPoint.lat}}</p>
