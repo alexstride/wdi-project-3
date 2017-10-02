@@ -1,0 +1,16 @@
+<div class="editable-map row">
+  <div class="map-holder col-sm-8">GOOGLE MAP GOES HERE</div>
+  <div class="map-aside col-sm-4">
+    <h5>Start Point</h5>
+    <p class="coordinate">{{rideInfo.startPoint.lat}}, {{rideInfo.startPoint.lng}}</p>
+
+    <h5>Waypoints</h5>
+    <ul>
+      <li ng-repeat="wayPoint in rideInfo.wayPoints">{{wayPoint.lat}}, {{wayPoint.lng}}</li>
+    </ul>
+
+    <h5>End Point</h5>
+    <p class="coordinate">{{rideInfo.endPoint.lat}}, {{rideInfo.endPoint.lng}}</p>
+  </div>
+
+</div>

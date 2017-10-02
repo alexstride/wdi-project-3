@@ -9,13 +9,13 @@ function editableRouteMap($window) {
   return {
     restrict: 'E',
     replace: true,
-    template: '<div class="editable-map row"><div class="map-holder col-sm-9">GOOGLE MAP GOES HERE</div><div class="map-aside col-sm-3"></div></div>',
+    templateUrl: 'js/views/partials/_editable_map_template.html',
     scope: {
       mapVar: '=',
       rideInfo: '='
     },
     link($scope, element) {
-      console.log(element[0].querySelector('.map-holder'));
+      console.log('first attempt to log data: ', $scope.rideInfo);
       const mapElement = element[0].querySelector('.map-holder');
       console.log($scope);
       $scope.mapVar = new $window.google.maps.Map(mapElement, {
@@ -32,7 +32,7 @@ function editableRouteMap($window) {
           map: $scope.mapVar
         });
         marker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
-      });
+      }, true);
 
     }
   };
