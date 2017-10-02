@@ -5,6 +5,7 @@
   background-size: cover;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -13,10 +14,33 @@
   left: 0;
   z-index: -1;
   h1{
+    padding-top: 22vh;
     color: $navFont;
     font-size: 16vh;
     font-weight: bold;
     text-shadow: 0 1px 0 rgb(204,204,204) , 0 2px 0 rgb(201,201,201) , 0 3px 0 rgb(187,187,187) , 0 4px 0 rgb(185,185,185) , 0 5px 0 rgb(170,170,170) , 0 6px 1px rgba(0,0,0,0.0980392) , 0 0 5px rgba(0,0,0,0.0980392) , 0 1px 3px rgba(0,0,0,0.298039) , 0 3px 5px rgba(0,0,0,0.2) , 0 5px 10px rgba(0,0,0,0.247059) , 0 10px 10px rgba(0,0,0,0.2) , 0 20px 20px rgba(0,0,0,0.14902) ;
 
+  }
+  .home-icon{
+    margin-top: 5vh;
+    color: red;
+    font-size: 3vh;
+    text-shadow: 1px 1px 2px black;
+    i{
+      font-size: 5vh;
+    }
+    .register-icon{
+      margin-left: -1.5vw;
+    }
+  }
+  .arrow{
+    text-shadow: 1px 1px 2px black;
+    padding-top: 14vh;
+    font-size: 2.5vh;
+    font-weight: bold;
+    color: green;
+    .fa{
+      margin-left: 1.6vh;
+    }
   }
 }
