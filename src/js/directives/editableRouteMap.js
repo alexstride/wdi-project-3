@@ -1,4 +1,7 @@
-
+//Store the markers in scope, so that they are repositioned, rather than simply replaced
+//Make sure that the initial centering function only runs once.
+//make the map center based on the location of all of the markers
+//Make the markers draggable
 
 angular
   .module('tandem')
@@ -23,14 +26,33 @@ function editableRouteMap($window) {
       });
 
       $scope.$watch('rideInfo', () => {
-        if(!$scope.rideInfo) return false;
+        if(!$scope.rideInfo || $scope.loaded) return false;
+        console.log('runnning initial centering function');
         $scope.mapVar.setCenter({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
-        const marker = new $window.google.maps.Marker({
+
+        //creating and setting the initial positions of the start-point marker
+        $scope.startPointMarker = new $window.google.maps.Marker({
           map: $scope.mapVar
         });
-        marker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
+        $scope.startPointMarker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
+
+        //creating and setting the initial positions of the end-point marker
+        $scope.endPointMarker = new $window.google.maps.Marker({
+          map: $scope.mapVar
+        });
+        $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});
+
+        $scope.loaded = true;
       }, true);
 
+      //watching the position of the startPoint marker to see if it needs to move.
+      $scope.$watch('rideInfo.startPoint', () => {
+        $scope.startPointMarker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
+      }, true);
+
+      $scope.$watch('rideInfo.endPoint', () => {
+        $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});
+      }, true);
     }
   };
 }
