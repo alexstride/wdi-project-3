@@ -6,7 +6,7 @@
 
     <h5>Waypoints</h5>
     <div ng-repeat="wayPoint in rideInfo.wayPoints">
-      <coordinate lat="wayPoint.lat", lng="wayPoint.lng"></coordinate>
+      <coordinate lat="wayPoint.lat" lng="wayPoint.lng" delete="deleteWayPoint(wayPoint)" show-delete="true"></coordinate>
     </div>
 
     <div>
@@ -28,7 +28,7 @@
 
     <h5>End Point</h5>
     <coordinate lat="rideInfo.endPoint.lat", lng="rideInfo.endPoint.lng"></coordinate>
-
+    <p ng-if="pendingChanges">Changes waiting to be saved...</p>
   </div>
 
 </div>

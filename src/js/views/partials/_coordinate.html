@@ -1,7 +1,7 @@
 <div class="coordinate">
   <div class="row" ng-hide="isEditing">
     <p class="col-xs-6">{{lat}}, {{lng}}</p>
-    <p class="col-xs-6"><a href="#" ng-click="edit()">edit</a></p>
+    <p class="col-xs-6"><a href="#" ng-click="edit()">edit</a> <span ng-if="showDelete">/ <a href="#" ng-click="delete()">delete</a></span></p>
   </div>
   <div class="row" ng-show="isEditing">
 
