@@ -3,6 +3,7 @@ const rides = require('../controllers/rides');
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
+const darkSky = require('../controllers/weather');
 
 router.route('/rides')
   .get(rides.index)
@@ -26,6 +27,10 @@ router.route('/users/:id')
   .get(users.show)
   .put(users.update)
   .delete(users.delete);
+
+
+
+router.get('/weather', darkSky.proxy);
 
 router.all('/*', (req, res) => res.status(400).send('NOT FOUND'));
 
