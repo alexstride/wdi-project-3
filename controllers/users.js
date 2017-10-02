@@ -8,6 +8,7 @@ function usersCreate(req, res, next) {
 }
 
 function usersShow(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
   console.log('inside userShow');
   console.log('Params sent to server: ', req.params);
   User
@@ -22,12 +23,13 @@ function usersShow(req, res, next) {
 }
 
 function usersUpdate(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
   User
     .findById(req.params.id)
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
-      Object.assign(user, req.body);
+      user = Object.assign(user, req.body);
       return user.save();
     })
     .then((user) => res.json(user))

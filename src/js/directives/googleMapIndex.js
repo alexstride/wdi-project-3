@@ -14,7 +14,7 @@ function googleMapIndex($window) {
       rideArray: '='
     },
     link($scope, element) {
-      const numColors = 40;
+      const numColors = 200;
       let colorArray = [];
       function randomColor() {
         const r = Math.floor(Math.random() * 256);
