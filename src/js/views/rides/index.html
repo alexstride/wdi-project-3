@@ -12,12 +12,17 @@
   <input type="submit">
     </form>
 
-<google-map id="indexmap">  {{ ridesIndex.all[0].startPoint.lat}}   </google-map>
+<google-map id="indexmap" center="ridesIndex.ride.startPoint" map-var="ridesIndex.map">  {{ ridesIndex.all[0].startPoint.lat}}   </google-map>
+
+
 
 <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex">
 
 
+
+
     <h1>{{ DarkSkyIndex.weather.timezone }}</h1>
+    <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
     <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
     <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
     <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>

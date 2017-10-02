@@ -4,16 +4,10 @@
 @import "navbar";
 @import "home";
 @import "usersShow";
+@import "index";
 
 .google-map {
   height: 600px;
   width: 600px;
   display: block;
-}
-
-  #indexmap  {
-  height: 500px;
-  width: 800px;
-  display: block;
-  margin: 0 auto;
 }
