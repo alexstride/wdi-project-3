@@ -11,30 +11,28 @@ function googleMap($window) {
     replace: true,
     template: '<div class="google-map">GOOGLE MAP GOES HERE</div>',
     scope: {
-      center: '='
+      center: '=',
+      mapVar: '=',
+      rideInfo: '='
     },
-    link(scope, element) {
-      console.log(scope);
-      const map = new $window.google.maps.Map(element[0], {
+    link($scope, element) {
+      console.log($scope);
+      $scope.mapVar = new $window.google.maps.Map(element[0], {
         zoom: 14,
         center: {lat: 0, lng: 0}
       });
 
-
-      // CaptainBrad - trying to get marker into my locations
-      // need to do the global google thingy
-      
-      // const latLng = { lat: location.lat, lng: location.lng};
-      // const marker = new google.maps.Marker({
-      //   position: latLng,
-      //   map: map
-      // });
-
-      scope.$watch('center', () => {
-        if(!scope.center) return false;
-        map.setCenter({lat: scope.center.lat, lng: scope.center.lng});
-        // marker.setPosition(scope.center); // marker stuff
+      $scope.$watch('rideInfo', () => {
+        console.log('running');
+        console.log('value of rideInfo: ', $scope.rideInfo);
+        if(!$scope.rideInfo) return false;
+        $scope.mapVar.setCenter({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
+        const marker = new $window.google.maps.Marker({
+          map: $scope.mapVar
+        });
+        marker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
       });
+
     }
   };
 }

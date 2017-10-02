@@ -1,5 +1,28 @@
-<h1>Show page!</h1>
+<div class="container">
+  <h1 class="title">Ride by {{ ridesShow.ride.createdBy.name }}</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <google-map center="ridesShow.ride.startPoint" map-var="ridesShow.map" ride-info="ridesShow.ride"></google-map>
+    </div>
+    <div class="col-md-4">
+      <p>Start point: {{ridesShow.ride.startPoint.lat}}, {{ridesShow.ride.startPoint.lat}}</p>
+      <p>Waypoints: </p>
+      <ul>
+        <li ng-repeat="point in ridesShow.ride.wayPoints">{{point.lat}}, {{point.lng}}</li>
+      </ul>
 
-{{ ridesShow.ride }}
+      <p>End point: {{ridesShow.ride.endPoint.lat}}, {{ridesShow.ride.endPoint.lat}}</p>
+    </div>
+  </div>
 
-<google-map center="ridesShow.ride.startPoint"></google-map>
+
+
+
+  <h2>Comments:</h2>
+
+  <div class="comment" ng-repeat="comment in ridesShow.ride.comments">
+    <h4>{{comment.createdBy || "Unknown user"}}</h4>
+    <p>{{comment.text || "This comment has no content"}}</p>
+  </div>
+
+</div>
