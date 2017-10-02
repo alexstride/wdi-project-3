@@ -18,7 +18,7 @@ function googleMap($window) {
       console.log($scope);
       $scope.mapVar = new $window.google.maps.Map(element[0], {
         zoom: 14,
-        center: {lat: 0, lng: 0}
+        center: {lat: 51.51724, lng: -0.09728}
       });
 
       $scope.$watch('rideInfo', () => {
@@ -28,6 +28,7 @@ function googleMap($window) {
         $scope.mapVar.setCenter({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
         const marker = new $window.google.maps.Marker({
           map: $scope.mapVar
+          
         });
         marker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
       });
