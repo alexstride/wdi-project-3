@@ -19,6 +19,7 @@ function showRide(req, res, next) {
   console.log('here');
   Ride
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();

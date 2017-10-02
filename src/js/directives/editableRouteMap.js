@@ -46,6 +46,7 @@ function editableRouteMap($window) {
         $scope.rideInfo.wayPoints.push($scope.newWayPoint);
         $scope.displayNewWayPoint = false;
         $scope.newWayPoint = {};
+        $scope.pendingChanges = true;
       }
 
       function removeAllMarkers() {
@@ -64,6 +65,7 @@ function editableRouteMap($window) {
       function deleteWayPoint(point) {
         $scope.rideInfo.wayPoints.splice($scope.rideInfo.wayPoints.indexOf(point), 1);
         deleteMarker(point.tempId);
+        $scope.pendingChanges = true;
       }
 
       $scope.$watch('rideInfo', () => {

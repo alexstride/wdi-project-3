@@ -33,7 +33,6 @@ function RidesShowCtrl(Ride, $stateParams, $scope) {
     .get($stateParams)
     .$promise
     .then(response => {
-      if (!response.createdBy) response.createdBy = { name: 'Unknown User' };
       vm.ride = response;
     });
 
@@ -46,11 +45,11 @@ function RidesShowCtrl(Ride, $stateParams, $scope) {
     if($scope.updateNeeded) {
       console.log('updating the database');
       Ride
-        .update(vm.ride)
+        .update($stateParams, vm.ride)
         .$promise
         .then(response => {
-          if (!response.createdBy) response.createdBy = { name: 'Unknown User' };
           vm.ride = response;
+          $scope.updateNeeded = false;
         });
     }
 
