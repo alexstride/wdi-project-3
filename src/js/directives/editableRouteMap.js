@@ -9,7 +9,7 @@ function editableRouteMap($window) {
   return {
     restrict: 'E',
     replace: true,
-    template: '<div class="editable-map"><div class="map-holder">GOOGLE MAP GOES HERE</div><div class="map-aside"></div></div>',
+    template: '<div class="editable-map row"><div class="map-holder col-sm-9">GOOGLE MAP GOES HERE</div><div class="map-aside col-sm-3"></div></div>',
     scope: {
       mapVar: '=',
       rideInfo: '='
