@@ -4,14 +4,14 @@
   <main class="container">
     <div class="row user-profile">
       <div class="col-md-6 user">
-        <div class="row ">
+        <div class="row user-info">
           <div class="col-sm-6">
             <img class="page-curl shadow-bottom" ng-src="{{usersShow.user.image}}" alt="{{usersShow.user.name}}">
           </div>
 
           <div class="col-sm-6">
 
-            <h2 class="user-heading"><span class="edit-icon"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span> {{usersShow.user.name}}</h2>
+            <h2 class="user-heading"><span class="edit-icon"><a ui-sref="usersEdit({ id: usersShow.user.id })"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span> {{usersShow.user.name}}</h2>
 
             <p>email: {{usersShow.user.email}}</p>
             <p>age: {{usersShow.user.age}}</p>
