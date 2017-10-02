@@ -1,0 +1,21 @@
+<div class="editable-map row">
+  <div class="map-holder col-sm-8">GOOGLE MAP GOES HERE</div>
+  <div class="map-aside col-sm-4">
+    <h5>Start Point</h5>
+    <coordinate lat="rideInfo.startPoint.lat", lng="rideInfo.startPoint.lng"></coordinate>
+
+    <h5>Waypoints</h5>
+    <div ng-repeat="wayPoint in rideInfo.wayPoints">
+      <coordinate lat="wayPoint.lat", lng="wayPoint.lng"></coordinate>
+    </div>
+
+    <div>
+      <em><a href="#">Add waypoint</a></em>
+    </div>
+
+    <h5>End Point</h5>
+    <coordinate lat="rideInfo.endPoint.lat", lng="rideInfo.endPoint.lng"></coordinate>
+
+  </div>
+
+</div>
