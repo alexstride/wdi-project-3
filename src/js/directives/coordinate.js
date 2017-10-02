@@ -12,7 +12,7 @@ function coordinate() {
       lat: '=',
       lng: '='
     },
-    link($scope, element) {
+    link($scope) {
       $scope.isEditing = false;
       $scope.edit = edit;
       $scope.update = update;

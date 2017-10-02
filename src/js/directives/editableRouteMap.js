@@ -1,5 +1,4 @@
-//Store the markers in scope, so that they are repositioned, rather than simply replaced
-//Make sure that the initial centering function only runs once.
+//Allow the user to add and remove wayPoints
 //make the map center based on the location of all of the markers
 //Make the markers draggable
 
@@ -25,6 +24,7 @@ function editableRouteMap($window) {
         center: {lat: 0, lng: 0}
       });
 
+
       $scope.$watch('rideInfo', () => {
         if(!$scope.rideInfo || $scope.loaded) return false;
         console.log('runnning initial centering function');
@@ -42,6 +42,26 @@ function editableRouteMap($window) {
         });
         $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});
 
+        //creating and placing markers for all of the waypoints.
+        $scope.wayPointMarkers = {};
+        $scope.rideInfo.wayPoints.forEach(point => {
+          const marker = new $window.google.maps.Marker({
+            map: $scope.mapVar,
+            label: 'W',
+            position: {lat: point.lat, lng: point.lng},
+            draggable: true
+          });
+          $scope.wayPointMarkers[point.id] = marker;
+        });
+
+        //putting a watch on each of the wayPoints
+        $scope.rideInfo.wayPoints.forEach((element, index) => {
+          $scope.$watchCollection(`rideInfo.wayPoints[${index}]`, (newCollection) => {
+            //grabbing the relevant marker out of the wayPointMarkers object;
+            $scope.wayPointMarkers[newCollection.id].setPosition({lat: newCollection.lat, lng: newCollection.lng});
+          });
+        });
+
         $scope.loaded = true;
       }, true);
 
@@ -50,9 +70,15 @@ function editableRouteMap($window) {
         $scope.startPointMarker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
       }, true);
 
+      //watching for changes in the end point
       $scope.$watch('rideInfo.endPoint', () => {
+        console.log('moving endPoint marker');
         $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});
       }, true);
+
+      //watching for changes in any of the waypoints
+
+
     }
   };
 }
