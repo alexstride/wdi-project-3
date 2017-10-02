@@ -11,7 +11,6 @@ function googleMap($window) {
     replace: true,
     template: '<div class="google-map">GOOGLE MAP GOES HERE</div>',
     scope: {
-      center: '=',
       mapVar: '=',
       rideInfo: '='
     },
