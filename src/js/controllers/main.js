@@ -13,16 +13,11 @@ function MainCtrl($rootScope, $state, $transitions, $auth) {
   function login() {
     console.log('submit');
     $auth.login(vm.credentials)
-      .then(response => {
-        vm.currentUserId = response.data.id;
-        $state.go('ridesIndex');
-        console.log(vm.currentUserId);
-        console.log(response);
-      });
+      .then(() => $state.go('ridesIndex'));
   }
-  
+
   function getCurrentUserId() {
-    return vm.currentUserId;
+    return $auth.getPayload().userId;
   }
 
   vm.getCurrentUserId = getCurrentUserId;
