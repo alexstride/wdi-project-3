@@ -1,4 +1,4 @@
-//Link every waypoint marker back to which waypoint it is
+//Allow the user to add and remove wayPoints
 //make the map center based on the location of all of the markers
 //Make the markers draggable
 
@@ -48,7 +48,8 @@ function editableRouteMap($window) {
           const marker = new $window.google.maps.Marker({
             map: $scope.mapVar,
             label: 'W',
-            position: {lat: point.lat, lng: point.lng}
+            position: {lat: point.lat, lng: point.lng},
+            draggable: true
           });
           $scope.wayPointMarkers[point.id] = marker;
         });
