@@ -1,10 +1,18 @@
 <div class="container">
 
-  <h1>{{ridesShow.ride.name}}</h1>
-  <h3 class="title">Ride by {{ ridesShow.ride.createdBy.name || "Unknown User" }}</h3>
+  <div class="row">
+    <div class="col-md-9">
+      <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.ride.createdBy.name || "Unknown User" }}</small></h2>
+    </div>
+    <div class="col-md-3 button-top-pad">
+      <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" class="btn btn-warning">Edit</a>
+      <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" class="btn btn-danger">Delete</a>
+    </div>
+  </div>
 
 
-    <editable-route-map map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()"></editable-route-map>
+
+  <editable-route-map map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()"></editable-route-map>
 
 
   <h2>Comments:</h2>

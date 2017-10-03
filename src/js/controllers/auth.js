@@ -1,7 +1,7 @@
 angular
   .module('tandem')
-  .controller('RegisterCtrl', RegisterCtrl);
-// .controller('LoginCtrl', LoginCtrl);
+  .controller('RegisterCtrl', RegisterCtrl)
+  .controller('LoginCtrl', LoginCtrl);
 
 RegisterCtrl.$inject = ['$auth', '$state'];
 function RegisterCtrl($auth, $state) {
@@ -14,9 +14,18 @@ function RegisterCtrl($auth, $state) {
   vm.submit = submit;
 }
 
-// LoginCtrl.$inject = ['$auth', '$state'];
+LoginCtrl.$inject = ['$auth', '$state'];
 
-// function LoginCtrl($auth, $state) {
-//   const vm = this;
-//   console.log('Running a Login controller which currently has nothing in it!!');
-// }
+function LoginCtrl($auth, $state) {
+  console.log('running the login controller');
+  const vm = this;
+  vm.credentials = {};
+
+  function login() {
+    $auth.login(vm.credentials)
+      .then(() => $state.go('ridesIndex'))
+      .catch(() => $state.go('login'));
+  }
+
+  vm.login = login;
+}

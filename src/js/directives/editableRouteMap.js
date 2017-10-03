@@ -34,7 +34,6 @@ function editableRouteMap($window) {
 
       function renderDirections() {
         if (directionsDisplay) directionsDisplay.setMap(null);
-        console.log('Rendering directions');
         directionsDisplay = new google.maps.DirectionsRenderer({
           suppressBicyclingLayer: true,
           suppressMarkers: true,
@@ -49,11 +48,9 @@ function editableRouteMap($window) {
         const wayPointArray = $scope.rideInfo.wayPoints.map(point => {
           return {
             location: new google.maps.LatLng(point.lat, point.lng),
-            stopover: false
+            stopover: true
           };
         });
-
-        console.log(wayPointArray);
 
         directionsService.route({
           origin: new google.maps.LatLng($scope.rideInfo.startPoint.lat, $scope.rideInfo.startPoint.lng),
@@ -61,7 +58,10 @@ function editableRouteMap($window) {
           waypoints: wayPointArray,
           travelMode: 'BICYCLING',
           optimizeWaypoints: true
-        }, response => directionsDisplay.setDirections(response));
+        }, response => {
+          console.log(response);
+          directionsDisplay.setDirections(response);
+        });
       }
 
 
@@ -83,7 +83,6 @@ function editableRouteMap($window) {
       $scope.removeAllWayPointMarkers = removeAllWayPointMarkers;
 
       function refreshWayPoints() {
-        console.log('running refreshWayPoints');
         if ($scope.wayPointMarkers  && $scope.wayPointMarkers.length > 0) removeAllWayPointMarkers();
         $scope.wayPointMarkers = [];
         $scope.rideInfo.wayPoints.forEach(point => {
