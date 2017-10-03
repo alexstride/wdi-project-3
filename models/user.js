@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true},
   password: { type: String, required: true },
   age: { type: Number },
-  image: { type: String },
+  image: { type: String, default: 'https://cdn2.iconfinder.com/data/icons/skating-and-riding-activity/347/outdoor-fun-006-512.png' },
   bio: { type: String }, //add max characters
   riding: { type: String}, //decide the type later?
   bikeType: {type: String}

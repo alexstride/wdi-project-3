@@ -106,7 +106,9 @@ function googleMapIndex($window) {
         infowindow = new google.maps.InfoWindow({
           content: `
           <div class="infowindow">
-            <p> hello my name is ${ride.createdBy.name} and i'm very polite</p>
+            
+            <p> hello my name is ${ride.createdBy.name}</p>
+            <img class="mapImage"  src=${ride.createdBy.image}>
             <p>route distance is ${ride.distance}</p>
             <p>route length is ${ride.duration}</p>
             <a href="/rides/${ride.id}"><h3>Link to ride</h3></a>
