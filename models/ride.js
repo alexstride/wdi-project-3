@@ -18,6 +18,7 @@ const commentSchema = new mongoose.Schema({
 });
 
 const rideSchema = new mongoose.Schema({
+  name: String,
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
   startPoint: coordinateSchema,
   endPoint: coordinateSchema,

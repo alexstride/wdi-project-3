@@ -1,7 +1,7 @@
 <div class="container">
-  {{ridesShow.ride}}
 
-  <h1 class="title">Ride by {{ ridesShow.ride.createdBy.name || "Unknown User" }}</h1>
+  <h1>{{ridesShow.ride.name}}</h1>
+  <h3 class="title">Ride by {{ ridesShow.ride.createdBy.name || "Unknown User" }}</h3>
 
 
     <editable-route-map map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()"></editable-route-map>
