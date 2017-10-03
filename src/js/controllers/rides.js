@@ -29,6 +29,7 @@ function RidesShowCtrl(Ride, $stateParams, $scope) {
   const vm = this;
   vm.map = null;
   $scope.updateNeeded = false;
+  vm.update = update;
 
   Ride
     .get($stateParams)
@@ -37,24 +38,16 @@ function RidesShowCtrl(Ride, $stateParams, $scope) {
       vm.ride = response;
     });
 
-  $scope.$watch('updateNeeded', () => {
-    if (!vm.ride) {
-      console.log('trying to update before ride loaded');
-      return false;
-    }
-
-    if($scope.updateNeeded) {
-      console.log('updating the database');
-      Ride
-        .update($stateParams, vm.ride)
-        .$promise
-        .then(response => {
-          vm.ride = response;
-          $scope.updateNeeded = false;
-        });
-    }
-
-  });
+  function update() {
+    Ride
+      .update($stateParams, vm.ride)
+      .$promise
+      .then(response => {
+        vm.ride = response;
+        $scope.updateNeeded = false;
+      });
+    $scope.updateNeeded = false;
+  }
 
 
 }

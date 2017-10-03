@@ -28,7 +28,9 @@
 
     <h5>End Point</h5>
     <coordinate lat="rideInfo.endPoint.lat", lng="rideInfo.endPoint.lng"></coordinate>
-    <p ng-if="pendingChanges">Changes waiting to be saved...</p>
+    <button ng-click="updateDirections()">Recalculate directions</button>
+    <button ng-if="pendingChanges" ng-click="update()">Save Changes</button>
+
   </div>
 
 </div>

@@ -43,7 +43,7 @@ function googleMapIndex($window) {
 
         console.log('ride array from directive', $scope.rideArray);
         $scope.rideArray.forEach((ride, i) => {
-
+          
           const start = new $window.google.maps.Marker({
             map: map,
             animation: google.maps.Animation.DROP,

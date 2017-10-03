@@ -4,7 +4,7 @@
   <h1 class="title">Ride by {{ ridesShow.ride.createdBy.name || "Unknown User" }}</h1>
 
 
-    <editable-route-map map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded"></editable-route-map>
+    <editable-route-map map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()"></editable-route-map>
 
 
   <h2>Comments:</h2>

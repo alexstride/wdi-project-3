@@ -1,3 +1,6 @@
+/* global google */
+
+
 //Get rid of bugs with deleting waypoint.
 //allow user to add a waypoint by clicking on the map.
 
@@ -20,16 +23,54 @@ function editableRouteMap($window) {
     scope: {
       mapVar: '=',
       rideInfo: '=',
-      pendingChanges: '='
+      pendingChanges: '=',
+      update: '&'
     },
     link($scope, element) {
+      //bringing in the directions service
+      const directionsService = new google.maps.DirectionsService();
+      let directionsDisplay = null;
+      $scope.updateDirections = renderDirections;
+
+      function renderDirections() {
+        if (directionsDisplay) directionsDisplay.setMap(null);
+        console.log('Rendering directions');
+        directionsDisplay = new google.maps.DirectionsRenderer({
+          suppressBicyclingLayer: true,
+          suppressMarkers: true,
+          polylineOptions: {
+            strokeColor: 'blue',
+            strokeOpacity: 1.0
+          }
+        });
+
+        directionsDisplay.setMap($scope.mapVar);
+
+        const wayPointArray = $scope.rideInfo.wayPoints.map(point => {
+          return {
+            location: new google.maps.LatLng(point.lat, point.lng),
+            stopover: false
+          };
+        });
+
+        console.log(wayPointArray);
+
+        directionsService.route({
+          origin: new google.maps.LatLng($scope.rideInfo.startPoint.lat, $scope.rideInfo.startPoint.lng),
+          destination: new google.maps.LatLng($scope.rideInfo.endPoint.lat, $scope.rideInfo.endPoint.lng),
+          waypoints: wayPointArray,
+          travelMode: 'BICYCLING',
+          optimizeWaypoints: true
+        }, response => directionsDisplay.setDirections(response));
+      }
+
+
       //creating a variable to inform of unsaved changes
       $scope.pendingChanges = false;
 
 
       //creating the google map
       const mapElement = element[0].querySelector('.map-holder');
-      console.log($scope);
       $scope.mapVar = new $window.google.maps.Map(mapElement, {
         zoom: 14,
         center: {lat: 0, lng: 0}
@@ -39,7 +80,30 @@ function editableRouteMap($window) {
       $scope.newWayPoint = {};
       $scope.displayNewWayPoint = false;
       $scope.addWayPoint = addWayPoint;
-      $scope.removeAllMarkers = removeAllMarkers;
+      $scope.removeAllWayPointMarkers = removeAllWayPointMarkers;
+
+      function refreshWayPoints() {
+        console.log('running refreshWayPoints');
+        if ($scope.wayPointMarkers  && $scope.wayPointMarkers.length > 0) removeAllWayPointMarkers();
+        $scope.wayPointMarkers = [];
+        $scope.rideInfo.wayPoints.forEach(point => {
+          point.tempId = point.id || (Math.random() * 100000).toFixed();
+          const marker = new $window.google.maps.Marker({
+            map: $scope.mapVar,
+            label: 'W',
+            position: {lat: point.lat, lng: point.lng},
+            draggable: true
+          });
+          $window.google.maps.event.addListener(marker, 'dragend', e => {
+            const pointToChange = $scope.rideInfo.wayPoints.find(element => element === point);
+            pointToChange.lat = e.latLng.lat();
+            pointToChange.lng = e.latLng.lng();
+            $scope.pendingChanges = true;
+            $scope.$apply();
+          });
+          $scope.wayPointMarkers.push(marker);
+        });
+      }
 
       function addWayPoint() {
         $scope.loaded = false;
@@ -49,7 +113,7 @@ function editableRouteMap($window) {
         $scope.pendingChanges = true;
       }
 
-      function removeAllMarkers() {
+      function removeAllWayPointMarkers() {
         for (const key in $scope.wayPointMarkers) {
           deleteMarker(key);
         }
@@ -70,8 +134,7 @@ function editableRouteMap($window) {
 
       $scope.$watch('rideInfo', () => {
         if(!$scope.rideInfo || $scope.loaded) return false;
-        if ($scope.wayPointMarkers) $scope.removeAllMarkers();
-        console.log('runnning initial centering function');
+        if ($scope.wayPointMarkers) $scope.removeAllWayPointMarkers();
         $scope.mapVar.setCenter({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
 
         //creating and setting the initial positions of the start-point marker
@@ -103,34 +166,15 @@ function editableRouteMap($window) {
         });
 
         //creating and placing markers for all of the waypoints.
-        $scope.wayPointMarkers = {};
-        $scope.rideInfo.wayPoints.forEach(point => {
-          point.tempId = point.id || (Math.random() * 100000).toFixed();
-          const marker = new $window.google.maps.Marker({
-            map: $scope.mapVar,
-            label: 'W',
-            position: {lat: point.lat, lng: point.lng},
-            draggable: true
-          });
-          $window.google.maps.event.addListener(marker, 'dragend', e => {
-            const pointToChange = $scope.rideInfo.wayPoints.find(element => element === point);
-            pointToChange.lat = e.latLng.lat();
-            pointToChange.lng = e.latLng.lng();
-            $scope.pendingChanges = true;
-            $scope.$apply();
-          });
-          $scope.wayPointMarkers[point.tempId] = marker;
-        });
+        refreshWayPoints();
 
         //putting a watch on each of the wayPoints
-        $scope.rideInfo.wayPoints.forEach((element, index) => {
-          $scope.$watchCollection(`rideInfo.wayPoints[${index}]`, (newCollection) => {
-            //grabbing the relevant marker out of the wayPointMarkers object;
-            $scope.wayPointMarkers[newCollection.tempId].setPosition({lat: newCollection.lat, lng: newCollection.lng});
-            $scope.pendingChanges = true;
-          });
-        });
+        $scope.$watch('rideInfo.wayPoints', () => {
+          //grabbing the relevant marker out of the wayPointMarkers object;
+          refreshWayPoints();
+        }, true);
 
+        renderDirections();
         $scope.loaded = true;
       }, true);
 
@@ -142,7 +186,6 @@ function editableRouteMap($window) {
 
       //watching for changes in the end point
       $scope.$watch('rideInfo.endPoint', () => {
-        console.log('moving endPoint marker');
         $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});
         $scope.pendingChanges = true;
       }, true);
