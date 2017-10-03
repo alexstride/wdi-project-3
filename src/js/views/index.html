@@ -1,5 +1,5 @@
 <main id="hero">
   <h1>Tandem</h1>
-<a class="home-icon" ui-sref="register"><i class="fa fa-bicycle" aria-hidden="true"></i><br><span class="register-icon">Register</span></a>
+<a class="home-icon" ng-if="!main.isAuthenticated()" ui-sref="register"><i class="fa fa-bicycle" aria-hidden="true"></i><br><span class="register-icon">Register</span></a>
 <p class="arrow">More...<br> <i class="fa fa-arrow-down" aria-hidden="true"></i></p>
 </main>
