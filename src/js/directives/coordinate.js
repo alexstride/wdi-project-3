@@ -25,12 +25,23 @@ function coordinate() {
       $scope.isEditing = false;
       $scope.edit = edit;
       $scope.update = update;
+      $scope.discard = discard;
+      let valueBuffer = {};
 
       function edit() {
         $scope.isEditing = true;
+        valueBuffer = {lat: $scope.lat, lng: $scope.lng};
       }
 
       function update() {
+        $scope.isEditing = false;
+        valueBuffer = {};
+      }
+
+      function discard() {
+        $scope.lat = valueBuffer.lat;
+        $scope.lng = valueBuffer.lng;
+        valueBuffer = {};
         $scope.isEditing = false;
       }
     }

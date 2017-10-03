@@ -9,8 +9,7 @@ function usersCreate(req, res, next) {
 
 function usersShow(req, res, next) {
   if(req.file) req.body.image = req.file.filename;
-  console.log('inside userShow');
-  console.log('Params sent to server: ', req.params);
+
   User
     .findById(req.params.id)
     .exec()

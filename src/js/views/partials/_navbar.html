@@ -23,10 +23,10 @@
 
         <form ng-if="!main.isAuthenticated()" class="navbar-form navbar-right" ng-submit="main.login()">
           <div class="form-group">
-            <input type="text" class="form-control" name="email" placeholder="Email" ng-model="main.credentials.email">
+            <input type="text" class="form-control" name="email" placeholder="Email" ng-model="main.credentials.email" required>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control password" name="password" placeholder="Password" ng-model="main.credentials.password">
+            <input type="password" class="form-control password" name="password" placeholder="Password" ng-model="main.credentials.password" required>
           </div>
           <button type="submit" class="button login" value="Login">Login</button>
         </form>

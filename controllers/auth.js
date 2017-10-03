@@ -13,7 +13,7 @@ function login(req, res, next) {
   User
     .findOne({ email: req.body.email })
     .then((user) => {
-      if(!user || !user.validatePassword(req.body.password)) return res.send('INVALID CREDENTIALS');
+      if(!user || !user.validatePassword(req.body.password)) return res.unauthorized();
 
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1hr' });
       return res.json({ token, message: `Welcome back ${user.name}`, id: user.id });
