@@ -1,7 +1,8 @@
 angular
   .module('tandem')
   .controller('RidesIndexCtrl', RidesIndexCtrl)
-  .controller('RidesShowCtrl', RidesShowCtrl);
+  .controller('RidesShowCtrl', RidesShowCtrl)
+  .controller('RidesNewCtrl', RidesNewCtrl);
 
 
 RidesIndexCtrl.$inject = [ 'Ride' ];
@@ -54,6 +55,37 @@ function RidesShowCtrl(Ride, $stateParams, $scope) {
     }
 
   });
+
+
+}
+
+
+RidesNewCtrl.$inject = ['Ride', '$state', '$auth'];
+function RidesNewCtrl(Ride, $state, $auth) {
+  const vm = this;
+  vm.newRide = {};
+  vm.newRide.wayPoints = [];
+  vm.newRide.createdBy = $auth.getPayload().userId;
+  vm.add = add;
+
+
+  function add() {
+    console.log('Running add function');
+    Ride
+      .save(vm.newRide)
+      .$promise
+      .then(response => {
+        console.log('response from server', response);
+        if (!response.id) {
+          console.log('going to ridesIndex');
+          $state.go('ridesIndex');
+        } else {
+          console.log('going to ridesShow');
+          $state.go('ridesShow', {id: response.id});
+        }
+      });
+  }
+
 
 
 }
