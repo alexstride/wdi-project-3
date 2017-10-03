@@ -3,7 +3,7 @@
 {{ridesNew.newRide}}
 
 <form ng-submit="ridesNew.add()">
-  <div>
+  <!-- <div>
     <label for="startPointInput">Enter rough starting position (it can be changed later)</label>
     <br>
     <label for="startPointLat">Lat:</label><input id="startPointLat" type="number" step="0.0001" ng-model="ridesNew.newRide.startPoint.lat">
@@ -15,12 +15,14 @@
     <br>
     <label for="endPointLat">Lat:</label><input id="endPointLat" type="number" step="0.0001" ng-model="ridesNew.newRide.endPoint.lat">
     <label for="endPointLng">Lng:</label><input id="endPointLng" type="number" step="0.0001" ng-model="ridesNew.newRide.endPoint.lng">
-  </div>
-
+  </div> -->
+<div class="start-point">
+  <label for="start">Start Point</label>
+  <input autocomplete ng-model="ridesNew.newRide.startPoint" id="start">
+</div>
+<div class="end-point">
+  <label for="end">End Point</label>
+  <input autocomplete ng-model="ridesNew.newRide.endPoint" id="end">
+</div>
   <button>Submit</button>
-</form>
-<form class="row">
-  <input autocomplete location="index.location" ng-change="rides.autocomplete()" ng-model="place" name="place" id="place" />
-  <input type="date" name="date">
-  <input class="button" type="submit">
 </form>
