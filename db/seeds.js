@@ -106,8 +106,7 @@ Ride
       ]
     }
   ])
-  .then(rides => {
-    console.log('got here');
+  .then((rides) => {
     console.log(`${rides.length} rides created!`);
   })
   .catch(err => console.log(err))

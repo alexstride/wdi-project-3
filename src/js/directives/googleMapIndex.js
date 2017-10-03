@@ -4,6 +4,7 @@ angular
   .module('tandem')
   .directive('googleMapIndex', googleMapIndex);
 
+
 googleMapIndex.inject = ['$window'];
 function googleMapIndex($window) {
   return {
@@ -14,7 +15,8 @@ function googleMapIndex($window) {
       rideArray: '='
     },
     link($scope, element) {
-      const numColors = 200;
+      let infowindow = null;
+      const numColors = 2000;
       let colorArray = [];
       function randomColor() {
         const r = Math.floor(Math.random() * 256);
@@ -43,7 +45,7 @@ function googleMapIndex($window) {
 
         console.log('ride array from directive', $scope.rideArray);
         $scope.rideArray.forEach((ride, i) => {
-          
+
           const start = new $window.google.maps.Marker({
             map: map,
             animation: google.maps.Animation.DROP,
@@ -52,6 +54,10 @@ function googleMapIndex($window) {
               scaledSize: new google.maps.Size(30,30)
             },
             position: { lat: ride.startPoint.lat, lng: ride.startPoint.lng }
+          });
+
+          start.addListener('click', () => {
+            createInfoWindow(start, ride);
           });
 
           const end = new $window.google.maps.Marker({
@@ -64,6 +70,10 @@ function googleMapIndex($window) {
             position: { lat: ride.endPoint.lat, lng: ride.endPoint.lng }
           });
 
+          end.addListener('click', () => {
+            createInfoWindow(end, ride);
+          });
+
           const directionsDisplay = new google.maps.DirectionsRenderer({
             suppressBicyclingLayer: true,
             suppressMarkers: true,
@@ -72,15 +82,42 @@ function googleMapIndex($window) {
               strokeOpacity: 1.0
             }
           });
+
           directionsDisplay.setMap(map);
 
           directionsService.route({
             origin: start.getPosition(),
             destination: end.getPosition(),
             travelMode: 'BICYCLING'
-          }, response => directionsDisplay.setDirections(response));
+          }, response => {
+            console.log(response);
+            directionsDisplay.setDirections(response);
+            // calculate here
+            ride.distance = response.routes[0].legs[0].distance.text;
+            ride.duration = response.routes[0].legs[0].duration.text;
+          });
         });
       }, true);
+
+      // write the addInfoWindow function
+      function createInfoWindow(marker, ride) {
+        console.log(ride);
+        if(infowindow) infowindow.close();
+        infowindow = new google.maps.InfoWindow({
+          content: `
+          <div class="infowindow">
+            <p> hello my name is ${ride.createdBy.name} and i'm very polite</p>
+            <p>route distance is ${ride.distance}</p>
+            <p>route length is ${ride.duration}</p>
+            <a href="/rides/${ride.id}"><h3>Link to ride</h3></a>
+          </div>
+          `
+        });
+
+        infowindow.open(map, marker);
+
+      }
+
 
     }
   };
