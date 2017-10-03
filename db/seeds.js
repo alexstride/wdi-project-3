@@ -32,6 +32,7 @@ User
 Ride
   .create([
     {
+      name: 'Daily Commute in London',
       startPoint: {
         lat: 51.557240,
         lng: -0.037280
@@ -68,6 +69,7 @@ Ride
       ]
     },
     {
+      name: 'Daily leisure ride',
       startPoint: {
         lat: 51.4,
         lng: -0.1
