@@ -5,6 +5,7 @@ const s3 = require('../lib/s3');
 const userSchema = new mongoose.Schema({
 
   name: { type: String, required: true },
+
   email: { type: String, required: true, unique: true},
   password: { type: String, required: true },
   age: { type: Number },
@@ -14,7 +15,12 @@ const userSchema = new mongoose.Schema({
   bikeType: {type: String}
 
 });
-
+userSchema
+  .virtual('rides', { //name of virtual
+    ref: 'Ride', //model name
+    localField: '_id', // use the _id field from this schema to match createdBy field from the Post schema
+    foreignField: 'createdBy'
+  });
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {

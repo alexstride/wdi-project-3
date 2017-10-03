@@ -6,7 +6,9 @@
 @import "usersShow";
 @import "index";
 @import "buttons";
-
+*{
+  line-height: 1.4;
+}
 .editable-map {
   display: block;
   border: 1px solid black;

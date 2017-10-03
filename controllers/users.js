@@ -9,22 +9,19 @@ function usersCreate(req, res, next) {
 
 function usersShow(req, res, next) {
   if(req.file) req.body.image = req.file.filename;
-
   User
     .findById(req.params.id)
+    .populate('rides')
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
-      console.log('show');
       res.json(user);
     })
     .catch(next);
 }
 
 function usersUpdate(req, res, next) {
-  console.log('In users update...', req.file);
   if(req.file) req.body.image = req.file.filename;
-  console.log('req.body', req.body);
   User
     .findById(req.params.id)
     .exec()
