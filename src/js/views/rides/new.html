@@ -1,26 +1,25 @@
 <div class="container">
+
   <h1>Create a new Ride</h1>
 
   <form ng-submit="ridesNew.add()">
     <div class="form-group">
       <label for="ride-name">Name of Ride</label>
-      <input class="form-control" type="text" required ng-model="ridesNew.newRide.name">
+      <input class="form-control" type="text" required ng-model="ridesNew.newRide.name" required>
     </div>
 
     <div class="form-group">
       <label for="startPointInput">Enter rough starting position (it can be changed later)</label>
       <br>
-      <label for="startPointLat">Lat:</label><input class="form-control" id="startPointLat" type="number" step="0.0001" ng-model="ridesNew.newRide.startPoint.lat" required>
-      <label for="startPointLng">Lng:</label><input class="form-control" id="startPointLng" type="number" step="0.0001" ng-model="ridesNew.newRide.startPoint.lng" required>
+      <input class="form-control" autocomplete ng-model="ridesNew.newRide.startPoint" id="start" required>
     </div>
 
     <div class="form-group">
       <label>Enter rough finishing position (can be changed later)</label>
       <br>
-      <label for="endPointLat">Lat:</label><input class="form-control" id="endPointLat" type="number" step="0.0001" ng-model="ridesNew.newRide.endPoint.lat" required>
-      <label for="endPointLng">Lng:</label><input class="form-control" id="endPointLng" type="number" step="0.0001" ng-model="ridesNew.newRide.endPoint.lng" required>
+      <input class="form-control" autocomplete ng-model="ridesNew.newRide.endPoint" id="end" required>
     </div>
 
-    <button type="button">Submit</button>
+    <button>Submit</button>
   </form>
 </div>
