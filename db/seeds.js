@@ -24,88 +24,85 @@ User
   }])
   .then((users) => {
     console.log(`${users.length} users created.`);
-    console.log('trying to create Rides');
+    return Ride
+      .create([
+        {
+          createdBy: users[0],
+          startPoint: {
+            lat: 51.517240,
+            lng: -0.097280
+          },
+          endPoint: {
+            lat: 51.517300,
+            lng: -0.057300
+          },
+          wayPoints: [
+            {
+              lat: 51.517240,
+              lng: -0.097280
+            },
+            {
+              lat: 51.517240,
+              lng: -0.097280
+            },
+            {
+              lat: 51.517240,
+              lng: -0.097280
+            }
+          ],
+          memberArray: [],
+          comments: [
+            {
+              text: 'Hello hello'
+            },
+            {
+              text: 'Hello hello'
+            },
+            {
+              text: 'Hello hello'
+            }
+          ]
+        },
+        {
+          createdBy: users[0],
+          startPoint: {
+            lat: 51.4,
+            lng: -0.1
+          },
+          endPoint: {
+            lat: 51.7,
+            lng: -0.1
+          },
+          wayPoints: [
+            {
+              lat: 51.7,
+              lng: -0.1
+            },
+            {
+              lat: 51.7,
+              lng: -0.1
+            },
+            {
+              lat: 51.7,
+              lng: -0.1
+            }
+          ],
+          memberArray: [],
+          comments: [
+            {
+              text: 'Oi Oi'
+            },
+            {
+              text: 'Comment blabla'
+            },
+            {
+              text: 'jsvwnc'
+            }
+          ]
+        }
+      ]);
   })
-  .catch((err) => console.log(err));
-
-
-Ride
-  .create([
-    {
-      startPoint: {
-        lat: 51.517240,
-        lng: -0.097280
-      },
-      endPoint: {
-        lat: 51.517300,
-        lng: -0.057300
-      },
-      wayPoints: [
-        {
-          lat: 51.517240,
-          lng: -0.097280
-        },
-        {
-          lat: 51.517240,
-          lng: -0.097280
-        },
-        {
-          lat: 51.517240,
-          lng: -0.097280
-        }
-      ],
-      memberArray: [],
-      comments: [
-        {
-          text: 'Hello hello'
-        },
-        {
-          text: 'Hello hello'
-        },
-        {
-          text: 'Hello hello'
-        }
-      ]
-    },
-    {
-      startPoint: {
-        lat: 51.4,
-        lng: -0.1
-      },
-      endPoint: {
-        lat: 51.7,
-        lng: -0.1
-      },
-      wayPoints: [
-        {
-          lat: 51.7,
-          lng: -0.1
-        },
-        {
-          lat: 51.7,
-          lng: -0.1
-        },
-        {
-          lat: 51.7,
-          lng: -0.1
-        }
-      ],
-      memberArray: [],
-      comments: [
-        {
-          text: 'Oi Oi'
-        },
-        {
-          text: 'Comment blabla'
-        },
-        {
-          text: 'jsvwnc'
-        }
-      ]
-    }
-  ])
-  .then(rides => {
-    console.log('got here');
+  .then((rides) => {
     console.log(`${rides.length} rides created!`);
   })
   .catch(err => console.log(err))

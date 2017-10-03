@@ -15,7 +15,7 @@ function DarkSkyIndexCtrl ($http, API) {
     $http
       .get(`${API}/weather`, { params: { latitude, longitude } })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.weather = response.data;
       });
   }

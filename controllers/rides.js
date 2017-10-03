@@ -3,6 +3,7 @@ const Ride = require('../models/ride');
 function indexRide(req, res, next) {
   Ride
     .find()
+    .populate('createdBy')
     .exec()
     .then((rides) => res.json(rides))
     .catch(next);
