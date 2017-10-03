@@ -4,7 +4,7 @@
       <div class="col-md-6 user">
         <div class="row ">
           <div class="col-sm-6">
-            <img class="page-curl shadow-bottom" ng-src="{{usersEdit.user.image}}" alt="{{usersEdit.user.name}}">
+            <img class="page-curl shadow-bottom" ng-src="{{usersEdit.user.imageSRC}}" alt="{{usersEdit.user.name}}">
           </div>
 
           <div class="col-sm-6">
@@ -12,31 +12,31 @@
               <div>
                 <label for="email">Name</label>
                 <p>
-                  <input type="text" name="name" id="username" value="{{usersEdit.user.name}}" ng-model="usersEdit.user.name" required>
+                  <input type="text" name="name" id="username" ng-model="usersEdit.user.name" required>
                 </p>
               </div>
               <div>
                 <label for="email">Email</label>
                 <p>
-                  <input type="text" name="email" id="email" value="{{usersEdit.user.email}}" ng-model="usersEdit.user.email" required>
+                  <input type="text" name="email" id="email" ng-model="usersEdit.user.email" required>
                 </p>
               </div>
               <div>
                 <label for="age">Age</label>
                 <p>
-                  <input type="text" name="age" id="age" value="{{usersEdit.user.age}}" ng-model="usersEdit.user.age" required>
+                  <input type="text" name="age" id="age" ng-model="usersEdit.user.age" required>
                 </p>
               </div>
               <div>
                 <label for="riding">Activity Level</label>
                 <p>
-                  <input type="text" name="riding" id="riding" value="{{usersEdit.user.riding}}" ng-model="usersEdit.user.riding" required>
+                  <input type="text" name="riding" id="riding" ng-model="usersEdit.user.riding" required>
                 </p>
               </div>
               <div>
                 <label for="bikeType">Bike Type</label>
                 <p>
-                  <input type="text" name="bikeType" id="bikeType" value="{{usersEdit.user.bikeType}}" ng-model="usersEdit.user.bikeType" required>
+                  <input type="text" name="bikeType" id="bikeType" ng-model="usersEdit.user.bikeType" required>
                 </p>
               </div>
               <div class="edit">
@@ -50,7 +50,7 @@
                   </p>
                 </div>
                 <div>
-                  <input base64 type="file" name="image" id="image" ng-model="usersEdit.user.image">
+                  <input base64 type="file" name="image" id="image" ng-model="usersEdit.user.base64">
                 </div>
                 <div>
                   <p>
