@@ -1,10 +1,10 @@
 angular
   .module('tandem')
-  .controller('UsersEditCtrl', UsersEditCtrl)
-  .controller('UsersShowCtrl', UsersShowCtrl);
+  .controller('UsersShowCtrl', UsersShowCtrl)
+  .controller('UsersEditCtrl', UsersEditCtrl);
 
-UsersShowCtrl.$inject = [ 'User', '$state' ];
-function UsersShowCtrl(User, $state) {
+UsersShowCtrl.$inject = [ 'User', '$state', '$auth' ];
+function UsersShowCtrl(User, $state, $auth) {
   const vm = this;
 
   vm.user = User.get($state.params);
@@ -12,31 +12,13 @@ function UsersShowCtrl(User, $state) {
   function usersDelete() {
     vm.user
       .$remove()
-      .then(() => $state.go('home'));
+      .then(() =>
+        $auth.logout() && $state.go('home'));
   }
 
   vm.delete = usersDelete;
 
 }
-
-
-// UsersEditCtrl.$inject = ['User', '$state'];
-// function UsersEditCtrl(User, $state) {
-//   const vm = this;
-//   console.log('inside edit');
-//
-//   vm.user = User.get($state.params);
-//   vm.update = usersUpdate;
-//
-//
-//   function usersUpdate() {
-//     console.log('update');
-//     vm.user
-//       .$update()
-//       .then(() => $state.go('home', $state.params));
-//   }
-//
-// }
 
 UsersEditCtrl.$inject = ['$state', 'User'];
 function UsersEditCtrl($state, User) {
