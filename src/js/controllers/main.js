@@ -13,7 +13,8 @@ function MainCtrl($rootScope, $state, $transitions, $auth) {
   function login() {
     console.log('submit');
     $auth.login(vm.credentials)
-      .then(() => $state.go('ridesIndex'));
+      .then(() => $state.go('ridesIndex'))
+      .catch(() => $state.go('login'));
   }
 
   function getCurrentUserId() {
