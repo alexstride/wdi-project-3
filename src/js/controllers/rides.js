@@ -23,19 +23,37 @@ function RidesIndexCtrl(Ride) {
 }
 
 
-RidesShowCtrl.$inject = [ 'Ride', '$stateParams' ];
-function RidesShowCtrl(Ride, $stateParams) {
+RidesShowCtrl.$inject = [ 'Ride', '$stateParams', '$scope' ];
+function RidesShowCtrl(Ride, $stateParams, $scope) {
   const vm = this;
   vm.map = null;
+  $scope.updateNeeded = false;
 
   Ride
     .get($stateParams)
     .$promise
     .then(response => {
-      if (!response.createdBy) response.createdBy = { name: 'Unknown User' };
       vm.ride = response;
     });
 
+  $scope.$watch('updateNeeded', () => {
+    if (!vm.ride) {
+      console.log('trying to update before ride loaded');
+      return false;
+    }
+
+    if($scope.updateNeeded) {
+      console.log('updating the database');
+      Ride
+        .update($stateParams, vm.ride)
+        .$promise
+        .then(response => {
+          vm.ride = response;
+          $scope.updateNeeded = false;
+        });
+    }
+
+  });
 
 
 }

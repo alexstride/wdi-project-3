@@ -6,16 +6,29 @@
 
     <h5>Waypoints</h5>
     <div ng-repeat="wayPoint in rideInfo.wayPoints">
-      <coordinate lat="wayPoint.lat", lng="wayPoint.lng"></coordinate>
+      <coordinate lat="wayPoint.lat" lng="wayPoint.lng" delete="deleteWayPoint(wayPoint)" show-delete="true"></coordinate>
     </div>
 
     <div>
-      <em><a href="#">Add waypoint</a></em>
+      <em ng-click="displayNewWayPoint = !displayNewWayPoint" ng-hide="displayNewWayPoint"><a href="#">Add waypoint</a></em>
+      <form class="form-inline" ng-submit="addWayPoint()" ng-show="displayNewWayPoint">
+        <p class="help-block">Enter coordinates:</p>
+        <div class="form-group">
+          <label for="lat">Lat: </label>
+          <input type="number" step="0.0001" class="form-control" id="lat" ng-model="newWayPoint.lat">
+        </div>
+        <div class="form-group">
+          <label for="lng">Lng: </label>
+          <input type="number" step="0.0001" class="form-control" id="lng" ng-model="newWayPoint.lng">
+        </div>
+        <p class="help-block">or drag the marker on the map to reposition it</p>
+        <button class="btn btn-default">Update</button>
+      </form>
     </div>
 
     <h5>End Point</h5>
     <coordinate lat="rideInfo.endPoint.lat", lng="rideInfo.endPoint.lng"></coordinate>
-
+    <p ng-if="pendingChanges">Changes waiting to be saved...</p>
   </div>
 
 </div>
