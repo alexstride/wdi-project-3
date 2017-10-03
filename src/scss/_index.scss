@@ -1,42 +1,43 @@
-.container-fluid{
+.container-fluid.index{
   padding: 0;
   margin: 0;
-}
-#icon {
-  height: 40px;
-  width: 40px;
-}
-
-form.row {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 2vh;
-}
-
-.container-fluid.index {
   display: flex;
   flex-wrap: wrap;
-justify-content: space-between;
-  .weather {
-    width: 20vw;
-    height: 30vh;
-    border-bottom: 2px solid grey;
-  }
+  width: 100vw;
+  height: 95vh;
   #indexmap  {
-    height: calc(100vh - 52px);
+    height: 95vh;
     width: 80vw;
 
 
   }
-  .aside{
+
+  .weather {
+    width: 20vw;
+    height: 27vh;
+    border-bottom: 2px solid grey;
+    h4{
+      margin-top: 0;
+    }
+    p{
+      margin-bottom: 0;
+      padding: 5px;
+    }
+  }
+
+  aside{
     overflow: scroll;
-    height: calc(100vh - 52px);
+    height: 68vh;
     width: 20vw;
   }
 }
 
-.mapImage {
+.map-image {
   border-radius: 50%;
   height: 10vh;
   width: 6vw;
+}
+#icon {
+  height: 40px;
+  width: 40px;
 }
