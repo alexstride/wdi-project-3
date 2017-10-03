@@ -11,9 +11,9 @@ function autocomplete(){
       location: '='
     },
     require: 'ngModel',
-    link(scope,element, attrs, ngModel){
+    link(scope, element, attrs, ngModel){
       const input = document.querySelector('#place');
-      const autocomplete = new google.maps.places.Autocomplete(input, { types: ['establishment'] });
+      const autocomplete = new google.maps.places.Autocomplete(input, {location: {lat: 51.515208, lng: -0.072310}}, {radius: 10000}, { types: ['establishment',''] });
 
       autocomplete.addListener('place_changed', () => {
         scope.location = autocomplete.getPlace().geometry.toJSON();
