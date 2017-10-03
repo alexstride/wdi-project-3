@@ -41,27 +41,14 @@ function UsersShowCtrl(User, $state) {
 UsersEditCtrl.$inject = ['$state', 'User'];
 function UsersEditCtrl($state, User) {
   const vm = this;
-  vm.user = {};
+  vm.user = User.get($state.params);
   vm.update = usersUpdate;
-
-  usersShow();
-
-  function usersShow(){
-    User
-      .get($state.params)
-      .$promise
-      .then((user) => {
-        vm.user = user;
-      });
-  }
 
   function usersUpdate(){
     console.log('click');
     User
       .update($state.params, vm.user)
       .$promise
-      .then(() => {
-        $state.go('usersShow', $state.params);
-      });
+      .then(() => $state.go('usersShow', $state.params));
   }
 }

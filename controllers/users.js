@@ -23,7 +23,9 @@ function usersShow(req, res, next) {
 }
 
 function usersUpdate(req, res, next) {
+  console.log('In users update...', req.file);
   if(req.file) req.body.image = req.file.filename;
+  console.log('req.body', req.body);
   User
     .findById(req.params.id)
     .exec()

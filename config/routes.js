@@ -22,12 +22,14 @@ router.route('/login')
   .post(auth.login);
 
 router.route('/users')
-  .post(imageUpload, secureRoute, users.create);
+  .post(secureRoute, users.create);
 
 router.route('/users/:id')
   .get(users.show)
-  .put(imageUpload, users.update)
+  .put(secureRoute, imageUpload, users.update)
   .delete(users.delete);
+
+
 
 
 

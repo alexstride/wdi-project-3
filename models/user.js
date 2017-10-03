@@ -32,6 +32,9 @@ userSchema.pre('save', function hashPassword(next) {
   if(this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
   }
+  if(this.isModified('image') && this._image && !this._image.match(/^http/)) {
+    return s3.deleteObject({ Key: this._image }, next);
+  }
   next();
 });
 
@@ -55,13 +58,6 @@ userSchema.virtual('imageSRC')
 userSchema.pre('remove', function removeImage(next) {
   if(this.image && !this.image.match(/^http/)){
     return s3.deleteObject({ Key: this.image }, next);
-  }
-  next();
-});
-
-userSchema.pre('save', function checkPreviousImage(next) {
-  if(this.isModified('image') && this._image && !this._image.match(/^http/)) {
-    return s3.deleteObject({ Key: this._image }, next);
   }
   next();
 });
