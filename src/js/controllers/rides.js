@@ -21,6 +21,9 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
   $scope.updateNeeded = false;
   vm.update = update;
   vm.delete = ridesDelete;
+  vm.edit = ridesEdit;
+  vm.isEditable = false;
+
 
   Ride
     .get($stateParams)
@@ -30,6 +33,9 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
     });
 
   function update() {
+    console.log('Logging values sent to the server');
+    console.log('$stateParams', $stateParams);
+    console.log('vm.ride', vm.ride);
     Ride
       .update($stateParams, vm.ride)
       .$promise
@@ -46,6 +52,10 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
     vm.ride
       .$remove()
       .then(() => $state.go('ridesIndex'));
+  }
+
+  function ridesEdit() {
+    vm.isEditable = !vm.isEditable;
   }
 
 }
