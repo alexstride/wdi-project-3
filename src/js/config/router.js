@@ -21,13 +21,18 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/rides/show.html',
       controller: 'RidesShowCtrl as ridesShow'
     })
+    .state('ridesNew', {
+      url: '/rides/new',
+      templateUrl: 'js/views/rides/new.html',
+      controller: 'RidesNewCtrl as ridesNew'
+    })
     .state('usersShow', {
       url: '/users/:id',
       templateUrl: 'js/views/users/show.html',
       controller: 'UsersShowCtrl as usersShow'
     })
     .state('usersEdit', {
-      url: '/users/:id/edit',
+      url: '/users/:id',
       templateUrl: 'js/views/users/edit.html',
       controller: 'UsersEditCtrl as usersEdit'
     })

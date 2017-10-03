@@ -4,6 +4,7 @@ const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 const darkSky = require('../controllers/weather');
+const imageUpload = require('../lib/imageUpload');
 
 router.route('/rides')
   .get(rides.index)
@@ -25,8 +26,10 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(users.show)
-  .put(users.update)
+  .put(secureRoute, imageUpload, users.update)
   .delete(users.delete);
+
+
 
 
 
