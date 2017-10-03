@@ -9,17 +9,18 @@ RidesIndexCtrl.$inject = [ 'Ride' ];
 function RidesIndexCtrl(Ride) {
   const vm = this;
   vm.all = Ride.query();
-  
+
 
 }
 
 
-RidesShowCtrl.$inject = [ 'Ride', '$stateParams', '$scope' ];
-function RidesShowCtrl(Ride, $stateParams, $scope) {
+RidesShowCtrl.$inject = [ 'Ride', '$stateParams', '$scope', '$state' ];
+function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
   const vm = this;
   vm.map = null;
   $scope.updateNeeded = false;
   vm.update = update;
+  vm.delete = ridesDelete;
 
   Ride
     .get($stateParams)
@@ -39,6 +40,13 @@ function RidesShowCtrl(Ride, $stateParams, $scope) {
     $scope.updateNeeded = false;
   }
 
+
+
+  function ridesDelete() {
+    vm.ride
+      .$remove()
+      .then(() => $state.go('ridesIndex'));
+  }
 
 }
 
