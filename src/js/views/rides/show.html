@@ -7,7 +7,14 @@
     <div class="col-md-3 button-top-pad">
       <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.edit()" class="btn btn-warning">Edit</a>
       <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.delete()" class="btn btn-danger">Delete</a>
-      <a ng-show="main.getCurrentUserId() === ridesShow.ride.member.id" ng-click="ridesShow.member()" class="btn btn-warning">Add Member</a>
+      <div ng-hide="main.getCurrentUserId() === ridesShow.ride.createdBy.id">
+        <button ng-click="ridesShow.addMember()" class="btn btn-warning" ng-hide="ridesShow.isMember()">Join Ride</button>
+        <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="btn btn-warning" ng-show="ridesShow.isMember()">Leave Ride</button>
+      </div>
+      <h2>Members</h2>
+      <ul>
+        <li ng-repeat="member in ridesShow.ride.members"><a ui-sref="usersShow({ id: member.id })">{{ member.name }}</a></li>
+      </ul>
     </div>
   </div>
 
@@ -17,6 +24,8 @@
 
       <editable-route-map ng-if="ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()">something</editable-route-map>
 
+      <!-- ridesShow.ride is changing when we add or remove a member, so the map is re-rendering (flickering) -->
+      <!-- might be worth only passing in the necessary info (route etc) -->
       <route-map ng-if="!ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride">something</route-map>
     </div>
     <div class="col-md-3">
@@ -26,7 +35,12 @@
         <h4>{{comment.createdBy.name || "Unknown user"}}</h4>
         <p>{{comment.text || "This comment has no content"}}</p>
       </div>
-    </div>s
+      <form ng-if="main.isAuthenticated()" ng-submit="ridesShow.addComment()">
+        <label>Add comment</label>
+        <textarea ng-model="ridesShow.newComment.text"></textarea>
+        <button class="button">Comment</button>
+      </form>
+    </div>
 
 
 

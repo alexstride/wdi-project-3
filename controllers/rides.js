@@ -3,7 +3,7 @@ const Ride = require('../models/ride');
 function indexRide(req, res, next) {
   Ride
     .find()
-    .populate('createdBy member')
+    .populate('createdBy members')
     .exec()
     .then((rides) => res.json(rides))
     .catch(next);
@@ -21,7 +21,7 @@ function showRide(req, res, next) {
 
   Ride
     .findById(req.params.id)
-    .populate('createdBy') //add members
+    .populate('createdBy members') //add members
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();
@@ -68,9 +68,10 @@ function addMemberRoute(req, res, next) {
       // push the logged in users id to the members array
       ride.members.push(req.currentUser.id);
 
-      return ride.save();
+      return ride.save()
+        // send the current user object back as the response to push into the Angular array
+        .then(() => res.json(req.currentUser));
     })
-    .then(ride => res.json(ride))
     .catch(next);
 }
 
@@ -93,6 +94,45 @@ function deleteMemberRoute(req, res, next) {
     .catch(next);
 }
 
+function addCommentRoute(req, res, next) {
+
+  req.body.createdBy = req.currentUser;
+
+
+  Ride
+    .findById(req.params.id)
+    .exec()
+    .then((ride) => {
+      if(!ride) return res.notFound();
+
+
+      const comment = ride.comments.create(req.body);
+
+      ride.comments.push(comment);
+      console.log('ride with comment', ride);
+
+      return ride.save()
+        .then(() => res.json(comment));
+    })
+    .catch(next);
+}
+
+function deleteCommentRoute(req, res, next) {
+  Ride
+    .findById(req.params.id)
+    .exec()
+    .then((ride) => {
+      if(!ride) return res.notFound();
+
+      const comment = ride.comments.id(req.params.commentId);
+      comment.remove();
+
+      return ride.save();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 module.exports = {
   index: indexRide,
   create: createRide,
@@ -100,5 +140,7 @@ module.exports = {
   update: updateRide,
   delete: deleteRide,
   addMember: addMemberRoute,
-  deleteMember: deleteMemberRoute
+  deleteMember: deleteMemberRoute,
+  addComment: addCommentRoute,
+  deleteComment: deleteCommentRoute
 };
