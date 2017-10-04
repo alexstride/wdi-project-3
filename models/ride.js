@@ -24,7 +24,10 @@ const rideSchema = new mongoose.Schema({
   endPoint: coordinateSchema,
   wayPoints: [ coordinateSchema ],
   memberArray: [ rideMemberSchema ],
-  comments: [ commentSchema ]
+  comments: [ commentSchema ],
+  ridePace: String,
+  rideIsCommute: Boolean,
+  notes: String
 });
 
 module.exports = mongoose.model('Ride', rideSchema);

@@ -31,7 +31,6 @@ function showRide(req, res, next) {
 }
 
 function updateRide(req, res, next) {
-  console.log('BODY!!!!!!!!!', req.body);
   Ride
     .findById(req.params.id)
     .exec()

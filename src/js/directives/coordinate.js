@@ -15,8 +15,11 @@ function coordinate() {
       delete: '&'
     },
     link($scope) {
+      $scope.receivedLatLng = 'blablabla';
+
       console.log('value of showDelete: ', $scope.showDelete);
       $scope.$watchGroup(['lat', 'lng'], () => {
+        console.log('lat or lng changing');
         if (!$scope.lat || !$scope.lng) return false;
         $scope.lat = parseFloat($scope.lat.toFixed(4));
         $scope.lng = parseFloat($scope.lng.toFixed(4));
@@ -39,6 +42,7 @@ function coordinate() {
       }
 
       function discard() {
+        console.log('discarding');
         $scope.lat = valueBuffer.lat;
         $scope.lng = valueBuffer.lng;
         valueBuffer = {};
