@@ -15,19 +15,26 @@
           </div>
           <p class="bio">bio: {{usersShow.user.bio}}</p>
         </div>
-        <div ng-if="!main.getCurrentUserId">
+      <div ng-if="!main.getCurrentUserId">
 
         <button ng-click="usersShow.delete()" class="button btn-danger">Delete</button>
         <a ui-sref="usersEdit({ id: usersShow.user.id })" class="button btn-warning">Edit</a>
       </div>
       </div>
-      <div class="col-md-12 user">
-        <h2>Your Rides</h2>
-        <div ng-repeat="ride in usersShow.user.rides" class="col-sm-6">
-          <p>{{ ride.name }}</p>
-
-          <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{ride.startPoint.lat}},{{ride.startPoint.lng}}&zoom=12&size=200x200&maptype=roadmap&path=color:0xff0000ff|weight:5|{{ride.startPoint.lat}},{{ride.startPoint.lng}}|{{ride.endPoint.lat}},{{ride.endPoint.lng}}&key=AIzaSyCjKmJQUUQ7XRv49dHxnncboJewMH2MPUI"
-          alt="thumbnail map">
+      <div class="col-md-6 user">
+        <div class="rides-block">
+          <h2>Your Created Rides</h2>
+          <div ng-repeat="ride in usersShow.user.rides" class="col-sm-4">
+            <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ ride.name }}</a></h4>
+            <static-map ride-info="ride" size="200x200"></static-map>
+          </div>
+        </div>
+        <div class="rides-block">
+          <h2>Your Joined Rides</h2>
+          <div ng-repeat="ride in usersShow.user.ridesJoined" class="col-sm-4">
+            <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ ride.name }}</a></h4>
+            <static-map ride-info="ride" size="200x200"></static-map>
+          </div>
         </div>
       </div>
     </div>
