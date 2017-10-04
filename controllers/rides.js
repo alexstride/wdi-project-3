@@ -59,20 +59,18 @@ function deleteRide(req, res, next) {
 
 function addMemberRoute(req, res, next) {
 
-  req.body.createdBy = req.currentUser;
-
   Ride
     .findById(req.params.id)
     .exec()
     .then(ride => {
       if(!ride) return res.notFound();
+      console.log('content of req.body', req.body);
       // push the logged in users id to the members array
-      const member = ride.members.create(req.body);
-      ride.members.push(member);
+      ride.members.push(req.currentUser.id);
 
-      return ride.save()
-        .then(() => res.json(member));
+      return ride.save();
     })
+    .then(ride => res.json(ride))
     .catch(next);
 }
 
@@ -83,12 +81,15 @@ function deleteMemberRoute(req, res, next) {
     .then((ride) => {
       if(!ride) return res.notFound();
 
-      const member = ride.members.id(req.params.memberId);
-      member.remove();
+      console.log(`trying to delete ${req.params.memberId} from ${ride.name}`);
+      ride.members.splice(ride.members.indexOf(req.params.memberId), 1); ////left off here!
 
       return ride.save();
     })
-    .then(() => res.status(204).end())
+    .then(ride => {
+      console.log('ride after deleting: ', ride);
+      res.status(204).end();
+    })
     .catch(next);
 }
 

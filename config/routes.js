@@ -30,10 +30,10 @@ router.route('/users/:id')
   .delete(users.delete);
 
 router.route('/rides/:id/members')
-  .post(secureRoute, rides.addMember);
+  .post(secureRoute, rides.addMember); //make this a secure route?
 
-router.route('/posts/:id/members/:memberId')
-  .delete(secureRoute, rides.deleteMember);
+router.route('/rides/:id/members/:memberId')
+  .delete(rides.deleteMember); //resecure this
 
 
 
