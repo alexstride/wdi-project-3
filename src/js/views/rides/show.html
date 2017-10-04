@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container ride-show">
 
   <div class="row">
     <div class="col-md-9">
-      <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.ride.createdBy.name || "Unknown User" }}</small></h2>
+      <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.rideOwner.name || "Unknown User" }}</small></h2>
     </div>
     <div class="col-md-3 button-top-pad">
       <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.edit()" class="btn btn-warning">Edit</a>
@@ -12,17 +12,28 @@
   </div>
 
 
+  <div class="row">
+    <div class="col-md-9">
 
-  <editable-route-map ng-if="ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()"></editable-route-map>
+      <editable-route-map ng-if="ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()">something</editable-route-map>
 
-  <route-map ng-if="!ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride"></route-map>
+      <route-map ng-if="!ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride">something</route-map>
+    </div>
+    <div class="col-md-3">
+      <h2>Comments:</h2>
+
+      <div class="comment" ng-repeat="comment in ridesShow.ride.comments">
+        <h4>{{comment.createdBy.name || "Unknown user"}}</h4>
+        <p>{{comment.text || "This comment has no content"}}</p>
+      </div>
+    </div>s
 
 
-  <h2>Comments:</h2>
 
-  <div class="comment" ng-repeat="comment in ridesShow.ride.comments">
-    <h4>{{comment.createdBy || "Unknown user"}}</h4>
-    <p>{{comment.text || "This comment has no content"}}</p>
   </div>
+
+
+  <static-map ride-info="ridesShow.ride"></static-map>
+
 
 </div>

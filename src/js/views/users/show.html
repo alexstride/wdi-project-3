@@ -7,7 +7,7 @@
             <img class="user-image" ng-src="{{usersShow.user.imageSRC}}" alt="{{usersShow.user.name}}">
           </div>
           <div class="col-sm-6">
-            <h2 class="user-heading"><span class="edit-icon"> {{usersShow.user.name}}</h2>
+            <h2 class="user-heading"><span class="edit-icon"> {{usersShow.user.name}}</span></h2>
             <p>email: {{usersShow.user.email}}</p>
             <p>age: {{usersShow.user.age}}</p>
             <p>riding: {{usersShow.user.riding}}</p>
@@ -15,8 +15,11 @@
           </div>
           <p class="bio">bio: {{usersShow.user.bio}}</p>
         </div>
+        <div ng-if="!main.getCurrentUserId">
+
         <button ng-click="usersShow.delete()" class="button btn-danger">Delete</button>
         <a ui-sref="usersEdit({ id: usersShow.user.id })" class="button btn-warning">Edit</a>
+      </div>
       </div>
       <div class="col-md-12 user">
         <h2>Your Rides</h2>

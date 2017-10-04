@@ -1,13 +1,12 @@
 // Import all of your scss files here
-@import "reset";
+@import 'vendor/reset.scss';
 @import "variables";
+@import "bike";
+@import "navbar";
+@import "home";
 @import "usersShow";
 @import "index";
 @import "buttons";
-@import "bike";
-@import "home";
-@import "navbar";
-@import "ridesShow";
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
 body{
@@ -24,10 +23,13 @@ body{
   clear: both;
 }
 
+.container.rides-show {
+  height: auto;
+}
+
 .map-holder {
   height: 600px;
   max-width: 600px;
-  display: block;
 }
 
 #indexmap  {

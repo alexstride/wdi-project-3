@@ -1,4 +1,17 @@
+// Colors
+$black: #000;
+$white: $whiteSpace;
+  ;
+$darkgrey: #333;
+$grey: #999;
+$lightgrey: #dadada;
+$brown: #8D5852;
+$darkbrown: #522917;
+$green: #799753;
+$yellow: #E8BF56;
 
+$time: 2s;
+$time2: 1.5s;
 
 // Mixins
 @mixin keyframes($name) {
@@ -124,7 +137,7 @@
 html,
 body{
   max-width: 100%;
-  overflow: hidden;
+  //overflow: hidden;
   background: $white;
 }
 
@@ -141,7 +154,7 @@ body{
 
   @include animation(riding, $time * 2, linear, infinite);
 
-  .part{
+  .prt{
     position: absolute;
   }
 }
@@ -168,7 +181,7 @@ body{
       @include transform(rotate(-82deg));
     }
 
-    &.left{
+    &.lft{
       height: 230px;
       margin-left: 200px;
       margin-top: 80px;
@@ -189,7 +202,7 @@ body{
       @include transform(rotate(45deg));
     }
 
-    &.right{
+    &.rght{
       height: 230px;
       margin-left: 421px;
       margin-top: 60px;
@@ -224,7 +237,7 @@ body{
   }
 }
 
-.wheel{
+.bike-wheel{
   width: 200px;
   height: 200px;
   margin-top: 160px;
@@ -234,18 +247,18 @@ body{
 
   @include animation(wheelspin, $time, linear, infinite);
 
-  &.left{
+  &.lft{
     margin-left: -35px;
   }
 
-  &.right{
+  &.rght{
     margin-left: 348px;
   }
 
   .spoke{
     width: 2px;
-    height: 200px;
-    margin-left: 98px;
+    height: 180px;
+    margin-left: 70px;
     position: absolute;
     background: $lightgrey;
 
@@ -279,7 +292,7 @@ body{
   }
 }
 
-.axis{
+.bike-axis{
     width: 25px;
     height: 25px;
     margin-top: 265px;
@@ -287,11 +300,11 @@ body{
     background: $darkgrey;
     border-radius: 100%;
 
-    &.left{
+    &.lft{
       margin-left: 67px;
     }
 
-    &.right{
+    &.rght{
       margin-left: 451px;
     }
 }
@@ -459,7 +472,7 @@ body{
     }
   }
 
-  .wheel{
+  .bike-wheel{
     @include animation(wheelspin, $time2, linear, infinite);
   }
 
@@ -481,11 +494,11 @@ body{
 
 //Z-INDEXES
 .inside              { z-index: 6; }
-.axis                { z-index: 5; }
+.bike-axis           { z-index: 5; }
 .pedalstem{ &.front  { z-index: 5; }}
 .frame               { z-index: 4; }
 .outside             { z-index: 4; }
 .handlebar           { z-index: 3; }
 .sit-here            { z-index: 2; }
-.wheel               { z-index: 1; }
+.bike-wheel          { z-index: 1; }
 .pedalstem{ &.back   { z-index: -1; }}
