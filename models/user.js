@@ -15,12 +15,22 @@ const userSchema = new mongoose.Schema({
   bikeType: {type: String}
 
 });
+
 userSchema
   .virtual('rides', { //name of virtual
     ref: 'Ride', //model name
     localField: '_id', // use the _id field from this schema to match createdBy field from the Post schema
     foreignField: 'createdBy'
   });
+
+userSchema
+  .virtual('ridesJoined', { //name of virtual
+    ref: 'Ride', //model name
+    localField: '_id', // use the _id field from this schema to match createdBy field from the Post schema
+    foreignField: 'members'
+  });
+
+
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {

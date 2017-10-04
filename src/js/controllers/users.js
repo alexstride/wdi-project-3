@@ -3,20 +3,17 @@ angular
   .controller('UsersShowCtrl', UsersShowCtrl)
   .controller('UsersEditCtrl', UsersEditCtrl);
 
-UsersShowCtrl.$inject = [ 'User', '$state', '$auth' ];
+UsersShowCtrl.$inject = [ 'User', '$state', '$auth'];
 function UsersShowCtrl(User, $state, $auth) {
   const vm = this;
   vm.user = User.get($state.params);
-  console.log(vm.user);
   function usersDelete() {
     vm.user
       .$remove()
       .then(() =>
         $auth.logout() && $state.go('home'));
   }
-
   vm.delete = usersDelete;
-
 }
 
 UsersEditCtrl.$inject = ['$state', 'User'];

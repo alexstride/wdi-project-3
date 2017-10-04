@@ -1,5 +1,6 @@
 <div class="container-fluid index">
-  <div>
+  <aside>
+
     <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex" class="weather">
       <div>
         <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
@@ -10,20 +11,15 @@
         <p>Wind: {{ DarkSkyIndex.weather.currently.windSpeed }} mp/h</p>
       </div>
     </div>
-    <aside>
+    <div  class="side">
       <div class="ride-index-card" ng-repeat="ride in index.all">
         <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ride.name}}</a></h4>
 
         <p>Created by:<a ui-sref="usersShow({ id: ride.createdBy.id})"> <em>{{ride.createdBy.name || 'Anonymous user'}}</em></a></p>
         <static-map ride-info="ride" size="200x200"></static-map>
       </div>
-    </aside>
   </div>
-
+</aside>
 
   <google-map-index id="indexmap" map-var="index.map" ride-array="index.all"></google-map-index>
-
-
-
-
 </div>
