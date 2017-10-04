@@ -1,34 +1,34 @@
-<main  class="fade-in">
+<main class="fade-in ">
+
+
+  <div ng-include="'./js/views/partials/_bikes.html'"></div>
 
 
   <header id="hero">
     <h1>tandem</h1>
-    
+
 
   </header>
   <div class="hero">
 
 
-    <!-- <div class="pause">
-
-  </div> -->
-  <div ng-include="'./js/views/partials/_bikes.html'"></div>
-
-  <div class="description">
 
 
-    <p>welcome to the innovative cycle ride sharing app <br>
-      <span ng-if="!main.isAuthenticated()"><a ui-sref="register" >join</a> us</span>
-      <span ng-if="main.isAuthenticated()">share your favorite routes</span></p>
+    <div class="description">
+
+
+      <p>welcome to the innovative cycle ride sharing app <br>
+        <span ng-if="!main.isAuthenticated()"><a ui-sref="register" >join</a> us</span>
+        <span ng-if="main.isAuthenticated()">share your favorite routes</span>
+      </p>
 
     </div>
-    <div class="footer">
 
+
+    <footer>
       <h4 class="footer-headline">the best routes are the ones you haven't ridden</h4>
-      <footer>
+      <div class="shapes">
         <div >
-
-
           <div class="hexagon">
           </div>
           <div class="hex rectangle">
@@ -49,6 +49,8 @@
 
           </div>
         </div>
-      </footer>
-    </div>
+
+      </div>
+    </footer>
+
   </main>
