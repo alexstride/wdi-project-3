@@ -108,9 +108,8 @@ function editableRouteMap($window) {
       }
 
       function addWayPoint() {
-        $scope.loaded = false;
-        $scope.rideInfo.wayPoints.push($scope.newWayPoint);
         $scope.displayNewWayPoint = false;
+        $scope.rideInfo.wayPoints.push($scope.newWayPoint);
         $scope.newWayPoint = {};
         $scope.pendingChanges = true;
       }

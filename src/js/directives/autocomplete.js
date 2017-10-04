@@ -21,8 +21,8 @@ function autocomplete(){
         const place = autocomplete.getPlace();
         console.log('Changing location');
         const latLng = place.geometry.location.toJSON();
-        $scope.lat = latLng.lat;
-        $scope.lng = latLng.lng;
+        $scope.lat = parseFloat(latLng.lat.toFixed(4));
+        $scope.lng = parseFloat(latLng.lng.toFixed(4));
         // update the value of ng-model on the element to be the latLng
         model.$setViewValue(latLng);
       });
