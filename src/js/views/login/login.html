@@ -1,12 +1,15 @@
 <section class="container">
   <div class="row">
     <div class="col-lg-8">
-      <form ng-submit="login.login()">
+      <form ng-submit="login.login()" name="login.loginform">
         <div>
           <label for="email">Email</label>
           <p>
-            <input type="text" name="email" id="email" ng-model="login.credentials.email" required>
+            <input type="mail" name="email" id="email" ng-model="login.credentials.email" ng-required="true" value="login.credentials.email">
           </p>
+          <div ng-messages="login.loginform.email.$error" ng-if="login.loginform.email.$dirty || login.loginform.$submitted" role="alert">
+        <div ng-message="required" class="warning">Please enter your email.</div>
+      </div>
         </div>
         <div>
           <label for="password">Password</label>
