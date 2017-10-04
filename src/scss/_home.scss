@@ -1,46 +1,135 @@
-#hero{
-  background-image:  url('../images/bikes.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+.fade-in {
+  opacity:0;  /* make things invisible upon start */
+  animation:fadeIn ease-in 1; /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+
+  animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+  animation-duration:1.3s;
+  animation-delay: 1s;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: -1;
-  h1{
-    padding-top: 22vh;
-    color: $navFont;
-    font-size: 16vh;
-    font-weight: bold;
-    text-shadow: 0 1px 0 rgb(204,204,204) , 0 2px 0 rgb(201,201,201) , 0 3px 0 rgb(187,187,187) , 0 4px 0 rgb(185,185,185) , 0 5px 0 rgb(170,170,170) , 0 6px 1px rgba(0,0,0,0.0980392) , 0 0 5px rgba(0,0,0,0.0980392) , 0 1px 3px rgba(0,0,0,0.298039) , 0 3px 5px rgba(0,0,0,0.2) , 0 5px 10px rgba(0,0,0,0.247059) , 0 10px 10px rgba(0,0,0,0.2) , 0 20px 20px rgba(0,0,0,0.14902) ;
+  background-color: $whiteSpace;
+  #hero{
+    background-image:  url('../images/chris-lawton.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 38vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+    h1{
+      padding-bottom: 2vh;
+      color: $whiteSpace;
+      font-size: 16vh;
+      font-weight: lighter;
+      text-shadow: 1px 1px 1px lighten($navFont, 30%);
+    }
+  }
 
+
+}
+.description{
+  width: 100vw;
+  height: 20vh;
+  background-color: $whiteSpace;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: lighten($navFont, 12%);
+}
+.footer{
+  width: 100vw;
+  height: 35vh;
+  background-color: lighten($navFont, 12%);
+  .footer-headline{
+    margin: 0;
+    text-align: center;
   }
-  .home-icon{
-    margin-top: 5vh;
-    color: red;
-    font-size: 3vh;
-    text-shadow: 1px 1px 2px black;
-    i{
-      font-size: 5vh;
+  footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .hexagon {
+      align-self: center;
+      width: 100px;
+      height: 55px;
+      background: gray;
+      position: relative;
     }
-    .register-icon{
-      margin-left: -1.5vw;
+    .hexagon:before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 25px solid gray;
     }
-  }
-  .arrow{
-    text-shadow: 1px 1px 2px black;
-    padding-top: 14vh;
-    font-size: 2.5vh;
-    font-weight: bold;
-    color: green;
-    .fa{
-      margin-left: 1.6vh;
+    .hexagon:after {
+      content: "";
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-top: 25px solid gray;
     }
+    #burst-12 {
+        background: gray;
+        width: 80px;
+        height: 80px;
+        position: relative;
+        text-align: center;
+        z-index: 2;
+    }
+    #burst-12:before, #burst-12:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 80px;
+        width: 80px;
+        background: gray;
+    }
+    #burst-12:before {
+        -webkit-transform: rotate(30deg);
+           -moz-transform: rotate(30deg);
+            -ms-transform: rotate(30deg);
+             -o-transform: rotate(30deg);
+    }
+    #burst-12:after {
+        -webkit-transform: rotate(60deg);
+           -moz-transform: rotate(60deg);
+            -ms-transform: rotate(60deg);
+             -o-transform: rotate(60deg);
+    }
+    .rectangle {
+      width: 50px;
+
+      background: gray;
+      z-index: 1;
+      position: absolute;
+      bottom: 0;
+    }
+    .hex{
+      margin-left: 26px;
+      margin-top: 2vh;
+      height: 20vh;
+    }
+    .burst.rectangle {
+      margin-left: 14px;
+      height: 18vh;
+    }
+
   }
 }
