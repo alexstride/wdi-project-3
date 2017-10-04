@@ -1,9 +1,18 @@
 <div class="coordinate">
+
+  <!-- markup for debugging -->
+  <div>Lat: {{lat}}</div>
+  <div>Lng: {{lng}}</div>
+  <div>recievedLatLng: {{receivedLatLng}}</div>
+  <!--  end of markup for debugging -->
+
+
+
   <div class="row" ng-hide="isEditing">
     <p class="col-xs-6">{{lat}}, {{lng}}</p>
     <p class="col-xs-6"><a href="#" ng-click="edit()">edit</a> <span ng-if="showDelete">/ <a href="#" ng-click="delete()">delete</a></span></p>
   </div>
-  <div class="row" ng-show="isEditing">
+  <div class="row" ng-if="isEditing">
 
     <div class="col-xs-12">
       <form class="form" ng-submit="update()">
@@ -13,12 +22,12 @@
           <input type="number" step="0.0001" class="form-control" id="lat" ng-model="lat" required>
         </div>
         <div class="form-group">
-          <label for="lng">Lng: </label>
+          <label for="lng">bla: </label>
           <input type="number" step="0.0001" class="form-control" id="lng" ng-model="lng" required>
         </div>
         <div class="form-group">
-          <label for="loc">Or pick a location </label>
-          <input type="text" class="form-control" id="loc" required>
+          <label for="receivedLatLng">Or pick a location </label>
+          <input type="text" class="form-control" id="receivedLatLng" ng-model="receivedLatLng">
         </div>
         <p class="help-block">or drag the marker on the map to reposition it</p>
         <a class="btn btn-small btn-default" ng-click="discard()">Discard</a>
