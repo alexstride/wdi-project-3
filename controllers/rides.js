@@ -31,12 +31,15 @@ function showRide(req, res, next) {
 }
 
 function updateRide(req, res, next) {
+  console.log('BODY!!!!!!!!!', req.body);
   Ride
     .findById(req.params.id)
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();
+      delete req.body.createdBy;
       Object.assign(ride, req.body);
+      console.log(ride);
       return ride.save();
     })
     .then((ride) => res.json(ride))

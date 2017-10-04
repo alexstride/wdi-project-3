@@ -21,6 +21,8 @@ function MainCtrl($rootScope, $state, $transitions, $auth) {
     return $auth.getPayload().userId;
   }
 
+  
+
   vm.getCurrentUserId = getCurrentUserId;
 
   function logout() {
