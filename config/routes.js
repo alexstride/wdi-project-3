@@ -29,6 +29,13 @@ router.route('/users/:id')
   .put(secureRoute, imageUpload, users.update)
   .delete(users.delete);
 
+router.route('/rides/:id/members')
+  .post(secureRoute, rides.addMember);
+
+router.route('/posts/:id/members/:memberId')
+  .delete(secureRoute, rides.deleteMember);
+
+
 
 
 

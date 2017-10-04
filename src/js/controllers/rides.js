@@ -86,6 +86,30 @@ function RidesNewCtrl(Ride, $state, $auth) {
       });
   }
 
+  function addMember() {
+    addMember
+      .save({ rideId: vm.ride.id }, vm.newMember)
+      .$promise
+      .then((member) => {
+        vm.ride.members.push(member);
+        vm.newMember = {};
+      });
+  }
+  vm.addMember = addMember;
 
+
+  function deleteMember(member) {
+    deleteMember
+      .delete({ rideId: vm.ride.id, id: member.id })
+      .$promise
+      .then(() => {
+        const index = vm.ride.members.indexOf(member);
+
+        vm.ride.members.splice(index, 1);
+      });
+
+  }
+
+  vm.deleteMember = deleteMember;
 
 }

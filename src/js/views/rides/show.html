@@ -7,6 +7,7 @@
     <div class="col-md-3 button-top-pad">
       <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.edit()" class="btn btn-warning">Edit</a>
       <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.delete()" class="btn btn-danger">Delete</a>
+      <a ng-show="main.getCurrentUserId() === ridesShow.ride.member.id" ng-click="ridesShow.member()" class="btn btn-warning">Add Member</a>
     </div>
   </div>
 

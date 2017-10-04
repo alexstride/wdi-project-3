@@ -48,7 +48,7 @@ function googleMapIndex($window) {
 
           const start = new $window.google.maps.Marker({
             map: map,
-            animation: google.maps.Animation.DROP,
+            // animation: google.maps.Animation.DROP,
             icon: {
               url: '/images/green-icon.png',
               scaledSize: new google.maps.Size(20,20)
@@ -62,7 +62,7 @@ function googleMapIndex($window) {
 
           const end = new $window.google.maps.Marker({
             map: map,
-            animation: google.maps.Animation.DROP,
+            // animation: google.maps.Animation.DROP,
             icon: {
               url: '/images/red-icon.png',
               scaledSize: new google.maps.Size(20,20)

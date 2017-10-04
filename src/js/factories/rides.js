@@ -8,3 +8,10 @@ function Ride($resource){
     'update': { method: 'PUT'}
   });
 }
+
+RideMember.$inject = ['$resource'];
+function RideMember($resource) {
+  return new $resource('/api/rides/:rideId/members/:id', { id: '@id' }, {
+    update: { method: 'PUT' }
+  });
+}

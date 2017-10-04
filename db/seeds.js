@@ -90,7 +90,7 @@ User
               lng: -0.1
             }
           ],
-          memberArray: [],
+          members: [],
           comments: [
             {
               text: 'Oi Oi'

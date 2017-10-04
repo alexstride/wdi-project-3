@@ -3,7 +3,7 @@ const Ride = require('../models/ride');
 function indexRide(req, res, next) {
   Ride
     .find()
-    .populate('createdBy')
+    .populate('createdBy member')
     .exec()
     .then((rides) => res.json(rides))
     .catch(next);
@@ -20,7 +20,7 @@ function showRide(req, res, next) {
   console.log(req.params.id);
   Ride
     .findById(req.params.id)
-    .populate('createdBy')
+    .populate('createdBy') //add members
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();
@@ -57,10 +57,47 @@ function deleteRide(req, res, next) {
     .catch(next);
 }
 
+function addMemberRoute(req, res, next) {
+
+  req.body.createdBy = req.currentUser;
+
+  Ride
+    .findById(req.params.id)
+    .exec()
+    .then(ride => {
+      if(!ride) return res.notFound();
+      // push the logged in users id to the members array
+      const member = ride.members.create(req.body);
+      ride.members.push(member);
+
+      return ride.save()
+        .then(() => res.json(member));
+    })
+    .catch(next);
+}
+
+function deleteMemberRoute(req, res, next) {
+  Ride
+    .findById(req.params.id)
+    .exec()
+    .then((ride) => {
+      if(!ride) return res.notFound();
+
+      const member = ride.members.id(req.params.memberId);
+      member.remove();
+
+      return ride.save();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 module.exports = {
   index: indexRide,
   create: createRide,
   show: showRide,
   update: updateRide,
-  delete: deleteRide
+  delete: deleteRide,
+  addMember: addMemberRoute,
+  deleteMember: deleteMemberRoute
 };

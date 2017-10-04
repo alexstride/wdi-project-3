@@ -5,12 +5,6 @@ const coordinateSchema = new mongoose.Schema({
   lng: Number
 });
 
-const rideMemberSchema = new mongoose.Schema({
-  memberId: { type: mongoose.Schema.ObjectId, ref: 'User'},
-  pending: Boolean,
-  message: String
-});
-
 const commentSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
   text: String,
@@ -23,11 +17,15 @@ const rideSchema = new mongoose.Schema({
   startPoint: coordinateSchema,
   endPoint: coordinateSchema,
   wayPoints: [ coordinateSchema ],
-  memberArray: [ rideMemberSchema ],
+  members: [ { type: mongoose.Schema.ObjectId, ref: 'User' } ],
   comments: [ commentSchema ],
   ridePace: String,
   rideIsCommute: Boolean,
   notes: String
 });
 
-module.exports = mongoose.model('Ride', rideSchema);
+// const memberSchema = new mongoose.Schema({
+//   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+// });
+
+module.exports = mongoose.model('Ride', rideSchema,);
