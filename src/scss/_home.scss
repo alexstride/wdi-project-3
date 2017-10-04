@@ -6,15 +6,15 @@
 
   animation-duration:1.3s;
   animation-delay: 1s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+
   background-color: $whiteSpace;
   #hero{
     background-image:  url('../images/chris-lawton.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin: 0 auto;
     height: 38vh;
     width: 70vw;
     display: flex;
@@ -44,9 +44,10 @@
   color: lighten($navFont, 12%);
 }
 .footer{
-  width: 100vw;
+  width: 100%;
   height: 35vh;
   background-color: lighten($navFont, 12%);
+
   .footer-headline{
     margin: 0;
     text-align: center;
@@ -55,6 +56,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    width: 100vw;
+    margin: 0;
     .hexagon {
       align-self: center;
       width: 100px;
@@ -91,6 +94,7 @@
         position: relative;
         text-align: center;
         z-index: 2;
+        margin-top: 2vh;
     }
     #burst-12:before, #burst-12:after {
         content: "";
@@ -124,11 +128,11 @@
     .hex{
       margin-left: 26px;
       margin-top: 2vh;
-      height: 20vh;
+      height: 24vh;
     }
     .burst.rectangle {
       margin-left: 14px;
-      height: 18vh;
+      height: 22vh;
     }
 
   }
