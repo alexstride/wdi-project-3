@@ -30,6 +30,7 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
     .$promise
     .then(response => {
       vm.ride = response;
+      vm.rideOwner = vm.ride.createdBy;
     });
 
   function update() {
@@ -42,6 +43,7 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
       .then(response => {
         vm.ride = response;
         $scope.updateNeeded = false;
+        console.log('reponse from the server', response);
       });
     $scope.updateNeeded = false;
   }
@@ -76,12 +78,9 @@ function RidesNewCtrl(Ride, $state, $auth) {
       .save(vm.newRide)
       .$promise
       .then(response => {
-        console.log('response from server', response);
         if (!response.id) {
-          console.log('going to ridesIndex');
           $state.go('ridesIndex');
         } else {
-          console.log('going to ridesShow');
           $state.go('ridesShow', {id: response.id});
         }
       });
