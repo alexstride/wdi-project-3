@@ -106,11 +106,14 @@ function googleMapIndex($window) {
         infowindow = new google.maps.InfoWindow({
           content: `
           <div class="infowindow">
-            <img class="map-image"  src=${ride.createdBy.image}>
-              <p> hello my name is ${ride.createdBy.name}</p>
-              <p>route distance is ${ride.distance}</p>
-              <p>route length is ${ride.duration}</p>
-              <a href="/rides/${ride.id}"><h3>Link to ride</h3></a>
+            <a href="/users/${ride.createdBy.id}">
+              <img class="map-image" src=${ride.createdBy.image}>
+            </a>
+              <p> hello my name is <a href="/users/${ride.createdBy.id}">${ride.createdBy.name}</p>
+            </a>
+            <p>route distance is ${ride.distance}</p>
+            <p>route length is ${ride.duration}</p>
+            <a href="/rides/${ride.id}"><h3>Link to ride</h3></a>
           </div>
           `
         });
