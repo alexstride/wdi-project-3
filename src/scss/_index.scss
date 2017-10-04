@@ -4,12 +4,10 @@
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
-  height: 95vh;
+  height: 92.5vh;
   #indexmap  {
-    height: 95vh;
+    height: 92.5vh;
     width: 80vw;
-
-
   }
 
   .weather {
@@ -21,15 +19,15 @@
       margin: 0  0 1vh 1vw;
     }
     p{
-      margin-bottom: 0;
-      padding: 4px;
+      margin: 0;
+      padding: 3px;
       margin-left: .6vw;
     }
   }
 
   aside{
     overflow: scroll;
-    height: 70vh;
+    height: 72.5 vh;
     width: 20vw;
     p{
       margin-bottom: 0;
