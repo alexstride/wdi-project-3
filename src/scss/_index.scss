@@ -5,54 +5,53 @@
   flex-wrap: wrap;
   width: 100vw;
   height: 92.5vh;
-  #indexmap  {
-    height: 92.5vh;
-    width: 80vw;
+}
+.weather {
+  width: 20vw;
+  height: 20vh;
+  border-bottom: 1px solid lightGrey;
+  position: relative;
+  h4{
+    margin: 0  0 1vh 1vw;
   }
+  p{
+    margin: 0;
+    padding: 3px;
+    margin-left: .6vw;
+  }
+}
+.ride-index-card{
+  border-bottom: 1px solid lightGrey;
+}
+.map-image {
+  border-radius: 50%;
+  height: 10vh;
+  width: 6vw;
+}
 
-  .weather {
-    width: 20vw;
-    height: 20vh;
-    border-bottom: 1px solid lightGrey;
-    position: relative;
-    h4{
-      margin: 0  0 1vh 1vw;
-    }
-    p{
-      margin: 0;
-      padding: 3px;
-      margin-left: .6vw;
-    }
+#icon {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 1vw;
+  margin-top: -.6vh;
+}
+aside{
+  height: 72.5vh;
+  width: 20vw;
+  p{
+    margin-bottom: 0;
+    padding: 4px;
+    margin-left: .6vw;
   }
-
-  aside{
-    overflow: scroll;
-    height: 72.5 vh;
-    width: 20vw;
-    p{
-      margin-bottom: 0;
-      padding: 4px;
-      margin-left: .6vw;
-    }
-  }
-  .ride-index-card{
-    border-bottom: 1px solid lightGrey;
-  }
-
-  .map-image {
-    border-radius: 50%;
-    height: 10vh;
-    width: 6vw;
-  }
-  #icon {
-    height: 40px;
-    width: 40px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin-right: 1vw;
-    margin-top: -.6vh;
-  }
-
-
+}
+.side{
+  overflow: scroll;
+  height: 72.5vh;
+}
+#indexmap  {
+  height: 92.5vh;
+  width: 80vw;
 }
