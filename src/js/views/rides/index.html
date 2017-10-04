@@ -15,7 +15,7 @@
         <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ride.name}}</a></h4>
         <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{ride.startPoint.lat}},{{ride.startPoint.lng}}&zoom=12&size=200x200&maptype=roadmap&path=color:0xff0000ff|weight:5|{{ride.startPoint.lat}},{{ride.startPoint.lng}}|{{ride.endPoint.lat}},{{ride.endPoint.lng}}&key=AIzaSyCjKmJQUUQ7XRv49dHxnncboJewMH2MPUI"
         alt="thumbnail map">
-        <p>Created by:<a ui-sref="usersShow({ id: ride.createdBy.id})"> <em>{{ride.createdBy.name || 'Anonymous user'}}</em></p></a>
+        <p>Created by:<a ui-sref="usersShow({ id: ride.createdBy.id})"> <em>{{ride.createdBy.name || 'Anonymous user'}}</em></a></p>
       </div>
     </aside>
   </div>

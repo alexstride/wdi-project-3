@@ -7,7 +7,7 @@
   <form ng-submit="ridesNew.add()">
     <div class="form-group">
       <label for="ride-name">Name of Ride</label>
-      <input class="form-control" type="text" required ng-model="ridesNew.newRide.name" required>
+      <input class="form-control" type="text" ng-model="ridesNew.newRide.name" required>
     </div>
 
     <div class="form-group">
@@ -15,13 +15,12 @@
       <br>
       <input class="form-control" autocomplete ng-model="ridesNew.newRide.startPoint" id="start" required>
     </div>
-
+    
     <div class="form-group">
       <label>Enter rough finishing position (can be changed later)</label>
       <br>
       <input class="form-control" autocomplete ng-model="ridesNew.newRide.endPoint" id="end" required>
     </div>
-
     <button>Submit</button>
   </form>
 </div>

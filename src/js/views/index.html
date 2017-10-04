@@ -10,47 +10,47 @@
 
   </header>
   <div class="hero">
+  </div>
 
 
 
+  <div class="description">
 
-    <div class="description">
+
+    <p>welcome to the innovative cycle ride sharing app <br>
+      <span ng-if="!main.isAuthenticated()"><a ui-sref="register" >join</a> us</span>
+      <span ng-if="main.isAuthenticated()">share your favorite routes</span>
+    </p>
+
+  </div>
 
 
-      <p>welcome to the innovative cycle ride sharing app <br>
-        <span ng-if="!main.isAuthenticated()"><a ui-sref="register" >join</a> us</span>
-        <span ng-if="main.isAuthenticated()">share your favorite routes</span>
-      </p>
+  <footer>
+    <h4 class="footer-headline">the best routes are the ones you haven't ridden</h4>
+    <div class="shapes">
+      <div >
+        <div class="hexagon">
+        </div>
+        <div class="hex rectangle">
+
+        </div>
+      </div>
+      <div>
+        <div id="burst-12">
+        </div>
+        <div class="burst rectangle">
+
+        </div>
+      </div>
+      <div >
+        <div class="hexagon">
+        </div>
+        <div class="hex rectangle">
+
+        </div>
+      </div>
 
     </div>
+  </footer>
 
-
-    <footer>
-      <h4 class="footer-headline">the best routes are the ones you haven't ridden</h4>
-      <div class="shapes">
-        <div >
-          <div class="hexagon">
-          </div>
-          <div class="hex rectangle">
-
-          </div>
-        </div>
-        <div>
-          <div id="burst-12">
-          </div>
-          <div class="burst rectangle">
-
-          </div>
-        </div>
-        <div >
-          <div class="hexagon">
-          </div>
-          <div class="hex rectangle">
-
-          </div>
-        </div>
-
-      </div>
-    </footer>
-
-  </main>
+</main>
