@@ -1,4 +1,17 @@
+// Colors
+$black: #000;
+$white: $whiteSpace;
+  ;
+$darkgrey: #333;
+$grey: #999;
+$lightgrey: #dadada;
+$brown: #8D5852;
+$darkbrown: #522917;
+$green: #799753;
+$yellow: #E8BF56;
 
+$time: 2s;
+$time2: 1.5s;
 
 // Mixins
 @mixin keyframes($name) {
@@ -124,7 +137,7 @@
 html,
 body{
   max-width: 100%;
-  overflow: hidden;
+  
   background: $white;
 }
 

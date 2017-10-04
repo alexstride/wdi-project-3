@@ -15,12 +15,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0 auto;
-    height: 38vh;
+    height: 34.5vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: -1;
     h1{
       padding-bottom: 2vh;
       color: $whiteSpace;
@@ -34,7 +33,7 @@
 }
 .description{
   width: 100vw;
-  height: 20vh;
+  height: 22vh;
   background-color: $whiteSpace;
   text-align: center;
   display: flex;
@@ -43,97 +42,94 @@
   font-size: 16px;
   color: lighten($navFont, 12%);
 }
-.footer{
+footer{
   width: 100%;
-  height: 35vh;
+  height: 36vh;
   background-color: lighten($navFont, 12%);
-
+  width: 100vw;
   .footer-headline{
     margin: 0;
     text-align: center;
   }
-  footer{
+  .shapes{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
-    width: 100vw;
-    margin: 0;
-    .hexagon {
-      align-self: center;
-      width: 100px;
-      height: 55px;
-      background: gray;
-      position: relative;
-    }
-    .hexagon:before {
-      content: "";
-      position: absolute;
-      top: -25px;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 50px solid transparent;
-      border-right: 50px solid transparent;
-      border-bottom: 25px solid gray;
-    }
-    .hexagon:after {
-      content: "";
-      position: absolute;
-      bottom: -25px;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 50px solid transparent;
-      border-right: 50px solid transparent;
-      border-top: 25px solid gray;
-    }
-    #burst-12 {
-        background: gray;
-        width: 80px;
-        height: 80px;
-        position: relative;
-        text-align: center;
-        z-index: 2;
-        margin-top: 2vh;
-    }
-    #burst-12:before, #burst-12:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 80px;
-        width: 80px;
-        background: gray;
-    }
-    #burst-12:before {
-        -webkit-transform: rotate(30deg);
-           -moz-transform: rotate(30deg);
-            -ms-transform: rotate(30deg);
-             -o-transform: rotate(30deg);
-    }
-    #burst-12:after {
-        -webkit-transform: rotate(60deg);
-           -moz-transform: rotate(60deg);
-            -ms-transform: rotate(60deg);
-             -o-transform: rotate(60deg);
-    }
-    .rectangle {
-      width: 50px;
-
-      background: gray;
-      z-index: 1;
-      position: absolute;
-      bottom: 0;
-    }
-    .hex{
-      margin-left: 26px;
-      margin-top: 2vh;
-      height: 24vh;
-    }
-    .burst.rectangle {
-      margin-left: 14px;
-      height: 22vh;
-    }
-
   }
+
+}
+.hexagon {
+  width: 100px;
+  height: 55px;
+  background: gray;
+  position: relative;
+}
+  .hexagon:before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid gray;
+  }
+  .hexagon:after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 25px solid gray;
+  }
+
+#burst-12 {
+  background: gray;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  margin-top: 2vh;
+}
+#burst-12:before, #burst-12:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 80px;
+  background: gray;
+}
+#burst-12:before {
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+}
+#burst-12:after {
+  -webkit-transform: rotate(60deg);
+  -moz-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  -o-transform: rotate(60deg);
+}
+.rectangle {
+  width: 50px;
+
+  background: gray;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+}
+.hex{
+  margin-left: 26px;
+  margin-top: 2vh;
+  height: 24vh;
+}
+.burst.rectangle {
+  margin-left: 14px;
+  height: 22vh;
 }

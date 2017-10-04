@@ -1,23 +1,21 @@
 <div class="container-fluid index">
   <div>
-
-
     <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex" class="weather">
       <div>
-        <h4>{{ DarkSkyIndex.weather.timezone }}</h4>
         <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
-        <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
-        <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
-        <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
-        <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
+        <h4>London</h4>
+        <p>{{ ((DarkSkyIndex.weather.currently.temperature -32)/1.8).toFixed(0) }}&#176; C</p>
+        <p>{{ DarkSkyIndex.weather.currently.summary }}</p>
+        <p>Humidity: {{ ((DarkSkyIndex.weather.currently.humidity) * 100) }}&#37; </p>
+        <p>Wind: {{ DarkSkyIndex.weather.currently.windSpeed }} mp/h</p>
       </div>
     </div>
     <aside>
       <div class="ride-index-card" ng-repeat="ride in index.all">
         <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ride.name}}</a></h4>
-        <p>Created by: <em>{{ride.createdBy.name || 'Anonymous user'}}</em></p>
         <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{ride.startPoint.lat}},{{ride.startPoint.lng}}&zoom=12&size=200x200&maptype=roadmap&path=color:0xff0000ff|weight:5|{{ride.startPoint.lat}},{{ride.startPoint.lng}}|{{ride.endPoint.lat}},{{ride.endPoint.lng}}&key=AIzaSyCjKmJQUUQ7XRv49dHxnncboJewMH2MPUI"
         alt="thumbnail map">
+        <p>Created by:<a ui-sref="usersShow({ id: ride.createdBy.id})"> <em>{{ride.createdBy.name || 'Anonymous user'}}</em></p></a>
       </div>
     </aside>
   </div>
