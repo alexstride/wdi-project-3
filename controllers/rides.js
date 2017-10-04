@@ -93,6 +93,41 @@ function deleteMemberRoute(req, res, next) {
     .catch(next);
 }
 
+function addCommentRoute(req, res, next) {
+
+  req.body.createdBy = req.currentUser;
+
+  Ride
+    .findById(req.params.id)
+    .exec()
+    .then((ride) => {
+      if(!ride) return res.notFound();
+
+      const comment = ride.comments.create(req.body);
+      ride.comments.push(comment);
+
+      return ride.save()
+        .then(() => res.json(comment));
+    })
+    .catch(next);
+}
+
+function deleteCommentRoute(req, res, next) {
+  Ride
+    .findById(req.params.id)
+    .exec()
+    .then((ride) => {
+      if(!ride) return res.notFound();
+
+      const comment = ride.comments.id(req.params.commentId);
+      comment.remove();
+
+      return ride.save();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 module.exports = {
   index: indexRide,
   create: createRide,
@@ -100,5 +135,7 @@ module.exports = {
   update: updateRide,
   delete: deleteRide,
   addMember: addMemberRoute,
-  deleteMember: deleteMemberRoute
+  deleteMember: deleteMemberRoute,
+  addComment: addCommentRoute,
+  deleteComment: deleteCommentRoute
 };

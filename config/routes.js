@@ -35,7 +35,11 @@ router.route('/rides/:id/members')
 router.route('/rides/:id/members/:memberId')
   .delete(rides.deleteMember); //resecure this
 
+router.route('/rides/:id/comments')
+  .post(secureRoute, rides.addComment);
 
+router.route('/rides/:id/comments/:commentId')
+  .delete(secureRoute, rides.deleteComment);
 
 
 
