@@ -5,8 +5,8 @@
       <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.ride.createdBy.name || "Unknown User" }}</small></h2>
     </div>
     <div class="col-md-3 button-top-pad">
-      <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.edit()" class="btn btn-warning">Edit</a>
-      <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.delete()" class="btn btn-danger">Delete</a>
+      <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.edit()" class="button btn-warning">Edit</a>
+      <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.delete()" class="button btn-danger">Delete</a>
     </div>
   </div>
 

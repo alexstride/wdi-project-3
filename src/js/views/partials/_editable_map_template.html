@@ -1,10 +1,10 @@
 <div class="editable-map row">
   <div class="map-holder col-sm-8">GOOGLE MAP GOES HERE</div>
   <div class="map-aside col-sm-4">
-    <h5>Start Point</h5>
+    <h5 class="start">Start Point</h5>
     <coordinate lat="rideInfo.startPoint.lat", lng="rideInfo.startPoint.lng"></coordinate>
 
-    <h5>Waypoints</h5>
+    <h5 class="waypoint">Waypoints</h5>
     <div ng-repeat="wayPoint in rideInfo.wayPoints">
       <coordinate lat="wayPoint.lat" lng="wayPoint.lng" delete="deleteWayPoint(wayPoint)" show-delete="true"></coordinate>
     </div>
@@ -23,15 +23,15 @@
         </div>
         <p class="help-block">or drag the marker on the map to reposition it</p>
         <a class="btn btn-small btn-default" ng-click="displayNewWayPoint = !displayNewWayPoint">Discard</a>
-        <button class="btn btn-small btn-success">Save</button>
+        <button class="button btn-small btn-success">Save</button>
       </form>
 
     </div>
 
-    <h5>End Point</h5>
+    <h5 class="end">End Point</h5>
     <coordinate lat="rideInfo.endPoint.lat", lng="rideInfo.endPoint.lng"></coordinate>
-    <button class="btn btn-info" ng-click="updateDirections()">Recalculate directions</button>
-    <button class="btn btn-primary" ng-if="pendingChanges" ng-click="update()">Save Changes</button>
+    <button class="button btn-info calculate" ng-click="updateDirections()">Recalculate directions</button>
+    <button class="button btn-primary calculate" ng-if="pendingChanges" ng-click="update()">Save Changes</button>
 
   </div>
 

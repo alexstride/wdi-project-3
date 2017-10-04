@@ -73,7 +73,10 @@ function routeMap($window) {
         $scope.rideInfo.wayPoints.forEach(point => {
           const marker = new $window.google.maps.Marker({
             map: $scope.mapVar,
-            label: 'W',
+            icon: {
+              url: '/images/blue-icon.png',
+              scaledSize: new google.maps.Size(20,20)
+            },
             position: {lat: point.lat, lng: point.lng}
           });
           $scope.wayPointMarkers.push(marker);
@@ -97,14 +100,20 @@ function routeMap($window) {
         //creating and setting the initial positions of the start-point marker
         $scope.startPointMarker = new $window.google.maps.Marker({
           map: $scope.mapVar,
-          label: 'S'
+          icon: {
+            url: '/images/green-icon.png',
+            scaledSize: new google.maps.Size(20,20)
+          }
         });
         $scope.startPointMarker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
 
         //creating and setting the initial positions of the end-point marker
         $scope.endPointMarker = new $window.google.maps.Marker({
           map: $scope.mapVar,
-          label: 'F'
+          icon: {
+            url: '/images/red-icon.png',
+            scaledSize: new google.maps.Size(20,20)
+          }
         });
         $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});
 

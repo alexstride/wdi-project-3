@@ -89,7 +89,10 @@ function editableRouteMap($window) {
           point.tempId = point.id || (Math.random() * 100000).toFixed();
           const marker = new $window.google.maps.Marker({
             map: $scope.mapVar,
-            label: 'W',
+            icon: {
+              url: '/images/blue-icon.png',
+              scaledSize: new google.maps.Size(20,20)
+            },
             position: {lat: point.lat, lng: point.lng},
             draggable: true
           });
@@ -139,7 +142,10 @@ function editableRouteMap($window) {
         //creating and setting the initial positions of the start-point marker
         $scope.startPointMarker = new $window.google.maps.Marker({
           map: $scope.mapVar,
-          label: 'S',
+          icon: {
+            url: '/images/green-icon.png',
+            scaledSize: new google.maps.Size(20,20)
+          },
           draggable: true
         });
         $scope.startPointMarker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
@@ -153,7 +159,10 @@ function editableRouteMap($window) {
         //creating and setting the initial positions of the end-point marker
         $scope.endPointMarker = new $window.google.maps.Marker({
           map: $scope.mapVar,
-          label: 'F',
+          icon: {
+            url: '/images/red-icon.png',
+            scaledSize: new google.maps.Size(20,20)
+          },
           draggable: true
         });
         $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});
