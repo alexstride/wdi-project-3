@@ -9,17 +9,21 @@ RidesIndexCtrl.$inject = [ 'Ride' ];
 function RidesIndexCtrl(Ride) {
   const vm = this;
   vm.all = Ride.query();
-  
+
 
 }
 
 
-RidesShowCtrl.$inject = [ 'Ride', '$stateParams', '$scope' ];
-function RidesShowCtrl(Ride, $stateParams, $scope) {
+RidesShowCtrl.$inject = [ 'Ride', '$stateParams', '$scope', '$state' ];
+function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
   const vm = this;
   vm.map = null;
   $scope.updateNeeded = false;
   vm.update = update;
+  vm.delete = ridesDelete;
+  vm.edit = ridesEdit;
+  vm.isEditable = false;
+
 
   Ride
     .get($stateParams)
@@ -29,6 +33,9 @@ function RidesShowCtrl(Ride, $stateParams, $scope) {
     });
 
   function update() {
+    console.log('Logging values sent to the server');
+    console.log('$stateParams', $stateParams);
+    console.log('vm.ride', vm.ride);
     Ride
       .update($stateParams, vm.ride)
       .$promise
@@ -39,6 +46,17 @@ function RidesShowCtrl(Ride, $stateParams, $scope) {
     $scope.updateNeeded = false;
   }
 
+
+
+  function ridesDelete() {
+    vm.ride
+      .$remove()
+      .then(() => $state.go('ridesIndex'));
+  }
+
+  function ridesEdit() {
+    vm.isEditable = !vm.isEditable;
+  }
 
 }
 

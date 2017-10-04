@@ -1,13 +1,13 @@
-<div class="users-show">
-  <main class="container">
+
+  <main class="container-fluid users-show">
     <div class="row user-profile">
       <div class="col-md-6 user">
         <div class="row ">
           <div class="col-sm-6">
-            <img class="page-curl shadow-bottom" ng-src="{{usersShow.user.imageSRC}}" alt="{{usersShow.user.name}}">
+            <img class="user-image" ng-src="{{usersShow.user.imageSRC}}" alt="{{usersShow.user.name}}">
           </div>
           <div class="col-sm-6">
-            <h2 class="user-heading"><span class="edit-icon"><a ui-sref="usersEdit({ id: usersShow.user.id })"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span> {{usersShow.user.name}}</h2>
+            <h2 class="user-heading"><span class="edit-icon"> {{usersShow.user.name}}</h2>
             <p>email: {{usersShow.user.email}}</p>
             <p>age: {{usersShow.user.age}}</p>
             <p>riding: {{usersShow.user.riding}}</p>
@@ -16,10 +16,16 @@
           <p class="bio">bio: {{usersShow.user.bio}}</p>
         </div>
         <button ng-click="usersShow.delete()" class="button btn-danger">Delete</button>
+        <a ui-sref="usersEdit({ id: usersShow.user.id })" class="button btn-warning">Edit</a>
       </div>
-      <div class="col-md-6 user">
-        <h2>History</h2>
+      <div class="col-md-12 user">
+        <h2>Your Rides</h2>
+        <div ng-repeat="ride in usersShow.user.rides" class="col-sm-6">
+          <p>{{ ride.name }}</p>
+
+          <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{ride.startPoint.lat}},{{ride.startPoint.lng}}&zoom=12&size=200x200&maptype=roadmap&path=color:0xff0000ff|weight:5|{{ride.startPoint.lat}},{{ride.startPoint.lng}}|{{ride.endPoint.lat}},{{ride.endPoint.lng}}&key=AIzaSyCjKmJQUUQ7XRv49dHxnncboJewMH2MPUI"
+          alt="thumbnail map">
+        </div>
       </div>
     </div>
   </main>
-</div>

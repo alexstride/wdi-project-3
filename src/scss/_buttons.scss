@@ -1,15 +1,14 @@
 .button{
 		background: #ECECEC;
-		border-radius: 15px;
-		padding: 10px 20px;
+		border-radius: 8px;
+		padding: 6px 6px;
 		font-family: arial;
 		font-weight: bold;
 		color:#7f7f7f;
 		text-decoration: none;
 		text-shadow:0px 1px 0px #fff;
 		border:1px solid #a7a7a7;
-    width: 12vw;
-		box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+    width: 80px;
 		-webkit-transition:box-shadow 0.5s;
 	}
 
@@ -22,4 +21,11 @@
 	}
 .button:focus {
   outline:0;
+}
+
+a.button{
+  width: 8vw;
+  a.button:hover{
+    border-bottom-color: #c6a775;
+  }
 }

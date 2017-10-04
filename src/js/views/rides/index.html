@@ -1,38 +1,31 @@
-<div class="container-fluid">
+<div class="container-fluid index">
+  <div>
 
 
-  <div class="container-fluid index">
     <div ng-controller="DarkSkyIndexCtrl as DarkSkyIndex" class="weather">
-
       <div>
-
         <h4>{{ DarkSkyIndex.weather.timezone }}</h4>
         <img id="icon" ng-src="/images/{{ DarkSkyIndex.weather.currently.icon }}.png" />
         <p>summary{{ DarkSkyIndex.weather.currently.summary }}</p>
         <p>pressure{{ DarkSkyIndex.weather.currently.pressure }}</p>
         <p>humidity{{ DarkSkyIndex.weather.currently.humidity }}</p>
         <p>windGust{{ DarkSkyIndex.weather.currently.windGust }}</p>
-
       </div>
-
-      <div class="rideIndexCard" ng-repeat="ride in index.all">
+    </div>
+    <aside>
+      <div class="ride-index-card" ng-repeat="ride in index.all">
         <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ride.name}}</a></h4>
         <p>Created by: <em>{{ride.createdBy.name || 'Anonymous user'}}</em></p>
         <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{ride.startPoint.lat}},{{ride.startPoint.lng}}&zoom=12&size=200x200&maptype=roadmap&path=color:0xff0000ff|weight:5|{{ride.startPoint.lat}},{{ride.startPoint.lng}}|{{ride.endPoint.lat}},{{ride.endPoint.lng}}&key=AIzaSyCjKmJQUUQ7XRv49dHxnncboJewMH2MPUI"
-         alt="thumbnail map">
+        alt="thumbnail map">
       </div>
-
-
-    </div>
-    <div class="row">
-
-      <google-map-index id="indexmap" map-var="index.map" ride-array="index.all"></google-map-index>
-
-    </div>
-
-
-
+    </aside>
   </div>
+
+
+  <google-map-index id="indexmap" map-var="index.map" ride-array="index.all"></google-map-index>
+
+
 
 
 </div>
