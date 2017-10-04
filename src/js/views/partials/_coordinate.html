@@ -1,13 +1,5 @@
 <div class="coordinate">
 
-  <!-- markup for debugging -->
-  <div>Lat: {{lat}}</div>
-  <div>Lng: {{lng}}</div>
-  <div>recievedLatLng: {{receivedLatLng}}</div>
-  <!--  end of markup for debugging -->
-
-
-
   <div class="row" ng-hide="isEditing">
     <p class="col-xs-6">{{lat}}, {{lng}}</p>
     <p class="col-xs-6"><a href="#" ng-click="edit()">edit</a> <span ng-if="showDelete">/ <a href="#" ng-click="delete()">delete</a></span></p>

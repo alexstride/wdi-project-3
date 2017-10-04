@@ -23,10 +23,13 @@ body{
   clear: both;
 }
 
+.container.rides-show {
+  height: auto;
+}
+
 .map-holder {
   height: 600px;
   max-width: 600px;
-  display: block;
 }
 
 #indexmap  {
