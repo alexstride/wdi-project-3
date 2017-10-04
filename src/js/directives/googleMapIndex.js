@@ -50,8 +50,8 @@ function googleMapIndex($window) {
             map: map,
             animation: google.maps.Animation.DROP,
             icon: {
-              url: 'https://cdn.shopify.com/s/files/1/1061/1924/files/Poop_Emoji.png?9898922749706957214',
-              scaledSize: new google.maps.Size(30,30)
+              url: '/images/green-icon.png',
+              scaledSize: new google.maps.Size(20,20)
             },
             position: { lat: ride.startPoint.lat, lng: ride.startPoint.lng }
           });
@@ -64,8 +64,8 @@ function googleMapIndex($window) {
             map: map,
             animation: google.maps.Animation.DROP,
             icon: {
-              url: '../images/bike-icon.png',
-              scaledSize: new google.maps.Size(50,50)
+              url: '/images/red-icon.png',
+              scaledSize: new google.maps.Size(20,20)
             },
             position: { lat: ride.endPoint.lat, lng: ride.endPoint.lng }
           });
@@ -106,12 +106,11 @@ function googleMapIndex($window) {
         infowindow = new google.maps.InfoWindow({
           content: `
           <div class="infowindow">
-            
-            <p> hello my name is ${ride.createdBy.name}</p>
-            <img class="mapImage"  src=${ride.createdBy.image}>
-            <p>route distance is ${ride.distance}</p>
-            <p>route length is ${ride.duration}</p>
-            <a href="/rides/${ride.id}"><h3>Link to ride</h3></a>
+            <img class="map-image"  src=${ride.createdBy.image}>
+              <p> hello my name is ${ride.createdBy.name}</p>
+              <p>route distance is ${ride.distance}</p>
+              <p>route length is ${ride.duration}</p>
+              <a href="/rides/${ride.id}"><h3>Link to ride</h3></a>
           </div>
           `
         });
