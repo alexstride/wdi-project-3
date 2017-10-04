@@ -15,10 +15,10 @@
           </div>
           <p class="bio">bio: {{usersShow.user.bio}}</p>
         </div>
-      <div ng-if="!main.getCurrentUserId">
+        <div ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">
 
-        <button ng-click="usersShow.delete()" class="button btn-danger">Delete</button>
-        <a ui-sref="usersEdit({ id: usersShow.user.id })" class="button btn-warning">Edit</a>
+        <button ng-click="usersShow.delete()" class="button btn btn-danger">Delete</button>
+        <a ui-sref="usersEdit({ id: usersShow.user.id })" class="button btn btn-warning">Edit</a>
       </div>
       </div>
       <div class="col-md-6 user">
