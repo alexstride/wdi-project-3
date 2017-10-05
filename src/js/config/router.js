@@ -45,6 +45,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/register',
       templateUrl: '/js/views/registration/register.html',
       controller: 'RegisterCtrl as register'
+    })
+    .state('error', {
+      url: '/404',
+      templateUrl: '/js/views/404.html'
     });
 
 
@@ -52,5 +56,5 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
 
 
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/404');
 }
