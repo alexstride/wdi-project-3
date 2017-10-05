@@ -3,17 +3,14 @@ const bcrypt = require('bcrypt');
 const s3 = require('../lib/s3');
 
 const userSchema = new mongoose.Schema({
-
   name: { type: String, required: true },
-
   email: { type: String, required: true, unique: 'Email address is already taken!'},
   password: { type: String, required: true },
   age: { type: Number },
-  image: { type: String, default: 'https://cdn2.iconfinder.com/data/icons/skating-and-riding-activity/347/outdoor-fun-006-512.png' },
+  image: { type: String, default: 'http://www.fillmurray.com/200/200' },
   bio: { type: String }, //add max characters
   riding: { type: String}, //decide the type later?
   bikeType: {type: String}
-
 });
 
 userSchema
