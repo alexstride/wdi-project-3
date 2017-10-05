@@ -9,6 +9,7 @@
 @import "buttons";
 @import "ridesShow";
 @import "errors";
+@import "register";
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
 body{
@@ -21,8 +22,9 @@ body{
 }
 .editable-map {
   display: block;
-  border: 1px solid black;
+  border: 1px solid gray;
   clear: both;
+
 }
 
 .container.rides-show {
@@ -44,7 +46,11 @@ img{
   border-radius: 4px;
 }
 
-.button-top-pad {
-  padding-top: 10px;
-  height: 100%;
+a {
+  color: $brand;
+  transition: all 0.3s ease;
+  &:hover, &:focus {
+    color: darken($brand, 10%);
+    text-decoration: none;
+  }
 }

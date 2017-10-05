@@ -4,15 +4,15 @@
     <div class="col-md-9">
       <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.rideOwner.name || "Unknown User" }}</small></h2>
     </div>
-    <div class="col-md-3 button-top-pad">
+    <div class="col-md-3 btn-top-pad">
       <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.edit()" class="btn btn-warning">Edit</a>
       <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.delete()" class="btn btn-danger">Delete</a>
       <div ng-hide="main.getCurrentUserId() === ridesShow.ride.createdBy.id">
-        <button ng-click="ridesShow.addMember()" class="btn btn-warning" ng-hide="ridesShow.isMember()">Join Ride</button>
+        <button ng-click="ridesShow.addMember()" class="btn" ng-hide="ridesShow.isMember()">Join Ride</button>
         <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="btn btn-warning" ng-show="ridesShow.isMember()">Leave Ride</button>
       </div>
       <h2>Members</h2>
-      <ul>
+      <ul class="ride-list">
         <li ng-repeat="member in ridesShow.ride.members"><a ui-sref="usersShow({ id: member.id })">{{ member.name }}</a></li>
       </ul>
     </div>
@@ -54,7 +54,7 @@
       <form ng-if="main.isAuthenticated()" ng-submit="ridesShow.addComment()">
         <label>Add comment</label>
         <textarea ng-model="ridesShow.newComment.text"></textarea>
-        <button class="btn btn-primary">Comment</button>
+        <button class="button">Comment</button>
       </form>
     </div>
 
