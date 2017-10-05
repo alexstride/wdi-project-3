@@ -3,11 +3,23 @@
   <div class="row">
     <div class="col-md-9">
       <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.rideOwner.name || "Unknown User" }}</small></h2>
+      <h4>Description:</h4>
+      <div class="row">
+        <div class="col-md-9">
+          <p ng-hide="ridesShow.isEditable"><em>{{ridesShow.ride.description}}</em></p>
+          <div class="form-group">
+            <textarea ng-show="ridesShow.isEditable" class="form-control" rows="5" ng-model="ridesShow.ride.description"></textarea>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-3 button-top-pad">
-      <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.edit()" class="btn btn-warning">Edit</a>
-      <a ng-show="main.getCurrentUserId() === ridesShow.ride.createdBy.id" ng-click="ridesShow.delete()" class="btn btn-danger">Delete</a>
-      <div ng-hide="main.getCurrentUserId() === ridesShow.ride.createdBy.id">
+
+      <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && (!ridesShow.isEditable)" ng-click="ridesShow.edit()" class="btn btn-warning">Edit</a>
+      <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && ridesShow.isEditable" ng-click="ridesShow.update()" class="btn btn-primary">Save</a>
+      <a ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id" ng-click="ridesShow.delete()" class="btn btn-danger">Delete</a>
+      <div ng-hide="main.getCurrentUserId() === ridesShow.rideOwner.id">
         <button ng-click="ridesShow.addMember()" class="btn btn-warning" ng-hide="ridesShow.isMember()">Join Ride</button>
         <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="btn btn-warning" ng-show="ridesShow.isMember()">Leave Ride</button>
       </div>
@@ -45,14 +57,6 @@
           </div>
           <div class="col-sm-3">
             {{ridesShow.ride.pace || '-'}}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            Description:
-          </div>
-          <div class="col-sm-3">
-            {{ridesShow.ride.description || '-'}}
           </div>
         </div>
 

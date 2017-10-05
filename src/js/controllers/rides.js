@@ -43,6 +43,7 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state, RideMember, $auth, Ri
         vm.ride = response;
         $scope.updateNeeded = false;
         console.log('reponse from the server', response);
+        vm.isEditable = false;
       });
     $scope.updateNeeded = false;
   }
