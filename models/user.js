@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: 'Email address is already taken!'},
   password: { type: String, required: true },
   age: { type: Number },
-  image: { type: String, default: 'http://www.fillmurray.com/200/200' },
+  image: { type: String, default: 'https://spacelist.ca/assets/ui/placeholder-user.b5ae7217a7.jpg' },
   bio: { type: String }, //add max characters
   riding: { type: String}, //decide the type later?
   bikeType: {type: String}
