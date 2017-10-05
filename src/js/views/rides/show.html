@@ -11,10 +11,6 @@
         <button ng-click="ridesShow.addMember()" class="btn btn-warning" ng-hide="ridesShow.isMember()">Join Ride</button>
         <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="btn btn-warning" ng-show="ridesShow.isMember()">Leave Ride</button>
       </div>
-      <h2>Members</h2>
-      <ul>
-        <li ng-repeat="member in ridesShow.ride.members"><a ui-sref="usersShow({ id: member.id })">{{ member.name }}</a></li>
-      </ul>
     </div>
   </div>
 
@@ -33,6 +29,40 @@
   <div class="row">
 
     <div class="col-sm-6">
+      <h2>Ride Information</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            Ride length:
+          </div>
+          <div class="col-sm-3">
+            {{ridesShow.ride.length || '-'}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            Ride pace:
+          </div>
+          <div class="col-sm-3">
+            {{ridesShow.ride.pace || '-'}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            Description:
+          </div>
+          <div class="col-sm-3">
+            {{ridesShow.ride.description || '-'}}
+          </div>
+        </div>
+
+      </div>
+      <h2>Members</h2>
+      <p ng-if="ridesShow.ride.members.length === 0"><em>This ride has no members yet...</em></p>
+      <ul>
+        <li ng-repeat="member in ridesShow.ride.members"><a ui-sref="usersShow({ id: member.id })">{{ member.name }}</a></li>
+      </ul>
+
       <h2>Comments:</h2>
 
       <div class="comment" ng-repeat="comment in ridesShow.ride.comments">
@@ -52,8 +82,10 @@
 
       </div>
       <form ng-if="main.isAuthenticated()" ng-submit="ridesShow.addComment()">
-        <label>Add comment</label>
-        <textarea ng-model="ridesShow.newComment.text"></textarea>
+        <div class="form-group">
+          <label>Add comment</label>
+          <textarea class="form-control" ng-model="ridesShow.newComment.text"></textarea>
+        </div>
         <button class="btn btn-primary">Comment</button>
       </form>
     </div>

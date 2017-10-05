@@ -19,8 +19,7 @@ const rideSchema = new mongoose.Schema({
   members: [ { type: mongoose.Schema.ObjectId, ref: 'User' } ],
   comments: [ commentSchema ],
   ridePace: String,
-  rideIsCommute: Boolean,
-  notes: String
+  description: String
 });
 
 // const memberSchema = new mongoose.Schema({
