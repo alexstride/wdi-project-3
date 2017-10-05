@@ -1,41 +1,42 @@
 
-  <main class="container-fluid users-show">
-    <div class="row user-profile">
-      <div class="col-md-6 user">
-        <div class="row ">
-          <div class="col-sm-6">
-            <img class="user-image" ng-src="{{usersShow.user.imageSRC}}" alt="{{usersShow.user.name}}">
-          </div>
-          <div class="col-sm-6">
-            <h2 class="user-heading"><span class="edit-icon"> {{usersShow.user.name}}</span></h2>
-            <p>email: {{usersShow.user.email}}</p>
-            <p>age: {{usersShow.user.age}}</p>
-            <p>riding: {{usersShow.user.riding}}</p>
-            <p>bike type: {{usersShow.user.bikeType}}</p>
-          </div>
-          <p class="bio">bio: {{usersShow.user.bio}}</p>
+<main class="container-fluid users-show">
+  <div class="row user-profile">
+    <div class="col-md-6 user">
+      <div class="row ">
+        <div class="col-sm-6">
+          <img class="user-image" ng-src="{{usersShow.user.imageSRC}}" alt="{{usersShow.user.name}}">
         </div>
-        <div ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">
+        <div class="col-sm-6">
+          <h2 class="user-heading"><span class="edit-icon"> {{usersShow.user.name}}</span></h2>
+          <p>email: {{usersShow.user.email}}</p>
+          <p>age: {{usersShow.user.age}}</p>
+          <p>riding: {{usersShow.user.riding}}</p>
+          <p>bike type: {{usersShow.user.bikeType}}</p>
+        </div>
+        <p class="bio">bio: {{usersShow.user.bio}}</p>
+      </div>
+      <div ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">
 
         <button ng-click="usersShow.delete()" class="button btn btn-danger">Delete</button>
         <a ui-sref="usersEdit({ id: usersShow.user.id })" class="button btn btn-warning">Edit</a>
       </div>
-      </div>
-      <div class="col-md-6 user">
-        <div class="rides-block">
-          <h2>Your Created Rides</h2>
-          <div ng-repeat="ride in usersShow.user.rides" class="col-sm-4">
-            <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ ride.name }}</a></h4>
-            <static-map ride-info="ride" size="200x200"></static-map>
-          </div>
+    </div>
+    <div class="col-md-6 user">
+      <div class="rides-block">
+        <h2>Your Created Rides</h2>
+        <p ng-if="usersShow.user.rides.length === 0">You have no create</p>
+        <div ng-repeat="ride in usersShow.user.rides" class="col-sm-4">
+          <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ ride.name }}</a></h4>
+          <static-map ride-info="ride" size="200x200"></static-map>
         </div>
-        <div class="rides-block">
-          <h2>Your Joined Rides</h2>
-          <div ng-repeat="ride in usersShow.user.ridesJoined" class="col-sm-4">
-            <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ ride.name }}</a></h4>
-            <static-map ride-info="ride" size="200x200"></static-map>
-          </div>
+      </div>
+      <div class="rides-block">
+        <h2>Your Joined Rides</h2>
+        <div ng-repeat="ride in usersShow.user.ridesJoined" class="col-sm-4">
+          <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ ride.name }}</a></h4>
+          <static-map ride-info="ride" size="200x200"></static-map>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>

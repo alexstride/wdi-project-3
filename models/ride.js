@@ -7,8 +7,7 @@ const coordinateSchema = new mongoose.Schema({
 
 const commentSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
-  text: String,
-  likesArray: [ { type: mongoose.Schema.ObjectId, ref: 'User'} ]
+  text: String
 });
 
 const rideSchema = new mongoose.Schema({
@@ -28,4 +27,4 @@ const rideSchema = new mongoose.Schema({
 //   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 // });
 
-module.exports = mongoose.model('Ride', rideSchema,);
+module.exports = mongoose.model('Ride', rideSchema);

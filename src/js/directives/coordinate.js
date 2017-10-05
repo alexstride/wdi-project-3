@@ -15,7 +15,7 @@ function coordinate() {
       delete: '&'
     },
     link($scope) {
-      $scope.receivedLatLng = 'blablabla';
+      $scope.receivedLatLng = '';
 
       console.log('value of showDelete: ', $scope.showDelete);
       $scope.$watchGroup(['lat', 'lng'], () => {

@@ -32,19 +32,8 @@ function staticMap() {
 
         const length = Math.sqrt(Math.pow((endLat - startLat), 2) + Math.pow((endLat - startLat), 2));
 
-        // coordinates.push($scope.rideInfo.startPoint);
-        // coordinates.push($scope.rideInfo.endPoint);
-        // console.log(coordinates);
-        // const latAv = coordinates.reduce((sum, element) => sum + element.lat, 0) / coordinates.length;
-        // const lngAv = coordinates.reduce((sum, element) => sum + element.lng, 0) / coordinates.length;
-        console.log('latAv: ', latAv);
-        console.log('lngAv: ', lngAv);
-        console.log('length', length);
         const centerPointString = `${latAv.toFixed(4)},${lngAv.toFixed(4)}`;
-        console.log(centerPointString);
         const zoomLevel = Math.round((4920/403) - (5000 * length / 403)).toFixed();
-        //const zoomLevel = Math.round((839/67) - (5000 * length / 201));
-
 
         const urlString = `https://maps.googleapis.com/maps/api/staticmap?center=${centerPointString}&zoom=${zoomLevel}&size=${$scope.size}&maptype=roadmap&path=color:teal|weight:5|${$scope.rideInfo.startPoint.lat},${$scope.rideInfo.startPoint.lng}|${$scope.rideInfo.endPoint.lat},${$scope.rideInfo.endPoint.lng}&key=AIzaSyCjKmJQUUQ7XRv49dHxnncboJewMH2MPUI`;
 
