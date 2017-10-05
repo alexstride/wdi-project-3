@@ -35,7 +35,7 @@
         </div>
         <p class="help-block">or drag the marker on the map to reposition it</p>
         <a class="btn btn-small btn-default" ng-click="discard()">Discard</a>
-        <button class="btn btn-small btn-success">Save</button>
+        <button class="btn btn-small btn-success" ng-disabled="coordinateForm.$invalid">Save</button>
       </form>
     </div>
   </div>
