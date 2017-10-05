@@ -30,8 +30,8 @@
           <button type="submit" class="button login" value="Login" ng-disabled="main.navbarForm.$invalid">Login</button>
           <div class="form-group" ng-messages="main.navbarForm.email.$error" role="alert" ng-show="main.navbarForm.email.$touched || main.navbarForm.$submitted">
             <!-- <small>{{main.navbarForm.email}}</small> -->
-            <small ng-message="required">Please enter an email address</small>
-            <small ng-message="email">Email must be a valid email address.</small>
+            <small class="error-message" ng-message="required">Please enter an email address</small>
+            <small class="error-message" ng-message="email">Email must be a valid email address.</small>
           </div>
           <div class="form-group" ng-messages="main.navbarForm.password.$error" role="alert" ng-show="main.navbarForm.password.$touched && main.navbarForm.email.$valid">
             <!-- <small>{{main.navbarForm.email}}</small> -->
