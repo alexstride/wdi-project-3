@@ -2,13 +2,13 @@
   <div class="row">
 
     <div class="col-lg-8">
-      <form ng-submit="login.login()" name="loginForm">
+      <form ng-submit="login.login()" name="loginForm" novalidate>
 
         <div class="form-group">
 
           <label for="email">Email</label>
           <input class="form-control" type="email" name="email" id="email" ng-model="login.credentials.email" ng-required="true" value="login.credentials.email">
-          <div ng-messages="loginForm.email.$error" role="alert" ng-show="loginForm.email.$touched">
+          <div ng-messages="loginForm.email.$error" role="alert" ng-show="loginForm.email.$touched || loginForm.$submitted">
             <small class="error-message" ng-message="email">Please enter a valid email address!</small>
             <small class="error-message" ng-message="required">Please enter an email address!</small>
           </div>
@@ -18,7 +18,7 @@
 
           <label for="password">Password</label>
           <input class="form-control" type="password" name="password" id="password" ng-model="login.credentials.password" required>
-          <div ng-messages="loginForm.password.$error" role="alert" ng-show="loginForm.password.$touched">
+          <div ng-messages="loginForm.password.$error" role="alert" ng-show="loginForm.password.$touched || loginForm.$submitted">
             <small class="error-message" ng-message="required">Please enter an password!</small>
           </div>
 
