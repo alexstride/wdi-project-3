@@ -2,35 +2,39 @@
   h2{
     text-align: center;
   }
-.end {
-  color: rgb(255, 0, 23);
-  text-transform: uppercase;
+  .end {
+    color: rgb(255, 0, 23);
+    text-transform: uppercase;
+  }
+  .waypoint {
+    color: rgb(63, 108, 217);
+    text-transform: uppercase;
+  }
+  .start {
+    color: rgb(0, 127, 37);
+    text-transform: uppercase;
+  }
+  .calculate{
+    width: auto;
+  }
+  footer{
+    height: 50px;
+  }
+  .media-object{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  .ride-list{
+    list-style-type: none;
+  }
+  .ride-buttons{
+    display: flex;
+    align-content: center;
+    height: 8vh;
+  }
 }
-.waypoint {
-  color: rgb(63, 108, 217);
-  text-transform: uppercase;
-}
-.start {
-  color: rgb(0, 127, 37);
-  text-transform: uppercase;
-}
-.calculate{
-  width: auto;
-}
-footer{
-  height: 50px;
-}
-.media-object{
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-.ride-list{
-  list-style-type: none;
-}
-.ride-buttons{
-  display: flex;
-  align-content: center;
-  height: 8vh;
-}
+
+.edit{
+  width: 50vw;
 }
