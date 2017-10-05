@@ -27,4 +27,4 @@ const rideSchema = new mongoose.Schema({
 //   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 // });
 
-module.exports = mongoose.model('Ride', rideSchema,);
+module.exports = mongoose.model('Ride', rideSchema);

@@ -12,25 +12,39 @@
 
     <div>
       <em ng-click="displayNewWayPoint = !displayNewWayPoint" ng-hide="displayNewWayPoint"><a href="#">Add waypoint</a></em>
-      <form class="form" ng-submit="addWayPoint()" ng-show="displayNewWayPoint">
+      <form class="form" ng-submit="addWayPoint()" ng-show="displayNewWayPoint" name="wayPointForm" novalidate>
         <p class="help-block">Enter coordinates:</p>
         <div class="form-group">
+
           <label for="lat">Lat: </label>
-          <input type="number" step="0.0001" class="form-control" id="lat" ng-model="newWayPoint.lat" required>
+          <input type="number" step="0.0001" class="form-control" id="lat" ng-model="newWayPoint.lat" name="lat" required>
+          <div ng-messages="wayPointForm.lat.$error" role="alert" ng-show="wayPointForm.lat.$touched">
+            <small class="error-message" ng-message="number">Please enter a valid number (max 4 decimal places)!</small>
+            <small class="error-message" ng-message="required">Please enter a latitude or select a place!</small>
+          </div>
+
         </div>
         <div class="form-group">
+
           <label for="lng">Lng: </label>
-          <input type="number" step="0.0001" class="form-control" id="lng" ng-model="newWayPoint.lng" required>
+          <input type="number" step="0.0001" class="form-control" id="lng" ng-model="newWayPoint.lng" name="lng" required>
+          <div ng-messages="wayPointForm.lng.$error" role="alert" ng-show="wayPointForm.lng.$touched">
+            <small class="error-message" ng-message="number">Please enter a valid number (max 4 decimal places)!</small>
+            <small class="error-message" ng-message="required">Please enter a longitude or select a place!</small>
+          </div>
+
+
         </div>
         <div class="form-group">
+
           <label for="receivedLatLng">Or pick a location </label>
-          <input autocomplete lat="newWayPoint.lat" lng="newWayPoint.lng" type="text" class="form-control" id="receivedLatLng" ng-model="receivedLatLng">
+          <input autocomplete lat="newWayPoint.lat" lng="newWayPoint.lng" type="text" class="form-control" id="receivedLatLng" name="location" ng-model="receivedLatLng">
+
         </div>
         <p class="help-block">or drag the marker on the map to reposition it</p>
         <a class="btn btn-small btn-default" ng-click="displayNewWayPoint = !displayNewWayPoint">Discard</a>
-        <button class="button btn-small btn-success">Save</button>
+        <button class="button btn-small btn-success" ng-disabled="wayPointForm.$invalid">Save</button>
       </form>
-
     </div>
 
     <h5 class="end">End Point</h5>
