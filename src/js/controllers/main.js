@@ -6,6 +6,7 @@ MainCtrl.$inject = ['$rootScope', '$state', '$transitions', '$auth'];
 function MainCtrl($rootScope, $state, $transitions, $auth) {
   const vm = this;
 
+  vm.message = {};
   vm.isAuthenticated = $auth.isAuthenticated;
 
   vm.credentials = {};
@@ -38,14 +39,28 @@ function MainCtrl($rootScope, $state, $transitions, $auth) {
     vm.stateHasChanged = false;
 
     if(err.status === 401 && vm.pageName !== 'login') {
-      vm.message = err.data.message;
+      //change this to set the text attribute of the message to be err.data.message
+      vm.message.text = err.data.message;
+      //also set the type attribute of the message to be 'warning'
+      vm.message.type = 'danger';
       $state.go('login');
     }
+
+    if(err.status === 422) {
+      vm.errors = err.data.errors;
+      console.log(vm.errors);
+    }
+  });
+
+  $rootScope.$on('registered', (event, data) => {
+    vm.stateHasChanged = false;
+    vm.message.text = `Thanks for registering, ${data}. Please login.`;
+    vm.message.type = 'info';
   });
 
   $transitions.onSuccess({}, (transition) => {
     vm.pageName = transition.$to().name;
-    if(vm.stateHasChanged) vm.message = null;
+    if(vm.stateHasChanged) vm.message = {};
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
   });
 

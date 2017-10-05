@@ -98,18 +98,14 @@ function addCommentRoute(req, res, next) {
 
   req.body.createdBy = req.currentUser;
 
-
   Ride
     .findById(req.params.id)
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();
 
-
       const comment = ride.comments.create(req.body);
-
       ride.comments.push(comment);
-      console.log('ride with comment', ride);
 
       return ride.save()
         .then(() => res.json(comment));

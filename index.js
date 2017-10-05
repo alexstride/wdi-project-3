@@ -3,6 +3,7 @@ const app         = express();
 
 const mongoose = require('mongoose');
 mongoose.plugin(require('./lib/globalToJSON'));
+mongoose.plugin(require('mongoose-unique-validator'));
 mongoose.Promise = require('bluebird');
 
 const morgan =  require('morgan');

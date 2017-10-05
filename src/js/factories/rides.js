@@ -24,3 +24,8 @@ function RideComment($resource) {
     update: { method: 'PUT' }
   });
 }
+
+RideComment.$inject = ['$resource'];
+function RideComment($resource) {
+  return new $resource('/api/rides/:rideId/comments/:id', { id: '@id' }, {});
+}
