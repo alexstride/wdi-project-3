@@ -54,3 +54,20 @@ aside{
   height: 92.5vh;
   width: 80vw;
 }
+
+// @media screen and (max-width: 650px) {
+//   .weather .side {
+//     visibility: hidden;
+//     clear: both;
+//     // float: left;
+//     // margin: 10px auto 5px 20px;
+//     width: 28%;
+//     display: none;
+//   }
+// }
+
+@media (max-width: 40em) {
+.weather, .side {
+display: none;
+}
+}
