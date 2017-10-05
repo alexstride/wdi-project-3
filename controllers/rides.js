@@ -100,6 +100,7 @@ function addCommentRoute(req, res, next) {
 
   Ride
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();

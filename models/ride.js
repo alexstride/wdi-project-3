@@ -7,8 +7,7 @@ const coordinateSchema = new mongoose.Schema({
 
 const commentSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
-  text: String,
-  likesArray: [ { type: mongoose.Schema.ObjectId, ref: 'User'} ]
+  text: String
 });
 
 const rideSchema = new mongoose.Schema({
