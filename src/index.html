@@ -13,7 +13,7 @@
 </head>
 <body ng-controller="MainCtrl as main">
   <div ng-include="'./js/views/partials/_navbar.html'"></div>
-  <div class="alert alert-warning" ng-if="main.message">{{ main.message }}</div>
+  <div ng-class="{'alert-danger': main.message.type === 'danger', 'alert-info': main.message.type === 'info'}"  class="alert" ng-if="main.message.text">{{ main.message.text }}</div>
   <main ui-view></main>
 </body>
 </html>

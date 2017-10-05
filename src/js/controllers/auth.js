@@ -3,13 +3,19 @@ angular
   .controller('RegisterCtrl', RegisterCtrl)
   .controller('LoginCtrl', LoginCtrl);
 
-RegisterCtrl.$inject = ['$auth', '$state'];
-function RegisterCtrl($auth, $state) {
+RegisterCtrl.$inject = ['$auth', '$state', '$rootScope'];
+function RegisterCtrl($auth, $state, $rootScope) {
   const vm = this;
   vm.user = {};
   function submit() {
-    $auth.signup(vm.user)
-      .then(() => $state.go('home'));
+    $auth
+      .signup(vm.user)
+      .then(response => {
+        if (response.status === 201) {
+          $rootScope.$emit('registered', vm.user.name);
+        }
+        $state.go('home');
+      });
   }
   vm.submit = submit;
 }

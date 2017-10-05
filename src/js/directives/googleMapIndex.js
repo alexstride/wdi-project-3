@@ -107,7 +107,7 @@ function googleMapIndex($window) {
           content: `
           <div class="infowindow">
             <a href="/users/${ride.createdBy.id}">
-              <img class="map-image" src=${ride.createdBy.image}>
+              <img class="map-image" src="${ride.createdBy.imageSRC || 'https://placebear.com/128/128'}">
             </a>
               <p> hello my name is <a href="/users/${ride.createdBy.id}">${ride.createdBy.name}</p>
             </a>
