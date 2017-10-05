@@ -41,9 +41,6 @@ router.route('/rides/:id/comments')
 router.route('/rides/:id/comments/:commentId')
   .delete(secureRoute, rides.deleteComment);
 
-
-
-
 router.get('/weather', darkSky.proxy);
 
 router.all('/*', (req, res) => res.status(400).send('NOT FOUND'));

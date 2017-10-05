@@ -12,16 +12,17 @@ function RidesIndexCtrl(Ride) {
 }
 
 
-RidesShowCtrl.$inject = [ 'Ride', '$stateParams', '$scope', '$state' ];
-function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
+RidesShowCtrl.$inject = [ 'Ride', '$stateParams', '$scope', '$state', 'RideMember', '$auth', 'RideComment'];
+function RidesShowCtrl(Ride, $stateParams, $scope, $state, RideMember, $auth, RideComment) {
   const vm = this;
+  vm.newComment = {};
   vm.map = null;
   $scope.updateNeeded = false;
   vm.update = update;
   vm.delete = ridesDelete;
   vm.edit = ridesEdit;
   vm.isEditable = false;
-
+  const userId = $auth.getPayload().userId;
 
   Ride
     .get($stateParams)
@@ -46,8 +47,6 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
     $scope.updateNeeded = false;
   }
 
-
-
   function ridesDelete() {
     vm.ride
       .$remove()
@@ -58,8 +57,64 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state) {
     vm.isEditable = !vm.isEditable;
   }
 
-}
+  function addMember() {
+    RideMember
+      .save({ rideId: vm.ride.id })
+      .$promise
+      .then((member) => {
+        vm.ride.members.push(member);
+        vm.newMember = {};
+      });
+  }
+  vm.addMember = addMember;
 
+  function deleteMember(memberId) {
+    RideMember
+      .delete({ rideId: vm.ride.id, id: memberId })
+      .$promise
+      .then(() => {
+        vm.ride.members = vm.ride.members.filter(member => member.id !== memberId);
+      });
+
+  }
+
+  vm.deleteMember = deleteMember;
+
+  function isMember() {
+    // check that user is logged in, that the ride exists, that the ride promise has resolved, and that the current user is in the ride.members array
+    // if all are truthy, the function will return true
+    return $auth.isAuthenticated() && vm.ride && vm.ride.$resolved && vm.ride.members.find((member) => member.id === userId);
+  }
+
+  vm.isMember = isMember;
+
+  function addComment() {
+    console.log('hello');
+    RideComment
+      .save({ rideId: vm.ride.id }, vm.newComment)
+      .$promise
+      .then((comment) => {
+        vm.ride.comments.push(comment);
+        vm.newComment = {};
+      });
+  }
+  vm.addComment = addComment;
+
+  function deleteComment(comment) {
+    RideComment
+      .delete({ rideId: vm.ride.id, id: comment.id })
+      .$promise
+      .then(() => {
+        const index = vm.ride.comments.indexOf(comment);
+        // splice it from the array, take 1 element starting from that index
+        vm.ride.comments.splice(index, 1);
+      });
+
+  }
+
+  vm.deleteComment = deleteComment;
+
+}
 
 RidesNewCtrl.$inject = ['Ride', '$state', '$auth'];
 function RidesNewCtrl(Ride, $state, $auth) {
@@ -83,31 +138,5 @@ function RidesNewCtrl(Ride, $state, $auth) {
         }
       });
   }
-
-  function addMember() {
-    addMember
-      .save({ rideId: vm.ride.id }, vm.newMember)
-      .$promise
-      .then((member) => {
-        vm.ride.members.push(member);
-        vm.newMember = {};
-      });
-  }
-  vm.addMember = addMember;
-
-
-  function deleteMember(member) {
-    deleteMember
-      .delete({ rideId: vm.ride.id, id: member.id })
-      .$promise
-      .then(() => {
-        const index = vm.ride.members.indexOf(member);
-
-        vm.ride.members.splice(index, 1);
-      });
-
-  }
-
-  vm.deleteMember = deleteMember;
 
 }

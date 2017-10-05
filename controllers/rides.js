@@ -3,7 +3,7 @@ const Ride = require('../models/ride');
 function indexRide(req, res, next) {
   Ride
     .find()
-    .populate('createdBy member')
+    .populate('createdBy members')
     .exec()
     .then((rides) => res.json(rides))
     .catch(next);
@@ -21,7 +21,7 @@ function showRide(req, res, next) {
 
   Ride
     .findById(req.params.id)
-    .populate('createdBy') //add members
+    .populate('createdBy members') //add members
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();
@@ -68,9 +68,10 @@ function addMemberRoute(req, res, next) {
       // push the logged in users id to the members array
       ride.members.push(req.currentUser.id);
 
-      return ride.save();
+      return ride.save()
+        // send the current user object back as the response to push into the Angular array
+        .then(() => res.json(req.currentUser));
     })
-    .then(ride => res.json(ride))
     .catch(next);
 }
 
