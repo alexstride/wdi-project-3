@@ -2,8 +2,8 @@ angular
   .module('tandem')
   .directive('googleMap', googleMap);
 
-googleMap.inject = ['$window'];
-function googleMap($window) {
+googleMap.inject = ['$window', 'snazzy'];
+function googleMap($window, snazzy) {
   return {
     restrict: 'E',
     replace: true,
@@ -16,7 +16,8 @@ function googleMap($window) {
       console.log($scope);
       $scope.mapVar = new $window.google.maps.Map(element[0], {
         zoom: 14,
-        center: {lat: 51.51724, lng: -0.09728}
+        center: {lat: 51.51724, lng: -0.09728},
+        styles: snazzy
       });
 
       $scope.$watch('rideInfo', () => {

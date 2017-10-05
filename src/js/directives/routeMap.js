@@ -5,8 +5,8 @@ angular
   .module('tandem')
   .directive('routeMap', routeMap);
 
-routeMap.inject = ['$window'];
-function routeMap($window) {
+routeMap.inject = ['$window', 'snazzy'];
+function routeMap($window, snazzy) {
   return {
     restrict: 'E',
     replace: true,
@@ -62,7 +62,8 @@ function routeMap($window) {
       const mapElement = element[0];
       $scope.mapVar = new $window.google.maps.Map(mapElement, {
         zoom: 14,
-        center: {lat: 0, lng: 0}
+        center: {lat: 0, lng: 0},
+        styles: snazzy
       });
 
       $scope.removeAllWayPointMarkers = removeAllWayPointMarkers;
@@ -75,7 +76,7 @@ function routeMap($window) {
             map: $scope.mapVar,
             icon: {
               url: '/images/blue-icon.png',
-              scaledSize: new google.maps.Size(20,20)
+              scaledSize: new google.maps.Size(35,35)
             },
             position: {lat: point.lat, lng: point.lng}
           });
@@ -102,7 +103,7 @@ function routeMap($window) {
           map: $scope.mapVar,
           icon: {
             url: '/images/green-icon.png',
-            scaledSize: new google.maps.Size(20,20)
+            scaledSize: new google.maps.Size(35,35)
           }
         });
         $scope.startPointMarker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
@@ -112,7 +113,7 @@ function routeMap($window) {
           map: $scope.mapVar,
           icon: {
             url: '/images/red-icon.png',
-            scaledSize: new google.maps.Size(20,20)
+            scaledSize: new google.maps.Size(35,35)
           }
         });
         $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});

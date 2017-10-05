@@ -14,8 +14,8 @@ angular
   .module('tandem')
   .directive('editableRouteMap', editableRouteMap);
 
-editableRouteMap.inject = ['$window'];
-function editableRouteMap($window) {
+editableRouteMap.inject = ['$window', 'snazzy'];
+function editableRouteMap($window, snazzy) {
   return {
     restrict: 'E',
     replace: true,
@@ -72,7 +72,9 @@ function editableRouteMap($window) {
       const mapElement = element[0].querySelector('.map-holder');
       $scope.mapVar = new $window.google.maps.Map(mapElement, {
         zoom: 14,
-        center: {lat: 0, lng: 0}
+        center: {lat: 0, lng: 0},
+        styles: snazzy
+
       });
 
       //declaring a function to add a new wayPoints
@@ -90,7 +92,7 @@ function editableRouteMap($window) {
             map: $scope.mapVar,
             icon: {
               url: '/images/blue-icon.png',
-              scaledSize: new google.maps.Size(20,20)
+              scaledSize: new google.maps.Size(35,35)
             },
             position: {lat: point.lat, lng: point.lng},
             draggable: true
@@ -132,7 +134,7 @@ function editableRouteMap($window) {
           map: $scope.mapVar,
           icon: {
             url: '/images/green-icon.png',
-            scaledSize: new google.maps.Size(20,20)
+            scaledSize: new google.maps.Size(35,35)
           },
           draggable: true
         });
@@ -150,7 +152,7 @@ function editableRouteMap($window) {
           map: $scope.mapVar,
           icon: {
             url: '/images/red-icon.png',
-            scaledSize: new google.maps.Size(20,20)
+            scaledSize: new google.maps.Size(35,35)
           },
           draggable: true
         });
