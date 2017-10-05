@@ -21,7 +21,7 @@ function showRide(req, res, next) {
 
   Ride
     .findById(req.params.id)
-    .populate('createdBy members') //add members
+    .populate('createdBy members comments.createdBy') //add members
     .exec()
     .then((ride) => {
       if(!ride) return res.notFound();

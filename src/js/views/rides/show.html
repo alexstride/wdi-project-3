@@ -34,6 +34,8 @@
       <div class="comment" ng-repeat="comment in ridesShow.ride.comments">
         <h4>{{comment.createdBy.name || "Unknown user"}}</h4>
         <p>{{comment.text || "This comment has no content"}}</p>
+
+        <button ng-if="main.isAuthenticated() && main.getCurrentUserId() === comment.createdBy.id" ng-click="ridesShow.deleteComment(comment)" class="button btn btn-danger">Delete</button>
       </div>
       <form ng-if="main.isAuthenticated()" ng-submit="ridesShow.addComment()">
         <label>Add comment</label>
