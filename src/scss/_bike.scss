@@ -10,8 +10,8 @@ $darkbrown: #522917;
 $green: #799753;
 $yellow: #E8BF56;
 
-$time: 2s;
-$time2: 1.5s;
+$time: 1s;
+$time2: 1.3s;
 
 // Mixins
 @mixin keyframes($name) {
@@ -240,7 +240,7 @@ body{
 .bike-wheel{
   width: 200px;
   height: 200px;
-  margin-top: 160px;
+  margin-top: 170px;
   border-radius: 100%;
   border: 15px solid $lightgrey;
   box-shadow: 0 0 0 10px $darkgrey;
@@ -248,17 +248,18 @@ body{
   @include animation(wheelspin, $time, linear, infinite);
 
   &.lft{
-    margin-left: -35px;
+    margin-left: -25px;
   }
 
   &.rght{
-    margin-left: 348px;
+    margin-left: 358px;
   }
 
-  .spoke{
+  .bike-spoke{
+
     width: 2px;
     height: 180px;
-    margin-left: 70px;
+    margin-left: 85px;
     position: absolute;
     background: $lightgrey;
 
@@ -410,40 +411,6 @@ body{
     }
   }
 }
-
-// Controlling the animations
-.pause{
-  width: 20px;
-  height: 55px;
-  margin: 10% auto;
-  background: $white;
-  cursor: pointer;
-  border-right: 12px solid $yellow;
-  border-left: 12px solid $yellow;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-
-  &.active{
-    width: 0;
-    height: 0;
-    border-top: 25.5px solid transparent;
-    border-left: 44px solid #e8bf56;
-    border-bottom: 25.5px solid transparent;
-    border-right: none;
-  }
-}
-
-.paused,
-.paused *{
-    -webkit-animation-play-state: paused !important;
-    -moz-animation-play-state: paused !important;
-    -o-animation-play-state: paused !important;
-    animation-play-state: paused !important;
-}
-
 //
 // 2nd bike
 //
