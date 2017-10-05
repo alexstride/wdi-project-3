@@ -75,7 +75,7 @@ function routeMap($window) {
             map: $scope.mapVar,
             icon: {
               url: '/images/blue-icon.png',
-              scaledSize: new google.maps.Size(20,20)
+              scaledSize: new google.maps.Size(35,35)
             },
             position: {lat: point.lat, lng: point.lng}
           });
@@ -102,7 +102,7 @@ function routeMap($window) {
           map: $scope.mapVar,
           icon: {
             url: '/images/green-icon.png',
-            scaledSize: new google.maps.Size(20,20)
+            scaledSize: new google.maps.Size(35,35)
           }
         });
         $scope.startPointMarker.setPosition({lat: $scope.rideInfo.startPoint.lat, lng: $scope.rideInfo.startPoint.lng});
@@ -112,7 +112,7 @@ function routeMap($window) {
           map: $scope.mapVar,
           icon: {
             url: '/images/red-icon.png',
-            scaledSize: new google.maps.Size(20,20)
+            scaledSize: new google.maps.Size(35,35)
           }
         });
         $scope.endPointMarker.setPosition({lat: $scope.rideInfo.endPoint.lat, lng: $scope.rideInfo.endPoint.lng});

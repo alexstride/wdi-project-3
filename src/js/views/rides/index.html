@@ -7,7 +7,7 @@
         <h4>London</h4>
         <p>{{ ((DarkSkyIndex.weather.currently.temperature -32)/1.8).toFixed(0) }}&#176; C</p>
         <p>{{ DarkSkyIndex.weather.currently.summary }}</p>
-        <p>Humidity: {{ ((DarkSkyIndex.weather.currently.humidity) * 100) }}&#37; </p>
+        <p>Visability: {{ DarkSkyIndex.weather.currently.visibility }}km </p>
         <p>Wind: {{ DarkSkyIndex.weather.currently.windSpeed }} mp/h</p>
       </div>
     </div>
