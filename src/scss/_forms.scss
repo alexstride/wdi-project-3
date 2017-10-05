@@ -1,0 +1,13 @@
+.container.new-ride{
+  width: 50vw;
+  h2{
+    text-align: center;
+  }
+}
+
+.container.register{
+  @extend .container.new-ride;
+  h2{
+    text-align: center;
+  }
+}
