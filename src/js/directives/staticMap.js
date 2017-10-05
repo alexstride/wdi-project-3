@@ -35,7 +35,7 @@ function staticMap() {
         const centerPointString = `${latAv.toFixed(4)},${lngAv.toFixed(4)}`;
         const zoomLevel = Math.round((4920/403) - (5000 * length / 403)).toFixed();
 
-        const urlString = `https://maps.googleapis.com/maps/api/staticmap?center=${centerPointString}&zoom=${zoomLevel}&size=${$scope.size}&maptype=roadmap&path=color:0xff0000ff|weight:5|${$scope.rideInfo.startPoint.lat},${$scope.rideInfo.startPoint.lng}|${$scope.rideInfo.endPoint.lat},${$scope.rideInfo.endPoint.lng}&key=AIzaSyCjKmJQUUQ7XRv49dHxnncboJewMH2MPUI`;
+        const urlString = `https://maps.googleapis.com/maps/api/staticmap?center=${centerPointString}&zoom=${zoomLevel}&size=${$scope.size}&maptype=roadmap&path=color:teal|weight:5|${$scope.rideInfo.startPoint.lat},${$scope.rideInfo.startPoint.lng}|${$scope.rideInfo.endPoint.lat},${$scope.rideInfo.endPoint.lng}&key=AIzaSyCjKmJQUUQ7XRv49dHxnncboJewMH2MPUI`;
 
         $scope.mapString = urlString;
       }, true);

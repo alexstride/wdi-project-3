@@ -90,7 +90,7 @@ function editableRouteMap($window) {
             map: $scope.mapVar,
             icon: {
               url: '/images/blue-icon.png',
-              scaledSize: new google.maps.Size(20,20)
+              scaledSize: new google.maps.Size(35,35)
             },
             position: {lat: point.lat, lng: point.lng},
             draggable: true
@@ -132,7 +132,7 @@ function editableRouteMap($window) {
           map: $scope.mapVar,
           icon: {
             url: '/images/green-icon.png',
-            scaledSize: new google.maps.Size(20,20)
+            scaledSize: new google.maps.Size(35,35)
           },
           draggable: true
         });
@@ -150,7 +150,7 @@ function editableRouteMap($window) {
           map: $scope.mapVar,
           icon: {
             url: '/images/red-icon.png',
-            scaledSize: new google.maps.Size(20,20)
+            scaledSize: new google.maps.Size(35,35)
           },
           draggable: true
         });
