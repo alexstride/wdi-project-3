@@ -5,8 +5,8 @@ angular
   .directive('googleMapIndex', googleMapIndex);
 
 
-googleMapIndex.inject = ['$window', 'snazzy'];
-function googleMapIndex($window, snazzy) {
+googleMapIndex.inject = ['$window'];
+function googleMapIndex($window) {
   return {
     restrict: 'E',
     replace: true,
@@ -34,8 +34,8 @@ function googleMapIndex($window, snazzy) {
       colorArray = generateRandomColors(numColors);
       const map = new $window.google.maps.Map(element[0], {
         zoom: 14,
-        center: {lat: 51.51724, lng: -0.09728},
-        styles: snazzy
+        center: {lat: 51.51724, lng: -0.09728}
+
       });
 
       const directionsService = new google.maps.DirectionsService();

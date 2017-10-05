@@ -26,14 +26,17 @@
     </div>
     <div class="col-sm-7 user-info">
       <div class="row">
-        <h2>My Rides</h2>
+        <h2 class="info-heading">My Rides</h2>
+        <p ng-if="usersShow.user.rides.length === 0">You have not created any routes</p>
+
         <div ng-repeat="ride in usersShow.user.rides">
           <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ ride.name }}</a></h4>
           <static-map ride-info="ride" size="200x200"></static-map>
         </div>
       </div>
       <div class="row">
-        <h2>Joined Rides</h2>
+        <h2 class="info-heading">Joined Rides</h2>
+        <p ng-if="usersShow.user.ridesJoined.length === 0">You have not joined any routes</p>
 
         <div class="rides-block">
           <div ng-repeat="ride in usersShow.user.ridesJoined">

@@ -4,9 +4,6 @@
   .user-profile{
     display: flex;
     justify-content: space-around;
-    h2{
-      margin-top: 0;
-    }
     .user{
       margin: 8vh 0;
       height:75vh;
@@ -16,8 +13,14 @@
       padding: 0;
       border: $grey 1px solid;
       box-shadow: 0 2px 1px #777;
+      h2{
+        margin-top: 0;
+      }
     }
     .user-info{
+      .info-heading{
+        margin-top: 1vw;
+      }
       @extend .user;
       overflow: scroll;
       width: 50%;
