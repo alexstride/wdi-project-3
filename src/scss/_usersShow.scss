@@ -16,9 +16,6 @@
       padding: 0;
       border: $grey 1px solid;
       box-shadow: 0 2px 1px #777;
-      -webkit-box-shadow: 0 1px 2px #777;
-	-moz-box-shadow: 0 2px 1px #777;
-
     }
     .user-info{
       @extend .user;
@@ -40,16 +37,10 @@
     }
     .edit{
       margin-left: -18vw;
-
     }
     .bio{
       width: 80%;
       margin-left: 3vw;
     }
-    // .user-info{
-    //   height: 85vh;
-    //   overflow: scroll;
-    // }
   }
-
 }
