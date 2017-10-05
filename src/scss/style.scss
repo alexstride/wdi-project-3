@@ -47,3 +47,12 @@ img{
   padding-top: 10px;
   height: 100%;
 }
+
+a {
+  color: $brand;
+  transition: all 0.3s ease;
+  &:hover, &:focus {
+    color: darken($brand, 10%);
+    text-decoration: none;
+  }
+}

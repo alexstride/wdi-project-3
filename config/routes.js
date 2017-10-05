@@ -11,8 +11,8 @@ router.route('/rides')
   .post(secureRoute, rides.create);
 
 router.route('/rides/:id')
-  .get(rides.show)
-  .put(rides.update)
+  .get(secureRoute, rides.show)
+  .put(secureRoute, rides.update)
   .delete(rides.delete);
 
 router.route('/register')

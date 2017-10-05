@@ -72,6 +72,7 @@ userSchema.pre('remove', function removeImage(next) {
   if(this.image && !this.image.match(/^http/)){
     return s3.deleteObject({ Key: this.image }, next);
   }
+  this.model('Ride').remove({ createdBy: this._id }, next);
   next();
 });
 

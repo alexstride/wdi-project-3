@@ -1,5 +1,5 @@
 .users-show{
-  background-color: lightBlue;
+  background-color: $whiteSpace;
   height: 90vh;
   .user-profile{
     display: flex;
@@ -10,10 +10,26 @@
     .user{
       margin: 8vh 0;
       height:75vh;
-      background-color: white;
-      width: 45%;
+      background-color: $lightgrey;
+      width: 30%;
       border-radius: 8px;
       padding: 0;
+      border: $grey 1px solid;
+      box-shadow: 0 2px 1px #777;
+      -webkit-box-shadow: 0 1px 2px #777;
+	-moz-box-shadow: 0 2px 1px #777;
+
+    }
+    .user-info{
+      @extend .user;
+      overflow: scroll;
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+      .row{
+        display: flex;
+        flex-direction: column;
+      }
     }
     .user-image{
       margin-left:-2vh;

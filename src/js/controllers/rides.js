@@ -22,7 +22,10 @@ function RidesShowCtrl(Ride, $stateParams, $scope, $state, RideMember, $auth, Ri
   vm.delete = ridesDelete;
   vm.edit = ridesEdit;
   vm.isEditable = false;
-  const userId = $auth.getPayload().userId;
+  let userId = null;
+  if($auth.getPayload()) {
+    userId = $auth.getPayload().userId;
+  }
 
   Ride
     .get($stateParams)
