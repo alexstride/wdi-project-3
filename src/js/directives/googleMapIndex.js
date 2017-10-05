@@ -52,7 +52,7 @@ function googleMapIndex($window) {
             // animation: google.maps.Animation.DROP,
             icon: {
               url: '/images/green-icon.png',
-              scaledSize: new google.maps.Size(20,20)
+              scaledSize: new google.maps.Size(35,35)
             },
             position: { lat: ride.startPoint.lat, lng: ride.startPoint.lng }
           });
@@ -66,7 +66,7 @@ function googleMapIndex($window) {
             // animation: google.maps.Animation.DROP,
             icon: {
               url: '/images/red-icon.png',
-              scaledSize: new google.maps.Size(20,20)
+              scaledSize: new google.maps.Size(35,35)
             },
             position: { lat: ride.endPoint.lat, lng: ride.endPoint.lng }
           });
