@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-md-9">
       <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.rideOwner.name || "Unknown User" }}</small></h2>
+      <p ng-if="usersShow.user.rides.length === 0">You have no created routes</p>
       <h4>Description:</h4>
       <div class="row">
         <div class="col-md-9">

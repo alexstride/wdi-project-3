@@ -22,8 +22,8 @@
     justify-content: center;
     align-items: center;
     h1{
-      padding-bottom: 2vh;
-      color: $whiteSpace;
+      margin: 0;
+      color: $white;
       font-size: 16vh;
       font-weight: lighter;
       text-shadow: 1px 1px 1px lighten($navFont, 30%);
@@ -32,12 +32,17 @@
 }
 .description{
   width: 100vw;
-  height: 22vh;
-  background-color: $whiteSpace;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: $white;
   font-size: 16px;
+  text-align: center;
+  height: auto;
   color: lighten($navFont, 12%);
+  h1{
+    margin: 0;
+    border-top: 4vh solid $white;
+    padding-bottom: 20px;
+  }
+}
+footer{
+  height: 5vh;
 }

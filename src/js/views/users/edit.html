@@ -1,71 +1,65 @@
-<div class="users-show">
-  <main class="container">
-    <div class="row user-profile">
-      <div class="col-md-6 user">
-        <div class="row ">
-          <div class="col-sm-6">
-            <img class="page-curl shadow-bottom" ng-src="{{usersEdit.user.imageSRC}}" alt="{{usersEdit.user.name}}">
-          </div>
+<main class="container-fluid edit-user">
+  <h2>Edit Profile</h2>
 
-          <div class="col-sm-6">
-            <form ng-submit="usersEdit.update()" name="usersEdit.editForm">
-              <div>
-                <label for="email">Name</label>
-                <p>
-                  <input type="text" name="name" id="username" ng-model="usersEdit.user.name" required>
-                </p>
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <p>
-                  <input type="text" name="email" id="email" ng-model="usersEdit.user.email" required>
-                </p>
-              </div>
-              <div>
-                <label for="age">Age</label>
-                <p>
-                  <input type="text" name="age" id="age" ng-model="usersEdit.user.age" required>
-                </p>
-              </div>
-              <div>
-                <label for="riding">Activity Level</label>
-                <p>
-                  <input type="text" name="riding" id="riding" ng-model="usersEdit.user.riding" required>
-                </p>
-              </div>
-              <div>
-                <label for="bikeType">Bike Type</label>
-                <p>
-                  <input type="text" name="bikeType" id="bikeType" ng-model="usersEdit.user.bikeType" required>
-                </p>
-              </div>
-              <div class="edit">
+      <img class="user-image" ng-src="{{usersEdit.user.imageSRC}}" alt="{{usersEdit.user.name}}">
 
 
-                <div>
-                  <label for="bio">Bio</label>
-                  <p>
-                    <textarea name="bio" rows="4" cols="40" id="bio" ng-model="usersEdit.user.bio">{{usersEdit.user.bio}}</textarea>
 
-                  </p>
-                </div>
-                <div>
-                  <input class="button" base64 type="file" name="image" id="image" ng-model="usersEdit.user.base64">
-                </div>
-                <div>
-                  <p>
-                    <input type="submit" class="button" value="Submit">
-                  </p>
-                </div>
-              </div>
-            </form>
-          </div>
-
-
-        </div>
-      </div>
-
-
+  <form ng-submit="usersEdit.update()" name="usersEdit.editForm">
+    <div>
+      <label for="email">Name</label>
+      <p>
+        <input class="form-control" type="text" name="name" id="username" ng-model="usersEdit.user.name" required>
+      </p>
     </div>
-  </main>
-</div>
+    <div>
+      <label for="email">Email</label>
+      <p>
+        <input class="form-control" type="text" name="email" id="email" ng-model="usersEdit.user.email" required>
+      </p>
+    </div>
+    <div>
+      <label for="age">Age</label>
+      <p>
+        <input class="form-control" type="text" name="age" id="age" ng-model="usersEdit.user.age" required>
+      </p>
+    </div>
+    <div>
+      <label for="riding">Activity Level</label>
+      <p>
+        <input class="form-control" type="text" name="riding" id="riding" ng-model="usersEdit.user.riding" required>
+      </p>
+    </div>
+    <div>
+      <label for="bikeType">Bike Type</label>
+      <p>
+        <input class="form-control" type="text" name="bikeType" id="bikeType" ng-model="usersEdit.user.bikeType" required>
+      </p>
+    </div>
+    <div class="edit">
+
+
+      <div>
+        <label for="bio">Bio</label>
+        <p>
+          <textarea name="bio" rows="4" cols="40" id="bio" ng-model="usersEdit.user.bio">{{usersEdit.user.bio}}</textarea>
+
+        </p>
+      </div>
+      <div>
+        <input class="button" base64 type="file" name="image" id="image" ng-model="usersEdit.user.base64">
+      </div>
+      <div>
+        <p>
+          <button type="submit" class="button" value="Submit">Submit</button>
+        </p>
+      </div>
+    </div>
+  </form>
+
+
+
+
+
+
+</main>
