@@ -1,11 +1,7 @@
 <div class="container ride-show">
-
   <div class="row show-heading">
-
       <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.rideOwner.name || "Unknown User" }}</small></h2>
-
       <div class="show-heading-buttons">
-
         <a id="edit" ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && (!ridesShow.isEditable)" ng-click="ridesShow.edit()" class="button">Edit</a>
         <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && ridesShow.isEditable" ng-click="ridesShow.update()" class="button">Save</a>
         <a ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id" ng-click="ridesShow.delete()" class="delete button ">Delete</a>
@@ -14,7 +10,6 @@
           <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="btn btn-warning" ng-show="ridesShow.isMember()">Leave Ride</button>
         </div>
       </div>
-
       <div class="row show-description">
         <h4>Description</h4>
         <div>
@@ -24,20 +19,14 @@
           </div>
         </div>
       </div>
-
     </div>
-
-
   <div class="row map-row-wrapper">
-
     <editable-route-map ng-if="ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()">something</editable-route-map>
-
     <!-- ridesShow.ride is changing when we add or remove a member, so the map is re-rendering (flickering) -->
     <!-- might be worth only passing in the necessary info (route etc) -->
     <route-map ng-if="!ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride">something</route-map>
   </div>
     <!--  map  -->
-
   <div class="ride-show-info">
     <div class="ride-info">
       <h2>Ride Information</h2>
@@ -50,18 +39,13 @@
           </div>
         </div>
     </div>
-
     <div class="members" ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id || ridesShow.isMember()">
-
       <h2>Members</h2>
       <p ng-if="ridesShow.ride.members.length === 0"><em>This ride has no members yet...</em></p>
       <ul>
         <li ng-repeat="member in ridesShow.ride.members"><a ui-sref="usersShow({ id: member.id })">{{ member.name }}</a></li>
       </ul>
-
     </div>
-
-
     <div class="comments" ng-if="main.getCurrentUserId() === ridesShow.rideOwner.id || ridesShow.isMember()">
 
       <h2>Comments</h2>
@@ -93,4 +77,3 @@
   </div>
 
 </div>
-<div ng-include="'./js/views/partials/_footer.html'"></div>

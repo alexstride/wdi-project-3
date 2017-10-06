@@ -4,6 +4,12 @@
   a{
     display: inline-block;
     width: 80px;
+    line-height: 34px;
+    &:hover{
+      color: white;
+    }
+  }
+  .delete{
   }
 
   .show-heading {
@@ -86,4 +92,17 @@
   height: 600px;
   width: 50vw;
   max-width: 600px;
+}
+.editable-map{
+  a{
+    display: inline-block;
+    width: auto;
+  }
+  p{
+    margin-bottom: 0;
+  }
+  .map-aside{
+    padding: 10px;
+    margin-left: 10px;
+  }
 }

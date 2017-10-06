@@ -1,11 +1,9 @@
 <div class="coordinate">
-
   <div class="row" ng-hide="isEditing">
-    <p class="col-xs-6">{{lat}}, {{lng}}</p>
-    <p class="col-xs-6"><a href="#" ng-click="edit()">edit</a> <span ng-if="showDelete">/ <a href="#" ng-click="delete()">delete</a></span></p>
+    <p class="col-xs-7"><span>{{lat}},</span> <span>{{lng}}</span></p>
+    <p class="col-xs-5"><a href="#" ng-click="edit()">edit</a> <span ng-if="showDelete">/ <a href="#" ng-click="delete()">delete</a></span></p>
   </div>
   <div class="row" ng-show="isEditing">
-
     <div class="col-xs-12">
       <form class="form" ng-submit="update()" name="coordinateForm" novalidate>
         <p class="help-block">Enter coordinates:</p>
@@ -17,17 +15,14 @@
             <small class="error-message" ng-message="number">Please enter a valid number (max 4 decimal places)!</small>
             <small class="error-message" ng-message="required">Please enter a latitude or select a place!</small>
           </div>
-
         </div>
         <div class="form-group">
-
           <label for="lng">Lng: </label>
           <input type="number" step="0.0001" class="form-control" id="lng" ng-model="lng" name="lng" required>
           <div ng-messages="coordinateForm.lng.$error" role="alert" ng-show="coordinateForm.lng.$touched">
             <small class="error-message" ng-message="number">Please enter a valid number (max 4 decimal places)!</small>
             <small class="error-message" ng-message="required">Please enter a longitude or select a place!</small>
           </div>
-
         </div>
         <div class="form-group">
           <label for="receivedLatLng">Or pick a location </label>
