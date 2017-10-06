@@ -16,11 +16,14 @@
       overflow-wrap: break-word;
       overflow: scroll;
       h2{
-        margin-top: 0;
+        margin: 10px 0 5px;
         padding-left: 10px;
       }
+      .delete{margin-left: 10px}
+      h4{margin-top:5px }
       p{
         display: block;
+        line-height: 1.6;
         padding-left: 10px;
       }
     }

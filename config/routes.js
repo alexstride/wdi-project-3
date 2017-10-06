@@ -27,13 +27,13 @@ router.route('/users')
 router.route('/users/:id')
   .get(users.show)
   .put(secureRoute, imageUpload, users.update)
-  .delete(users.delete);
+  .delete(secureRoute, users.delete);
 
 router.route('/rides/:id/members')
   .post(secureRoute, rides.addMember); //make this a secure route?
 
 router.route('/rides/:id/members/:memberId')
-  .delete(rides.deleteMember); //resecure this
+  .delete(secureRoute, rides.deleteMember); //resecure this
 
 router.route('/rides/:id/comments')
   .post(secureRoute, rides.addComment);

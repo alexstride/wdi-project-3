@@ -1,13 +1,24 @@
 <div class="container ride-show">
 
-  <div class="row">
-    <div class="col-md-9">
+  <div class="row show-heading">
+
       <h2>{{ridesShow.ride.name || 'Unnamed Ride'}} <small>by {{ ridesShow.rideOwner.name || "Unknown User" }}</small></h2>
-      <p ng-if="usersShow.user.rides.length === 0">You have no created routes</p>
-      <h4>Description:</h4>
-      <div class="row">
-        <div class="col-md-9">
-          <p ng-hide="ridesShow.isEditable"><em>{{ridesShow.ride.description}}</em></p>
+
+      <div class="show-heading-buttons">
+
+        <a id="edit" ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && (!ridesShow.isEditable)" ng-click="ridesShow.edit()" class="button">Edit</a>
+        <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && ridesShow.isEditable" ng-click="ridesShow.update()" class="button">Save</a>
+        <a ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id" ng-click="ridesShow.delete()" class="delete button ">Delete</a>
+        <div ng-hide="main.getCurrentUserId() === ridesShow.rideOwner.id">
+          <button ng-click="ridesShow.addMember()" class="button btn btn-warning" ng-hide="ridesShow.isMember()">Join Ride</button>
+          <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="btn btn-warning" ng-show="ridesShow.isMember()">Leave Ride</button>
+        </div>
+      </div>
+
+      <div class="row show-description">
+        <h4>Description</h4>
+        <div>
+          <p ng-hide="ridesShow.isEditable"><em>{{ridesShow.ride.description || 'This ride does not yet have a description'}}</em></p>
           <div class="form-group">
             <textarea ng-show="ridesShow.isEditable" class="form-control" rows="5" ng-model="ridesShow.ride.description"></textarea>
           </div>
@@ -15,37 +26,23 @@
       </div>
 
     </div>
-    <div class="col-md-3 button-top-pad">
 
-      <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && (!ridesShow.isEditable)" ng-click="ridesShow.edit()" class="button edit">Edit</a>
-      <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && ridesShow.isEditable" ng-click="ridesShow.update()" class="button">Save</a>
-      <a ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id" ng-click="ridesShow.delete()" class="button delete">Delete</a>
-      <div ng-hide="main.getCurrentUserId() === ridesShow.rideOwner.id">
-        <button ng-click="ridesShow.addMember()" class="button" ng-hide="ridesShow.isMember()">Join Ride</button>
-        <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="button delete" ng-show="ridesShow.isMember()">Leave Ride</button>
-      </div>
-    </div>
+
+  <div class="row map-row-wrapper">
+
+    <editable-route-map ng-if="ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()">something</editable-route-map>
+
+    <!-- ridesShow.ride is changing when we add or remove a member, so the map is re-rendering (flickering) -->
+    <!-- might be worth only passing in the necessary info (route etc) -->
+    <route-map ng-if="!ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride">something</route-map>
   </div>
-
-
-  <div class="row">
-    <div class="col-sm-10">
-
-      <editable-route-map ng-if="ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride" pending-changes="updateNeeded" update="ridesShow.update()">something</editable-route-map>
-
-      <!-- ridesShow.ride is changing when we add or remove a member, so the map is re-rendering (flickering) -->
-      <!-- might be worth only passing in the necessary info (route etc) -->
-      <route-map ng-if="!ridesShow.isEditable" map-var="ridesShow.map" ride-info="ridesShow.ride">something</route-map>
-    </div>
     <!--  map  -->
-  </div>
-  <div class="row">
 
-    <div class="col-sm-6">
+  <div class="ride-show-info">
+    <div class="ride-info">
       <h2>Ride Information</h2>
-      <div class="container">
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-3 col-sm-offset-3">
             Ride length:
           </div>
           <div class="col-sm-3">
@@ -53,22 +50,29 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-3 col-sm-offset-3">
             Ride pace:
           </div>
           <div class="col-sm-3">
             {{ridesShow.ride.pace || '-'}}
           </div>
         </div>
+    </div>
 
-      </div>
+    <div class="members" ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id || ridesShow.isMember()">
+
       <h2>Members</h2>
       <p ng-if="ridesShow.ride.members.length === 0"><em>This ride has no members yet...</em></p>
       <ul>
         <li ng-repeat="member in ridesShow.ride.members"><a ui-sref="usersShow({ id: member.id })">{{ member.name }}</a></li>
       </ul>
 
-      <h2>Comments:</h2>
+    </div>
+
+
+    <div class="comments" ng-if="main.getCurrentUserId() === ridesShow.rideOwner.id || ridesShow.isMember()">
+
+      <h2>Comments</h2>
 
       <div class="comment" ng-repeat="comment in ridesShow.ride.comments">
         <div class="media">
@@ -94,7 +98,6 @@
         <button class="button btn btn-primary">Comment</button>
       </form>
     </div>
-
   </div>
 
 </div>

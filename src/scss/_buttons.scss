@@ -33,9 +33,18 @@
     background-color: darken($brand, 5%);
   }
 }
-.edit{
-  background-color: $edit;
-}
 .delete{
   background-color: $delete;
+  &:hover {
+    background-color: darken($delete, 10%);
+  }
+}
+#edit{
+  background-color: $edit;
+  text-align: center;
+  line-height: 34px;
+  &:hover{
+    background-color: darken($edit, 2%);
+    color: $white;
+  }
 }

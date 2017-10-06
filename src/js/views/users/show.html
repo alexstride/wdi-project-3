@@ -4,14 +4,14 @@
           <div class="user-content">
             <img class="user-image" ng-src="{{usersShow.user.imageSRC}}" alt="{{usersShow.user.name}}">
           <h2 class="user-heading"><span class="edit-icon"> {{usersShow.user.name}}</span></h2>
-          <p ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">email: {{usersShow.user.email}}</p>
-          <p>age: {{usersShow.user.age}}</p>
-          <p>riding: {{usersShow.user.riding}}</p>
-          <p>bike type: {{usersShow.user.bikeType}}</p>
-          <p class="bio">bio: {{usersShow.user.bio}}</p>
+          <p ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">email: {{usersShow.user.email}}<br>
+          age: {{usersShow.user.age}}<br>
+          riding: {{usersShow.user.riding}}<br>
+          bike type: {{usersShow.user.bikeType}}<br>
+          bio: {{usersShow.user.bio}}</p>
           <div class="buttons" ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">
-            <button ng-click="usersShow.delete()" class="button btn btn-danger">Delete</button>
-            <a id="user-button" ui-sref="usersEdit({ id: usersShow.user.id })" class="button">Edit</a>
+            <a id="edit" ui-sref="usersEdit({ id: usersShow.user.id })" class="edit button">Edit</a>
+            <button ng-click="usersShow.delete()" class="button delete">Delete</button>
           </div>
         </div>
     </div>
