@@ -31,6 +31,13 @@ function editableRouteMap($window) {
       const directionsService = new google.maps.DirectionsService();
       let directionsDisplay = null;
       $scope.updateDirections = renderDirections;
+      $scope.deleteWayPoint = deleteWayPoint;
+
+      function deleteWayPoint(wayPoint) {
+        $scope.rideInfo.wayPoints.splice($scope.rideInfo.wayPoints.indexOf(wayPoint), 1);
+        refreshWayPoints();
+        renderDirections();
+      }
 
       function renderDirections() {
         if (directionsDisplay) directionsDisplay.setMap(null);
@@ -59,6 +66,10 @@ function editableRouteMap($window) {
           travelMode: 'BICYCLING',
           optimizeWaypoints: true
         }, response => {
+          console.log('Here are the directions', response);
+          $scope.rideInfo.distance = `${(response.routes[0].legs.reduce((sum, leg) => sum + leg.distance.value, 0)/1000).toFixed(1)} km`;
+          console.log($scope.rideInfo.distance);
+          $scope.$apply();
           directionsDisplay.setDirections(response);
         });
       }
@@ -113,6 +124,7 @@ function editableRouteMap($window) {
         $scope.rideInfo.wayPoints.push($scope.newWayPoint);
         $scope.newWayPoint = {};
         $scope.pendingChanges = true;
+        $scope.receivedLatLng = '';
         refreshWayPoints();
         renderDirections();
       }
