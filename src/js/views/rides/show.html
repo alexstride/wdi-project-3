@@ -59,9 +59,9 @@
           </div>
           <div class="media-body">
             <h4 class="media-heading">{{comment.createdBy.name || "Unknown user"}}</h4>
-            <p>{{comment.text || "This comment has no content"}}</p>
+            <p>{{comment.text || "This comment has no content"}}
+            <button ng-if="main.isAuthenticated() && main.getCurrentUserId() === comment.createdBy.id" ng-click="ridesShow.deleteComment(comment)" class="delete delete-comment">x</button></p>
           </div>
-          <button ng-if="main.isAuthenticated() && main.getCurrentUserId() === comment.createdBy.id" ng-click="ridesShow.deleteComment(comment)" class="btn-small btn-danger">X</button>
         </div>
 
 

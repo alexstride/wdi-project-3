@@ -48,3 +48,14 @@
     color: $white;
   }
 }
+.media-body {
+  display: inline-block;
+}
+.delete-comment{
+  display: inline-block;
+  border-radius: 50%;
+  height: 28px;
+  width: 28px;
+  border: none;
+  color: $white
+}
