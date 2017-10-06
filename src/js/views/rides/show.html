@@ -6,7 +6,7 @@
       <h4>Description:</h4>
       <div class="row">
         <div class="col-md-9">
-          <p ng-hide="ridesShow.isEditable"><em>{{ridesShow.ride.description}}</em></p>
+          <p ng-hide="ridesShow.isEditable"><em>{{ridesShow.ride.description || 'This ride does not yet have a description'}}</em></p>
           <div class="form-group">
             <textarea ng-show="ridesShow.isEditable" class="form-control" rows="5" ng-model="ridesShow.ride.description"></textarea>
           </div>
@@ -39,7 +39,6 @@
     <!--  map  -->
   </div>
   <div class="row">
-
     <div class="col-sm-6">
       <h2>Ride Information</h2>
       <div class="container">
@@ -61,40 +60,48 @@
         </div>
 
       </div>
+    </div>
+
+    <div class="col-sm-6" ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id || ridesShow.isMember()">
+
       <h2>Members</h2>
       <p ng-if="ridesShow.ride.members.length === 0"><em>This ride has no members yet...</em></p>
       <ul>
         <li ng-repeat="member in ridesShow.ride.members"><a ui-sref="usersShow({ id: member.id })">{{ member.name }}</a></li>
       </ul>
 
-      <h2>Comments:</h2>
-
-      <div class="comment" ng-repeat="comment in ridesShow.ride.comments">
-        <div class="media">
-          <div class="media-left">
-            <a href="#" ui-sref="usersShow({ id: comment.createdBy.id })">
-              <img class="media-object" ng-src="{{comment.createdBy.imageSRC}}">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">{{comment.createdBy.name || "Unknown user"}}</h4>
-            <p>{{comment.text || "This comment has no content"}}</p>
-          </div>
-          <button ng-if="main.isAuthenticated() && main.getCurrentUserId() === comment.createdBy.id" ng-click="ridesShow.deleteComment(comment)" class="btn-small btn-danger">X</button>
-        </div>
-
-
-      </div>
-      <form ng-if="main.isAuthenticated()" ng-submit="ridesShow.addComment()">
-        <div class="form-group">
-          <label>Add comment</label>
-          <textarea class="form-control" ng-model="ridesShow.newComment.text"></textarea>
-        </div>
-        <button class="button btn btn-primary">Comment</button>
-      </form>
     </div>
-
   </div>
+
+  <div class="row" ng-if="main.getCurrentUserId() === ridesShow.rideOwner.id || ridesShow.isMember()">
+
+    <h2>Comments</h2>
+
+    <div class="comment" ng-repeat="comment in ridesShow.ride.comments">
+      <div class="media">
+        <div class="media-left">
+          <a href="#" ui-sref="usersShow({ id: comment.createdBy.id })">
+            <img class="media-object" ng-src="{{comment.createdBy.imageSRC}}">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">{{comment.createdBy.name || "Unknown user"}}</h4>
+          <p>{{comment.text || "This comment has no content"}}</p>
+        </div>
+        <button ng-if="main.isAuthenticated() && main.getCurrentUserId() === comment.createdBy.id" ng-click="ridesShow.deleteComment(comment)" class="btn-small btn-danger">X</button>
+      </div>
+
+
+    </div>
+    <form ng-if="main.isAuthenticated()" ng-submit="ridesShow.addComment()">
+      <div class="form-group">
+        <label>Add comment</label>
+        <textarea class="form-control" ng-model="ridesShow.newComment.text"></textarea>
+      </div>
+      <button class="button btn btn-primary">Comment</button>
+    </form>
+  </div>
+
 
 </div>
 <footer></footer>
