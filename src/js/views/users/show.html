@@ -1,29 +1,22 @@
-<main class="container users-show">
+<main class="container-fluid users-show">
   <div class="row user-profile">
-    <div class="col-sm-4 user">
-      <div class="row">
-        <div class="col-sm-6">
-          <img class="user-image" ng-src="{{usersShow.user.imageSRC}}" alt="{{usersShow.user.name}}">
-        </div>
-        <div class="col-sm-6">
+    <div class="user">
+          <div class="user-content">
+            <img class="user-image" ng-src="{{usersShow.user.imageSRC}}" alt="{{usersShow.user.name}}">
           <h2 class="user-heading"><span class="edit-icon"> {{usersShow.user.name}}</span></h2>
-          <p>email: {{usersShow.user.email}}</p>
+          <p ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">email: {{usersShow.user.email}}</p>
           <p>age: {{usersShow.user.age}}</p>
           <p>riding: {{usersShow.user.riding}}</p>
           <p>bike type: {{usersShow.user.bikeType}}</p>
+          <p class="bio">bio: {{usersShow.user.bio}}</p>
+          <div class="buttons" ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">
+            <button ng-click="usersShow.delete()" class="button btn btn-danger">Delete</button>
+            <a id="user-button" ui-sref="usersEdit({ id: usersShow.user.id })" class="button">Edit</a>
+          </div>
         </div>
-        <p class="bio">bio: {{usersShow.user.bio}}</p>
-      </div>
-      <div ng-if="main.isAuthenticated() && main.getCurrentUserId() === usersShow.user.id">
-
-        <button ng-click="usersShow.delete()" class="button btn btn-danger">Delete</button>
-        <a ui-sref="usersEdit({ id: usersShow.user.id })" class="button btn btn-warning">Edit</a>
-      </div>
     </div>
-    <div class="col-sm-1">
 
-    </div>
-    <div class="col-sm-7 user-info">
+    <div class="user-info">
       <div class="row">
         <h2 class="info-heading">My Rides</h2>
         <p ng-if="usersShow.user.rides.length === 0">You have not created any routes</p>
@@ -36,7 +29,6 @@
       <div class="row">
         <h2 class="info-heading">Joined Rides</h2>
         <p ng-if="usersShow.user.ridesJoined.length === 0">You have not joined any routes</p>
-
         <div class="rides-block">
           <div ng-repeat="ride in usersShow.user.ridesJoined">
             <h4><a href="#" ui-sref="ridesShow({ id: ride.id })">{{ ride.name }}</a></h4>

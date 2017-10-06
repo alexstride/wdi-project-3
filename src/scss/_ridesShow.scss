@@ -1,4 +1,13 @@
 .ride-show{
+  .editable-map {
+    display: block;
+    border: 1px solid gray;
+    clear: both;
+  }
+  .map-holder {
+    height: 600px;
+    max-width: 600px;
+  }
   h2{
     text-align: center;
   }

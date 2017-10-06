@@ -37,6 +37,7 @@
   top: 15px;
 }
 aside{
+  background: linear-gradient(to right, $white, darken($white, 8%) 50%, $white 100%);
   height: 72.5vh;
   width: 20vw;
   p{
@@ -49,6 +50,8 @@ aside{
   overflow: scroll;
   height: 72.5vh;
   padding: 15px;
+  background: linear-gradient(to right, $white, darken($white, 8%) 50%, $white 100%);
+  
 }
 #indexmap  {
   height: 92.5vh;

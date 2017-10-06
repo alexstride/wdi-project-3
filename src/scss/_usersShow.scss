@@ -1,29 +1,41 @@
 .users-show{
   background-color: $whiteSpace;
-  height: 90vh;
+  height: 93vh;
   .user-profile{
     display: flex;
     justify-content: space-around;
     .user{
       margin: 8vh 0;
       height:75vh;
-      background-color: $lightgrey;
+      background: $vertical;
       width: 30%;
       border-radius: 8px;
-      padding: 0;
-      border: $grey 1px solid;
-      box-shadow: 0 2px 1px #777;
+      border:$border;
+      box-shadow:$boxShadow;
+      display: flex;
+      overflow-wrap: break-word;
+      overflow: scroll;
       h2{
         margin-top: 0;
+        padding-left: 10px;
+
+      }
+      p{
+        display: block;
+        padding-left: 10px;
+      }
+      .buttons{
+        padding-left: 10px;
+        a{
+          padding: 6px 12px;
+          margin-left: 10px;
+        }
       }
     }
     .user-info{
-      .info-heading{
-        margin-top: 1vw;
-      }
       @extend .user;
       overflow: scroll;
-      width: 50%;
+      width: 45%;
       display: flex;
       justify-content: space-around;
       .row{
@@ -31,19 +43,21 @@
         flex-direction: column;
       }
     }
-    .user-image{
-      margin-left:-2vh;
-      margin-top: -2vh;
-    }
-    .user-heading{
-      margin-left: -2vw;
-    }
-    .edit{
-      margin-left: -18vw;
-    }
+
+
+
     .bio{
       width: 80%;
-      margin-left: 3vw;
     }
   }
+}
+.user-image{
+  box-shadow:$boxShadow;
+  width: 150px;
+  height: 150px;
+}
+
+.info-heading{
+  margin-top: 1vw;
+  display: inline-block;
 }
