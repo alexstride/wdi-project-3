@@ -1,10 +1,6 @@
 <main class="container-fluid edit-user">
   <h2>Edit Profile</h2>
-
-      <img class="user-image" ng-src="{{usersEdit.user.imageSRC}}" alt="{{usersEdit.user.name}}">
-
-
-
+  <img class="user-image" ng-src="{{usersEdit.user.imageSRC}}" alt="{{usersEdit.user.name}}">
   <form ng-submit="usersEdit.update()" name="usersEdit.editForm">
     <div>
       <label for="email">Name</label>
@@ -37,13 +33,10 @@
       </p>
     </div>
     <div class="edit">
-
-
       <div>
         <label for="bio">Bio</label>
         <p>
           <textarea name="bio" rows="4" cols="40" id="bio" ng-model="usersEdit.user.bio">{{usersEdit.user.bio}}</textarea>
-
         </p>
       </div>
       <div>
@@ -56,10 +49,5 @@
       </div>
     </div>
   </form>
-
-
-
-
-
-
 </main>
+<div ng-include="'./js/views/partials/_footer.html'"></div>

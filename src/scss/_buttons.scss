@@ -1,14 +1,41 @@
-a#user-button.button{
+.buttons{
   height: 50px;
+  display: flex;
+  align-content: center;
+  padding-left: 10px;
+  a#user-button.button{
+    height: 34px;
+    display: inline-block;
+    margin-bottom: -1vh;
+    padding-left: 10px;
+    padding: 6px 12px;
+    margin-left: 10px;
+    width: 80px;
+    text-align: center;
+    &:hover {
+      background-color: darken($brand, 5%);
+      color: white;
+    }
+  }
+  .button{
+    width: 80px;
+  }
 }
 .button {
   background-color: $brand;
   border: 0;
   color: white;
+  height: 34px;
   border-radius: 4px;
   transition: all 0.3s ease;
   font-size: 16px;
   &:hover {
     background-color: darken($brand, 5%);
   }
+}
+.edit{
+  background-color: $edit;
+}
+.delete{
+  background-color: $delete;
 }

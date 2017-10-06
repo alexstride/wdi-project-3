@@ -4,18 +4,20 @@
   </header>
   <div class="hero"></div>
   <div class="description">
-    <div class="">
-      <h1>  The sociable cycling app.</h1>
+    <div>
+      <h1>The sociable cycling app.</h1>
 
     </div>
-    <p class="home-text">Our aim at Tandem is to make London totally cycling friendly! <br>
-      You can share your route whether it\'s a commute or a leisurely cycle and invite others to join you or join in on an already exisiting route!. <br>
-      bla bla bla <br>
-      bla bla bla <br>
-      bla bla bla
-      <span ng-if="!main.isAuthenticated()"><a ui-sref="register" >join</a> us</span>
-      <span ng-if="main.isAuthenticated()">share your favorite routes</span>
-    </p>
+  <p class="home-text">At Tandem, help create a fun cycling community within London <br>
+    Plan out, adjust share your commute or leisurely cycle and join other routes! <br>
+    Set waypoints with google places for a break mid cycle to have a nice chat and possibly a cheeky smoothie.<br>
+    Customise your profile and chat to your cycle buddies on your routes.
+    <br>
+    Get involved in the fun and
+    <span ng-if="!main.isAuthenticated()"><a ui-sref="register" >join</a> us</span>
+    <span ng-if="main.isAuthenticated()">share your favorite routes</span>
+  </p>
+</div>
   </div>
 </main>
-<footer></footer>
+<div ng-include="'./js/views/partials/_footer.html'"></div>

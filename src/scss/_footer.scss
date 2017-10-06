@@ -1,0 +1,23 @@
+footer {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  letter-spacing: .08em;
+  font-weight: 500;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0px 30px 0;
+  height: 45px;
+  position: relative;
+  z-index: 1;
+  .heart{
+    color: red;
+  }
+  .name{
+    color:#F15B31;
+  }
+}
+
+footer.fixed-bottom{
+  z-index: -2;
+}

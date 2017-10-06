@@ -18,19 +18,12 @@
       h2{
         margin-top: 0;
         padding-left: 10px;
-
       }
       p{
         display: block;
         padding-left: 10px;
       }
-      .buttons{
-        padding-left: 10px;
-        a{
-          padding: 6px 12px;
-          margin-left: 10px;
-        }
-      }
+      
     }
     .user-info{
       @extend .user;
@@ -43,9 +36,6 @@
         flex-direction: column;
       }
     }
-
-
-
     .bio{
       width: 80%;
     }
