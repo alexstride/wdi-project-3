@@ -10,35 +10,17 @@
 @import "ridesShow";
 @import "errors";
 @import "register";
+@import "forms";
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
 body{
   line-height: 1.4;
-  -webkit-transition: opacity 2s ease-in;
-  -moz-transition: opacity 2s ease-in;
-  -o-transition: opacity 2s ease-in;
-  -ms-transition: opacity 2s ease-in;
   transition: opacity 3s ease-in;
-}
-.editable-map {
-  display: block;
-  border: 1px solid gray;
-  clear: both;
-
+  font-size: 16px
 }
 
 .container.rides-show {
   height: auto;
-}
-
-.map-holder {
-  height: 600px;
-  max-width: 600px;
-}
-
-#indexmap  {
-  display: block;
-  margin: 0 auto;
 }
 
 img{

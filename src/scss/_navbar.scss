@@ -1,24 +1,20 @@
 nav.navbar {
-  background-color: white;
+  background: linear-gradient(to top, $white, darken($white, 8%) 50%, $white 100%);
   margin: 0;
   height: 7.5vh;
   font-size: 18px;
   text-transform: lowercase;
   display: flex;
   align-items: center;
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
-
+  border: $border;
 }
 .nav.navbar-nav li a, .navbar-brand{
   color: $navFont;
-
   &:hover{
     background-color: transparent;
     color: lighten($navFont, 20%);
     transition: all 0.3s ease;
-    
   }
-
 }
 ul.nav a:focus, ul.nav a:active {
   color: darken($navFont, 5%);
@@ -34,6 +30,7 @@ ul.nav a:focus, ul.nav a:active {
 }
 
 .navbar-form{
+  padding-left: 20px;
   display: flex;
   align-items: center;
   > * {

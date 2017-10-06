@@ -1,6 +1,6 @@
-<div class="editable-map row">
-  <div class="map-holder col-sm-8">GOOGLE MAP GOES HERE</div>
-  <div class="map-aside col-sm-4">
+<div class="editable-map">
+  <div class="map-holder">GOOGLE MAP GOES HERE</div>
+  <div class="map-aside">
 
     <h5 class="start">Start Point</h5>
     <coordinate lat="rideInfo.startPoint.lat", lng="rideInfo.startPoint.lng"></coordinate>
@@ -49,7 +49,7 @@
 
     <h5 class="end">End Point</h5>
     <coordinate lat="rideInfo.endPoint.lat", lng="rideInfo.endPoint.lng"></coordinate>
-    <button class="button btn-info calculate" ng-click="updateDirections()">Recalculate directions</button>
+    <!-- <button class="button btn-info calculate" ng-click="updateDirections()">Recalculate directions</button> -->
     <button class="button btn-primary calculate" ng-if="pendingChanges" ng-click="update()">Save Changes</button>
 
   </div>

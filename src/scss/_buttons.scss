@@ -1,18 +1,14 @@
+a#user-button.button{
+  height: 50px;
+}
 .button {
   background-color: $brand;
   border: 0;
-  padding: 6px 10px;
   color: white;
   border-radius: 4px;
   transition: all 0.3s ease;
+  font-size: 16px;
   &:hover {
     background-color: darken($brand, 5%);
-  }
-}
-
-a.button{
-  width: 8vw;
-  a.button:hover{
-    border-bottom-color: #c6a775;
   }
 }
