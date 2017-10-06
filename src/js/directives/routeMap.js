@@ -49,7 +49,9 @@ function routeMap($window) {
           optimizeWaypoints: true
         }, response => {
           console.log(response);
+          $scope.rideInfo.distance = `${(response.routes[0].legs.reduce((sum, leg) => sum + leg.distance.value, 0)/1000).toFixed(1)} km`;
           directionsDisplay.setDirections(response);
+          $scope.$apply();
         });
       }
 
