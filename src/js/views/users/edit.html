@@ -32,15 +32,15 @@
         <input class="form-control" type="text" name="bikeType" id="bikeType" ng-model="usersEdit.user.bikeType" required>
       </p>
     </div>
-    <div class="edit">
+    <div class="edit-user-bio">
       <div>
         <label for="bio">Bio</label>
         <p>
-          <textarea name="bio" rows="4" cols="40" id="bio" ng-model="usersEdit.user.bio">{{usersEdit.user.bio}}</textarea>
+          <textarea class="form-control" name="bio" rows="2" cols="40" id="bio" ng-model="usersEdit.user.bio">{{usersEdit.user.bio}}</textarea>
         </p>
       </div>
-      <div>
-        <input class="button" base64 type="file" name="image" id="image" ng-model="usersEdit.user.base64">
+      <div class="base64">
+        <input base64 type="file" name="image" id="image" ng-model="usersEdit.user.base64">
       </div>
       <div>
         <p>
