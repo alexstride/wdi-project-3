@@ -37,6 +37,7 @@ function updateRide(req, res, next) {
     .then((ride) => {
       if(!ride) return res.notFound();
       delete req.body.createdBy;
+      delete req.body.comments;
       Object.assign(ride, req.body);
       console.log(ride);
       return ride.save();
