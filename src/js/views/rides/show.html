@@ -17,12 +17,12 @@
     </div>
     <div class="col-md-3 button-top-pad">
 
-      <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && (!ridesShow.isEditable)" ng-click="ridesShow.edit()" class="btn btn-warning">Edit</a>
-      <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && ridesShow.isEditable" ng-click="ridesShow.update()" class="btn btn-primary">Save</a>
-      <a ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id" ng-click="ridesShow.delete()" class="btn btn-danger">Delete</a>
+      <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && (!ridesShow.isEditable)" ng-click="ridesShow.edit()" class="button edit">Edit</a>
+      <a ng-show="(main.getCurrentUserId() === ridesShow.rideOwner.id) && ridesShow.isEditable" ng-click="ridesShow.update()" class="button">Save</a>
+      <a ng-show="main.getCurrentUserId() === ridesShow.rideOwner.id" ng-click="ridesShow.delete()" class="button delete">Delete</a>
       <div ng-hide="main.getCurrentUserId() === ridesShow.rideOwner.id">
-        <button ng-click="ridesShow.addMember()" class="btn btn-warning" ng-hide="ridesShow.isMember()">Join Ride</button>
-        <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="btn btn-warning" ng-show="ridesShow.isMember()">Leave Ride</button>
+        <button ng-click="ridesShow.addMember()" class="button" ng-hide="ridesShow.isMember()">Join Ride</button>
+        <button ng-click="ridesShow.deleteMember(main.getCurrentUserId())" class="button delete" ng-show="ridesShow.isMember()">Leave Ride</button>
       </div>
     </div>
   </div>
